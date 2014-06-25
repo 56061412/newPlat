@@ -1,0 +1,65 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<!--	OaMenuInfo	-->
+	<package name="menu" extends="oaLogin" namespace="/menu">
+		<action name="queryFirstMenu" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="queryFirstMenu">
+		</action>
+		<action name="queryTreeOaMenuInfo" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="queryTreeOaMenuInfo">
+		</action>
+		<action name="queryPageListOaMenuInfo" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="queryPageListOaMenuInfo">
+		</action>
+		<action name="queryPageListOaMenuInfoExtend" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="queryPageListOaMenuInfoExtend">
+		</action>
+		<action name="saveOrUpdateOaMenuInfo" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="saveOrUpdateOaMenuInfo">
+		</action>
+		<action name="saveOrUpdateOaMenuRoleMap" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="saveOrUpdateOaMenuRoleMap">
+		</action>
+		<action name="deleteOaMenuInfo" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="deleteOaMenuInfo">
+		</action>
+		<action name="deleteOaMenuRoleMap" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="deleteOaMenuRoleMap">
+		</action>
+		<action name="getOaMenuInfo" class="com.auto.oa.menu.action.OaMenuInfoAction"
+			method="getOaMenuInfo">
+		</action>
+	</package>
+	
+	<!--	OaMenuRole	-->
+	<package name="menuRole" extends="oaLogin" namespace="/menuRole">
+		<action name="queryTreeOaMenuRole" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="queryTreeOaMenuRole">
+		</action>
+		<action name="queryPageListOaMenuRoleExtend" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="queryPageListOaMenuRoleExtend">
+		</action>
+		<action name="queryPageListOaMenuRole" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="queryPageListOaMenuRole">
+		</action>
+		<action name="saveOrUpdateOaMenuRoleUserMap" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="saveOrUpdateOaMenuRoleUserMap">
+		</action>
+		<action name="saveOrUpdateOaMenuRole" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="saveOrUpdateOaMenuRole">
+		</action>
+		<action name="deleteOaMenuRoleUserMap" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="deleteOaMenuRoleUserMap">
+		</action>
+		<action name="deleteOaMenuRole" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="deleteOaMenuRole">
+		</action>
+		<action name="getOaMenuRole" class="com.auto.oa.menu.action.OaMenuRoleAction"
+			method="getOaMenuRole">
+		</action>
+		
+	</package>
+</struts>

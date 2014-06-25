@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.menu.domain.OaMenuRoleMap">
+	<typeAlias alias="oamenurolemap" type="com.auto.oa.menu.domain.OaMenuRoleMap"/>
+	<select id="load" parameterClass="string" resultClass="oamenurolemap">
+		SELECT 
+				APRMM_GUID as "aprmmGuid" ,
+				APRO_GUID as "aproGuid" ,
+				APME_GUID as "apmeGuid" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_menu_role_map
+		WHERE
+							APRMM_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oamenurolemap">
+		SELECT
+				APRMM_GUID  as "aprmmGuid" ,		
+				APRO_GUID  as "aproGuid" ,		
+				APME_GUID  as "apmeGuid" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_menu_role_map
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="aprmmGuid">APRMM_GUID =  #aprmmGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aproGuid">APRO_GUID =  #aproGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeGuid">APME_GUID =  #apmeGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_menu_role_map 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="aprmmGuid">APRMM_GUID =  #aprmmGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aproGuid">APRO_GUID =  #aproGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="apmeGuid">APME_GUID =  #apmeGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oamenurolemap">
+		INSERT INTO t_auto_oa_menu_role_map ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="aprmmGuid">APRMM_GUID </isNotNull>
+					<isNotNull prepend=", " property="aproGuid">APRO_GUID </isNotNull>
+					<isNotNull prepend=", " property="apmeGuid">APME_GUID </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="aprmmGuid">#aprmmGuid#</isNotNull>
+        <isNotNull prepend=", " property="aproGuid">#aproGuid#</isNotNull>
+        <isNotNull prepend=", " property="apmeGuid">#apmeGuid#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_menu_role_map
+		WHERE 		APRMM_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oamenurolemap">
+		UPDATE  t_auto_oa_menu_role_map	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="aprmmGuid">APRMM_GUID = #aprmmGuid#</isNotNull>
+		<isNotNull prepend="," property="aproGuid">APRO_GUID = #aproGuid#</isNotNull>
+		<isNotNull prepend="," property="apmeGuid">APME_GUID = #apmeGuid#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		APRMM_GUID=#aprmmGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oamenurolemap">
+		UPDATE t_auto_oa_menu_role_map	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="aprmmGuid">APRMM_GUID = #aprmmGuid#</isNotNull>
+	    <isNull prepend=", " property="aprmmGuid">APRMM_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="aproGuid">APRO_GUID = #aproGuid#</isNotNull>
+	    <isNull prepend=", " property="aproGuid">APRO_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeGuid">APME_GUID = #apmeGuid#</isNotNull>
+	    <isNull prepend=", " property="apmeGuid">APME_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		APRMM_GUID=#aprmmGuid# 			</update>
+		
+<!-- 		Add SQL -->
+	<delete id="deleteByApmeGuid" parameterClass="string">
+		DELETE FROM  t_auto_oa_menu_role_map
+		WHERE 		APME_GUID = #apmeGuid#
+	</delete>
+	
+	<delete id="deleteByAproGuid" parameterClass="string">
+		DELETE FROM  t_auto_oa_menu_role_map
+		WHERE 		APRO_GUID = #aproGuid#
+	</delete>
+</sqlMap>

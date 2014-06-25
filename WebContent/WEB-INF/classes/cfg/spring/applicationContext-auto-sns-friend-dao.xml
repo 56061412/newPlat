@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="FriendGroupDAO" class="com.auto.sns.friend.dao.impl.FriendGroupDAOImpl"></bean>
+	<bean id="FriendInfoDAO" class="com.auto.sns.friend.dao.impl.FriendInfoDAOImpl"></bean>
+	
+	
+	
+	<bean id="SnsFriendDAOFactory" class="com.auto.sns.friend.dao.SnsFriendDAOFactory">		
+		<property name="friendGroupDAO">
+			<ref bean="FriendGroupDAO" />
+		</property>
+		
+		<property name="friendInfoDAO">
+			<ref bean="FriendInfoDAO" />
+		</property>
+
+	</bean>
+	
+</beans>

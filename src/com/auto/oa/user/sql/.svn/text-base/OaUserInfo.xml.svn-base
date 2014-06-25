@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.user.domain.OaUserInfo">
+	<typeAlias alias="oauserinfo" type="com.auto.oa.user.domain.OaUserInfo"/>
+	<typeAlias alias="oauserinfoextend" type="com.auto.oa.user.domain.OaUserInfoExtend"/>
+	
+	<select id="load" parameterClass="string" resultClass="oauserinfo">
+		SELECT 
+				AUSER_GUID as "auserGuid" ,
+				AUSER_CODE as "auserCode" ,
+				AUSER_NAME as "auserName" ,
+				AUSER_NICK_NAME as "auserNickName" ,
+				AUSER_GENDER as "auserGender" ,
+				AUSER_AGE as "auserAge" ,
+				AUSER_PY as "auserPy" ,
+				AUSER_PY_BREF as "auserPyBref" ,
+				AUSER_BIRTHDAY as "auserBirthday" ,
+				AUSER_BLOOD_TYPE as "auserBloodType" ,
+				AUSER_QQ as "auserQq" ,
+				AUSER_MOBILE as "auserMobile" ,
+				AUSER_PHONE as "auserPhone" ,
+				AUSER_MAIL as "auserMail" ,
+				AUSER_CITY as "auserCity" ,
+				AUSER_GRADUATE_SCHOOL as "auserGraduateSchool" ,
+				AUSER_WORK_EXPERIENCE as "auserWorkExperience" ,
+				AUSER_ADDRESS as "auserAddress" ,
+				AUSER_ZIPCODE as "auserZipcode" ,
+				AUSER_ID_TYPE as "auserIdType" ,
+				AUSER_ID_CODE as "auserIdCode" ,
+				AUSER_PASSWORD as "auserPassword" ,
+				AUSER_LOGIN_STATE as "auserLoginState" ,
+				AUSER_LOGIN_LOG as "auserLoginLog" ,
+				AUSER_MOBILE_CHANNEL_ID as "auserMobileChannelId" ,
+				AUSER_MOBILE_USER_ID as "auserMobileUserId" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM t_auto_oa_user_info
+		WHERE
+							AUSER_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oauserinfo">
+		SELECT
+				AUSER_GUID  as "auserGuid" ,		
+				AUSER_CODE  as "auserCode" ,		
+				AUSER_NAME  as "auserName" ,		
+				AUSER_NICK_NAME  as "auserNickName" ,		
+				AUSER_GENDER  as "auserGender" ,		
+				AUSER_AGE  as "auserAge" ,		
+				AUSER_PY  as "auserPy" ,		
+				AUSER_PY_BREF  as "auserPyBref" ,		
+				AUSER_BIRTHDAY  as "auserBirthday" ,		
+				AUSER_BLOOD_TYPE  as "auserBloodType" ,		
+				AUSER_QQ  as "auserQq" ,		
+				AUSER_MOBILE  as "auserMobile" ,		
+				AUSER_PHONE  as "auserPhone" ,		
+				AUSER_MAIL  as "auserMail" ,		
+				AUSER_CITY  as "auserCity" ,		
+				AUSER_GRADUATE_SCHOOL  as "auserGraduateSchool" ,		
+				AUSER_WORK_EXPERIENCE  as "auserWorkExperience" ,		
+				AUSER_ADDRESS  as "auserAddress" ,		
+				AUSER_ZIPCODE  as "auserZipcode" ,		
+				AUSER_ID_TYPE  as "auserIdType" ,		
+				AUSER_ID_CODE  as "auserIdCode" ,		
+				AUSER_PASSWORD  as "auserPassword" ,		
+				AUSER_LOGIN_STATE as "auserLoginState" ,
+				AUSER_LOGIN_LOG as "auserLoginLog" ,
+				AUSER_MOBILE_CHANNEL_ID as "auserMobileChannelId" ,
+				AUSER_MOBILE_USER_ID as "auserMobileUserId" ,
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				RECORD_VERSION  as "recordVersion" 		
+				FROM t_auto_oa_user_info
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="auserGuid">AUSER_GUID =  #auserGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserCode">AUSER_CODE =  #auserCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserName">AUSER_NAME =  #auserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserNickName">AUSER_NICK_NAME =  #auserNickName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserGender">AUSER_GENDER =  #auserGender#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserAge">AUSER_AGE =  #auserAge#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserPy">AUSER_PY =  #auserPy#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserPyBref">AUSER_PY_BREF =  #auserPyBref#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserBirthday">AUSER_BIRTHDAY =  #auserBirthday#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserBloodType">AUSER_BLOOD_TYPE =  #auserBloodType#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserQq">AUSER_QQ =  #auserQq#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserMobile">AUSER_MOBILE =  #auserMobile#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserPhone">AUSER_PHONE =  #auserPhone#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserMail">AUSER_MAIL =  #auserMail#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserCity">AUSER_CITY =  #auserCity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserGraduateSchool">AUSER_GRADUATE_SCHOOL =  #auserGraduateSchool#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserWorkExperience">AUSER_WORK_EXPERIENCE =  #auserWorkExperience#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserAddress">AUSER_ADDRESS =  #auserAddress#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserZipcode">AUSER_ZIPCODE =  #auserZipcode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserIdType">AUSER_ID_TYPE =  #auserIdType#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserIdCode">AUSER_ID_CODE =  #auserIdCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserPassword">AUSER_PASSWORD =  #auserPassword#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserLoginState">AUSER_LOGIN_STATE =  #auserLoginState#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserLoginLog">AUSER_LOGIN_LOG =  #auserLoginLog#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserMobileChannelId">AUSER_MOBILE_CHANNEL_ID =  #auserMobileChannelId#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserMobileUserId">AUSER_MOBILE_USER_ID =  #auserMobileUserId#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_user_info 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="auserGuid">AUSER_GUID =  #auserGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserCode">AUSER_CODE =  #auserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserName">AUSER_NAME =  #auserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserNickName">AUSER_NICK_NAME =  #auserNickName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserGender">AUSER_GENDER =  #auserGender#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserAge">AUSER_AGE =  #auserAge#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPy">AUSER_PY =  #auserPy#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPyBref">AUSER_PY_BREF =  #auserPyBref#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserBirthday">AUSER_BIRTHDAY =  #auserBirthday#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserBloodType">AUSER_BLOOD_TYPE =  #auserBloodType#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserQq">AUSER_QQ =  #auserQq#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMobile">AUSER_MOBILE =  #auserMobile#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPhone">AUSER_PHONE =  #auserPhone#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMail">AUSER_MAIL =  #auserMail#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserCity">AUSER_CITY =  #auserCity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserGraduateSchool">AUSER_GRADUATE_SCHOOL =  #auserGraduateSchool#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserWorkExperience">AUSER_WORK_EXPERIENCE =  #auserWorkExperience#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserAddress">AUSER_ADDRESS =  #auserAddress#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserZipcode">AUSER_ZIPCODE =  #auserZipcode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserIdType">AUSER_ID_TYPE =  #auserIdType#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserIdCode">AUSER_ID_CODE =  #auserIdCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPassword">AUSER_PASSWORD =  #auserPassword#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserLoginState">AUSER_LOGIN_STATE =  #auserLoginState#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserLoginLog">AUSER_LOGIN_LOG =  #auserLoginLog#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMobileChannelId">AUSER_MOBILE_CHANNEL_ID =  #auserMobileChannelId#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMobileUserId">AUSER_MOBILE_USER_ID =  #auserMobileUserId#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oauserinfo">
+		INSERT INTO t_auto_oa_user_info ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="auserGuid">AUSER_GUID </isNotNull>
+					<isNotNull prepend=", " property="auserCode">AUSER_CODE </isNotNull>
+					<isNotNull prepend=", " property="auserName">AUSER_NAME </isNotNull>
+					<isNotNull prepend=", " property="auserNickName">AUSER_NICK_NAME </isNotNull>
+					<isNotNull prepend=", " property="auserGender">AUSER_GENDER </isNotNull>
+					<isNotNull prepend=", " property="auserAge">AUSER_AGE </isNotNull>
+					<isNotNull prepend=", " property="auserPy">AUSER_PY </isNotNull>
+					<isNotNull prepend=", " property="auserPyBref">AUSER_PY_BREF </isNotNull>
+					<isNotNull prepend=", " property="auserBirthday">AUSER_BIRTHDAY </isNotNull>
+					<isNotNull prepend=", " property="auserBloodType">AUSER_BLOOD_TYPE </isNotNull>
+					<isNotNull prepend=", " property="auserQq">AUSER_QQ </isNotNull>
+					<isNotNull prepend=", " property="auserMobile">AUSER_MOBILE </isNotNull>
+					<isNotNull prepend=", " property="auserPhone">AUSER_PHONE </isNotNull>
+					<isNotNull prepend=", " property="auserMail">AUSER_MAIL </isNotNull>
+					<isNotNull prepend=", " property="auserCity">AUSER_CITY </isNotNull>
+					<isNotNull prepend=", " property="auserGraduateSchool">AUSER_GRADUATE_SCHOOL </isNotNull>
+					<isNotNull prepend=", " property="auserWorkExperience">AUSER_WORK_EXPERIENCE </isNotNull>
+					<isNotNull prepend=", " property="auserAddress">AUSER_ADDRESS </isNotNull>
+					<isNotNull prepend=", " property="auserZipcode">AUSER_ZIPCODE </isNotNull>
+					<isNotNull prepend=", " property="auserIdType">AUSER_ID_TYPE </isNotNull>
+					<isNotNull prepend=", " property="auserIdCode">AUSER_ID_CODE </isNotNull>
+					<isNotNull prepend=", " property="auserPassword">AUSER_PASSWORD </isNotNull>
+					<isNotNull prepend=", " property="auserLoginState">AUSER_LOGIN_STATE </isNotNull>
+					<isNotNull prepend=", " property="auserLoginLog">AUSER_LOGIN_LOG </isNotNull>
+					<isNotNull prepend=", " property="auserMobileChannelId">AUSER_MOBILE_CHANNEL_ID </isNotNull>
+					<isNotNull prepend=", " property="auserMobileUserId">AUSER_MOBILE_USER_ID </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="recordVersion">RECORD_VERSION </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="auserGuid">#auserGuid#</isNotNull>
+        <isNotNull prepend=", " property="auserCode">#auserCode#</isNotNull>
+        <isNotNull prepend=", " property="auserName">#auserName#</isNotNull>
+        <isNotNull prepend=", " property="auserNickName">#auserNickName#</isNotNull>
+        <isNotNull prepend=", " property="auserGender">#auserGender#</isNotNull>
+        <isNotNull prepend=", " property="auserAge">#auserAge#</isNotNull>
+        <isNotNull prepend=", " property="auserPy">#auserPy#</isNotNull>
+        <isNotNull prepend=", " property="auserPyBref">#auserPyBref#</isNotNull>
+        <isNotNull prepend=", " property="auserBirthday">
+           <isNotEmpty property="auserBirthday">#auserBirthday#</isNotEmpty>
+           <isEmpty property="auserBirthday">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="auserBloodType">#auserBloodType#</isNotNull>
+        <isNotNull prepend=", " property="auserQq">#auserQq#</isNotNull>
+        <isNotNull prepend=", " property="auserMobile">#auserMobile#</isNotNull>
+        <isNotNull prepend=", " property="auserPhone">#auserPhone#</isNotNull>
+        <isNotNull prepend=", " property="auserMail">#auserMail#</isNotNull>
+        <isNotNull prepend=", " property="auserCity">#auserCity#</isNotNull>
+        <isNotNull prepend=", " property="auserGraduateSchool">#auserGraduateSchool#</isNotNull>
+        <isNotNull prepend=", " property="auserWorkExperience">#auserWorkExperience#</isNotNull>
+        <isNotNull prepend=", " property="auserAddress">#auserAddress#</isNotNull>
+        <isNotNull prepend=", " property="auserZipcode">#auserZipcode#</isNotNull>
+        <isNotNull prepend=", " property="auserIdType">#auserIdType#</isNotNull>
+        <isNotNull prepend=", " property="auserIdCode">#auserIdCode#</isNotNull>
+        <isNotNull prepend=", " property="auserPassword">#auserPassword#</isNotNull>
+        <isNotNull prepend=", " property="auserLoginState">#auserLoginState#</isNotNull>
+        <isNotNull prepend=", " property="auserLoginLog">#auserLoginLog#</isNotNull>
+        <isNotNull prepend=", " property="auserMobileChannelId">#auserMobileChannelId#</isNotNull>
+        <isNotNull prepend=", " property="auserMobileUserId">#auserMobileUserId#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="recordVersion">#recordVersion#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_info
+		WHERE 		AUSER_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oauserinfo">
+		UPDATE  t_auto_oa_user_info	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="auserGuid">AUSER_GUID = #auserGuid#</isNotNull>
+		<isNotNull prepend="," property="auserCode">AUSER_CODE = #auserCode#</isNotNull>
+		<isNotNull prepend="," property="auserName">AUSER_NAME = #auserName#</isNotNull>
+		<isNotNull prepend="," property="auserNickName">AUSER_NICK_NAME = #auserNickName#</isNotNull>
+		<isNotNull prepend="," property="auserGender">AUSER_GENDER = #auserGender#</isNotNull>
+		<isNotNull prepend="," property="auserAge">AUSER_AGE = #auserAge#</isNotNull>
+		<isNotNull prepend="," property="auserPy">AUSER_PY = #auserPy#</isNotNull>
+		<isNotNull prepend="," property="auserPyBref">AUSER_PY_BREF = #auserPyBref#</isNotNull>
+		<isNotNull prepend="," property="auserBirthday">AUSER_BIRTHDAY = #auserBirthday#</isNotNull>
+		<isNotNull prepend="," property="auserBloodType">AUSER_BLOOD_TYPE = #auserBloodType#</isNotNull>
+		<isNotNull prepend="," property="auserQq">AUSER_QQ = #auserQq#</isNotNull>
+		<isNotNull prepend="," property="auserMobile">AUSER_MOBILE = #auserMobile#</isNotNull>
+		<isNotNull prepend="," property="auserPhone">AUSER_PHONE = #auserPhone#</isNotNull>
+		<isNotNull prepend="," property="auserMail">AUSER_MAIL = #auserMail#</isNotNull>
+		<isNotNull prepend="," property="auserCity">AUSER_CITY = #auserCity#</isNotNull>
+		<isNotNull prepend="," property="auserGraduateSchool">AUSER_GRADUATE_SCHOOL = #auserGraduateSchool#</isNotNull>
+		<isNotNull prepend="," property="auserWorkExperience">AUSER_WORK_EXPERIENCE = #auserWorkExperience#</isNotNull>
+		<isNotNull prepend="," property="auserAddress">AUSER_ADDRESS = #auserAddress#</isNotNull>
+		<isNotNull prepend="," property="auserZipcode">AUSER_ZIPCODE = #auserZipcode#</isNotNull>
+		<isNotNull prepend="," property="auserIdType">AUSER_ID_TYPE = #auserIdType#</isNotNull>
+		<isNotNull prepend="," property="auserIdCode">AUSER_ID_CODE = #auserIdCode#</isNotNull>
+		<isNotNull prepend="," property="auserPassword">AUSER_PASSWORD = #auserPassword#</isNotNull>
+		<isNotNull prepend="," property="auserLoginState">AUSER_LOGIN_STATE = #auserLoginState#</isNotNull>
+		<isNotNull prepend="," property="auserLoginLog">AUSER_LOGIN_LOG = #auserLoginLog#</isNotNull>
+		<isNotNull prepend="," property="auserMobileChannelId">AUSER_MOBILE_CHANNEL_ID = #auserMobileChannelId#</isNotNull>
+		<isNotNull prepend="," property="auserMobileUserId">AUSER_MOBILE_USER_ID = #auserMobileUserId#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+		</dynamic>
+		WHERE 		AUSER_GUID=#auserGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oauserinfo">
+		UPDATE t_auto_oa_user_info	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="auserGuid">AUSER_GUID = #auserGuid#</isNotNull>
+	    <isNull prepend=", " property="auserGuid">AUSER_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auserCode">AUSER_CODE = #auserCode#</isNotNull>
+	    <isNull prepend=", " property="auserCode">AUSER_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserName">AUSER_NAME = #auserName#</isNotNull>
+	    <isNull prepend=", " property="auserName">AUSER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auserNickName">AUSER_NICK_NAME = #auserNickName#</isNotNull>
+	    <isNull prepend=", " property="auserNickName">AUSER_NICK_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auserGender">AUSER_GENDER = #auserGender#</isNotNull>
+	    <isNull prepend=", " property="auserGender">AUSER_GENDER = NULL</isNull>
+	    <isNotNull prepend=", " property="auserAge">AUSER_AGE = #auserAge#</isNotNull>
+	    <isNull prepend=", " property="auserAge">AUSER_AGE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserPy">AUSER_PY = #auserPy#</isNotNull>
+	    <isNull prepend=", " property="auserPy">AUSER_PY = NULL</isNull>
+	    <isNotNull prepend=", " property="auserPyBref">AUSER_PY_BREF = #auserPyBref#</isNotNull>
+	    <isNull prepend=", " property="auserPyBref">AUSER_PY_BREF = NULL</isNull>
+	    <isNotNull prepend=", " property="auserBirthday">AUSER_BIRTHDAY = #auserBirthday#</isNotNull>
+	    <isNull prepend=", " property="auserBirthday">AUSER_BIRTHDAY = NULL</isNull>
+	    <isNotNull prepend=", " property="auserBloodType">AUSER_BLOOD_TYPE = #auserBloodType#</isNotNull>
+	    <isNull prepend=", " property="auserBloodType">AUSER_BLOOD_TYPE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserQq">AUSER_QQ = #auserQq#</isNotNull>
+	    <isNull prepend=", " property="auserQq">AUSER_QQ = NULL</isNull>
+	    <isNotNull prepend=", " property="auserMobile">AUSER_MOBILE = #auserMobile#</isNotNull>
+	    <isNull prepend=", " property="auserMobile">AUSER_MOBILE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserPhone">AUSER_PHONE = #auserPhone#</isNotNull>
+	    <isNull prepend=", " property="auserPhone">AUSER_PHONE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserMail">AUSER_MAIL = #auserMail#</isNotNull>
+	    <isNull prepend=", " property="auserMail">AUSER_MAIL = NULL</isNull>
+	    <isNotNull prepend=", " property="auserCity">AUSER_CITY = #auserCity#</isNotNull>
+	    <isNull prepend=", " property="auserCity">AUSER_CITY = NULL</isNull>
+	    <isNotNull prepend=", " property="auserGraduateSchool">AUSER_GRADUATE_SCHOOL = #auserGraduateSchool#</isNotNull>
+	    <isNull prepend=", " property="auserGraduateSchool">AUSER_GRADUATE_SCHOOL = NULL</isNull>
+	    <isNotNull prepend=", " property="auserWorkExperience">AUSER_WORK_EXPERIENCE = #auserWorkExperience#</isNotNull>
+	    <isNull prepend=", " property="auserWorkExperience">AUSER_WORK_EXPERIENCE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserAddress">AUSER_ADDRESS = #auserAddress#</isNotNull>
+	    <isNull prepend=", " property="auserAddress">AUSER_ADDRESS = NULL</isNull>
+	    <isNotNull prepend=", " property="auserZipcode">AUSER_ZIPCODE = #auserZipcode#</isNotNull>
+	    <isNull prepend=", " property="auserZipcode">AUSER_ZIPCODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserIdType">AUSER_ID_TYPE = #auserIdType#</isNotNull>
+	    <isNull prepend=", " property="auserIdType">AUSER_ID_TYPE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserIdCode">AUSER_ID_CODE = #auserIdCode#</isNotNull>
+	    <isNull prepend=", " property="auserIdCode">AUSER_ID_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auserPassword">AUSER_PASSWORD = #auserPassword#</isNotNull>
+	    <isNull prepend=", " property="auserPassword">AUSER_PASSWORD = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+	    <isNull prepend=", " property="recordVersion">RECORD_VERSION = NULL</isNull>
+		</dynamic>
+		WHERE 		AUSER_GUID=#auserGuid# 			</update>
+	
+<!-- 	Add SQL -->
+	<select id="queryUserAndOrg"  parameterClass="hashmap" resultClass="oauserinfo">
+		SELECT
+				A.AUSER_GUID  as "auserGuid" ,		
+				A.AUSER_CODE  as "auserCode" ,		
+				A.AUSER_NAME  as "auserName" ,		
+				C.AUORG_GUID  as "auorgGuid" ,	
+				C.AUORG_CODE  as "auorgCode" ,
+				C.AUORG_NAME  as "auorgName" ,		
+				A.AUSER_NICK_NAME  as "auserNickName" ,		
+				A.AUSER_GENDER  as "auserGender" ,		
+				A.AUSER_AGE  as "auserAge" ,		
+				A.AUSER_PY  as "auserPy" ,		
+				A.AUSER_PY_BREF  as "auserPyBref" ,		
+				A.AUSER_BIRTHDAY  as "auserBirthday" ,		
+				A.AUSER_BLOOD_TYPE  as "auserBloodType" ,		
+				A.AUSER_QQ  as "auserQq" ,		
+				A.AUSER_MOBILE  as "auserMobile" ,		
+				A.AUSER_PHONE  as "auserPhone" ,		
+				A.AUSER_MAIL  as "auserMail" ,		
+				A.AUSER_CITY  as "auserCity" ,		
+				A.AUSER_GRADUATE_SCHOOL  as "auserGraduateSchool" ,		
+				A.AUSER_WORK_EXPERIENCE  as "auserWorkExperience" ,		
+				A.AUSER_ADDRESS  as "auserAddress" ,		
+				A.AUSER_ZIPCODE  as "auserZipcode" ,		
+				A.AUSER_ID_TYPE  as "auserIdType" ,		
+				A.AUSER_ID_CODE  as "auserIdCode" ,		
+				A.AUSER_PASSWORD  as "auserPassword" ,		
+				A.AUSER_LOGIN_STATE as "auserLoginState" ,
+				A.AUSER_LOGIN_LOG as "auserLoginLog" ,
+				A.AUSER_MOBILE_CHANNEL_ID as "auserMobileChannelId" ,
+				A.AUSER_MOBILE_USER_ID as "auserMobileUserId" ,
+				A.IS_VALIDITY  as "isValidity" ,		
+				A.CREATE_USER as "createUser" ,
+				A.UPDATE_USER as "updateUser" ,
+				A.CREATE_TIME as "createTime" ,
+				A.UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_user_info A, t_auto_oa_user_org_map B, t_auto_oa_org_info C
+					WHERE 	A.AUSER_GUID = B.AUSER_GUID
+					AND		B.AUORG_GUID = C.AUORG_GUID
+					<isNotEmpty prepend=" AND " property="auserGuid">A.AUSER_GUID =  #auserGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserCode">A.AUSER_CODE =  #auserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserName">A.AUSER_NAME =  #auserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserNickName">A.AUSER_NICK_NAME =  #auserNickName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserGender">A.AUSER_GENDER =  #auserGender#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserAge">A.AUSER_AGE =  #auserAge#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPy">A.AUSER_PY =  #auserPy#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPyBref">A.AUSER_PY_BREF =  #auserPyBref#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserBirthday">A.AUSER_BIRTHDAY =  #auserBirthday#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserBloodType">A.AUSER_BLOOD_TYPE =  #auserBloodType#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserQq">A.AUSER_QQ =  #auserQq#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMobile">A.AUSER_MOBILE =  #auserMobile#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPhone">A.AUSER_PHONE =  #auserPhone#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMail">A.AUSER_MAIL =  #auserMail#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserCity">A.AUSER_CITY =  #auserCity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserGraduateSchool">A.AUSER_GRADUATE_SCHOOL =  #auserGraduateSchool#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserWorkExperience">A.AUSER_WORK_EXPERIENCE =  #auserWorkExperience#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserAddress">A.AUSER_ADDRESS =  #auserAddress#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserZipcode">A.AUSER_ZIPCODE =  #auserZipcode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserIdType">A.AUSER_ID_TYPE =  #auserIdType#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserIdCode">A.AUSER_ID_CODE =  #auserIdCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserPassword">A.AUSER_PASSWORD =  #auserPassword#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserLoginState">A.AUSER_LOGIN_STATE =  #auserLoginState#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserLoginLog">A.AUSER_LOGIN_LOG =  #auserLoginLog#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMobileChannelId">A.AUSER_MOBILE_CHANNEL_ID =  #auserMobileChannelId#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserMobileUserId">A.AUSER_MOBILE_USER_ID =  #auserMobileUserId#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">A.IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">A.CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">A.UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">A.CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">A.UPDATE_TIME =  #updateTime#</isNotEmpty>
+					
+					<isNotEmpty prepend=" AND " property="auorgGuid">C.AUORG_GUID =  #auorgGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgCode">C.AUORG_CODE =  #auorgCode#</isNotEmpty>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+	
+	<delete id="deleteByUserCode" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_info
+		WHERE 		AUSER_CODE = #auserCode#
+	</delete>
+
+</sqlMap>

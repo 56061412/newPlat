@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.sys.domain.OaSysAttachment">
+	<typeAlias alias="oasysattachment" type="com.auto.oa.sys.domain.OaSysAttachment"/>
+	<select id="load" parameterClass="string" resultClass="oasysattachment">
+		SELECT 
+				FILE_GUID as "fileGuid" ,
+				FILE_BUSI_GUID as "fileBusiGuid" ,
+				FILE_SIZE as "fileSize" ,
+				FILE_NAME as "fileName" ,
+				FILE_EXT as "fileExt" ,
+				FILE_PATH as "filePath" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_sys_attachment
+		WHERE
+							FILE_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oasysattachment">
+		SELECT
+				FILE_GUID  as "fileGuid" ,		
+				FILE_BUSI_GUID  as "fileBusiGuid" ,		
+				FILE_SIZE  as "fileSize" ,		
+				FILE_NAME  as "fileName" ,		
+				FILE_EXT  as "fileExt" ,		
+				FILE_PATH  as "filePath" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_sys_attachment
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="fileGuid">FILE_GUID =  #fileGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="fileBusiGuid">FILE_BUSI_GUID =  #fileBusiGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="fileSize">FILE_SIZE =  #fileSize#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="fileName">FILE_NAME =  #fileName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="fileExt">FILE_EXT =  #fileExt#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="filePath">FILE_PATH =  #filePath#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_sys_attachment 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="fileGuid">FILE_GUID =  #fileGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="fileBusiGuid">FILE_BUSI_GUID =  #fileBusiGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="fileSize">FILE_SIZE =  #fileSize#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="fileName">FILE_NAME =  #fileName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="fileExt">FILE_EXT =  #fileExt#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="filePath">FILE_PATH =  #filePath#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oasysattachment">
+		INSERT INTO t_auto_oa_sys_attachment ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="fileGuid">FILE_GUID </isNotNull>
+					<isNotNull prepend=", " property="fileBusiGuid">FILE_BUSI_GUID </isNotNull>
+					<isNotNull prepend=", " property="fileSize">FILE_SIZE </isNotNull>
+					<isNotNull prepend=", " property="fileName">FILE_NAME </isNotNull>
+					<isNotNull prepend=", " property="fileExt">FILE_EXT </isNotNull>
+					<isNotNull prepend=", " property="filePath">FILE_PATH </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="fileGuid">#fileGuid#</isNotNull>
+        <isNotNull prepend=", " property="fileBusiGuid">#fileBusiGuid#</isNotNull>
+        <isNotNull prepend=", " property="fileSize">#fileSize#</isNotNull>
+        <isNotNull prepend=", " property="fileName">#fileName#</isNotNull>
+        <isNotNull prepend=", " property="fileExt">#fileExt#</isNotNull>
+        <isNotNull prepend=", " property="filePath">#filePath#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_sys_attachment
+		WHERE 		FILE_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oasysattachment">
+		UPDATE  t_auto_oa_sys_attachment	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="fileGuid">FILE_GUID = #fileGuid#</isNotNull>
+		<isNotNull prepend="," property="fileBusiGuid">FILE_BUSI_GUID = #fileBusiGuid#</isNotNull>
+		<isNotNull prepend="," property="fileSize">FILE_SIZE = #fileSize#</isNotNull>
+		<isNotNull prepend="," property="fileName">FILE_NAME = #fileName#</isNotNull>
+		<isNotNull prepend="," property="fileExt">FILE_EXT = #fileExt#</isNotNull>
+		<isNotNull prepend="," property="filePath">FILE_PATH = #filePath#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		FILE_GUID=#fileGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oasysattachment">
+		UPDATE t_auto_oa_sys_attachment	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="fileGuid">FILE_GUID = #fileGuid#</isNotNull>
+	    <isNull prepend=", " property="fileGuid">FILE_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="fileBusiGuid">FILE_BUSI_GUID = #fileBusiGuid#</isNotNull>
+	    <isNull prepend=", " property="fileBusiGuid">FILE_BUSI_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="fileSize">FILE_SIZE = #fileSize#</isNotNull>
+	    <isNull prepend=", " property="fileSize">FILE_SIZE = NULL</isNull>
+	    <isNotNull prepend=", " property="fileName">FILE_NAME = #fileName#</isNotNull>
+	    <isNull prepend=", " property="fileName">FILE_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="fileExt">FILE_EXT = #fileExt#</isNotNull>
+	    <isNull prepend=", " property="fileExt">FILE_EXT = NULL</isNull>
+	    <isNotNull prepend=", " property="filePath">FILE_PATH = #filePath#</isNotNull>
+	    <isNull prepend=", " property="filePath">FILE_PATH = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		FILE_GUID=#fileGuid# 			</update>
+</sqlMap>

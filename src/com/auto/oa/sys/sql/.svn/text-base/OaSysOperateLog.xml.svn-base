@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.sys.domain.OaSysOperateLog">
+	<typeAlias alias="oasysoperatelog" type="com.auto.oa.sys.domain.OaSysOperateLog"/>
+	<select id="load" parameterClass="string" resultClass="oasysoperatelog">
+		SELECT 
+				OSOL_GUID as "osolGuid" ,
+				OSOL_FUNC_CODE as "osolFuncCode" ,
+				OSOL_FUNC_NAME as "osolFuncName" ,
+				OSOL_USER_LABEL as "osolUserLabel" ,
+				OSOL_USER_NAME as "osolUserName" ,
+				OSOL_ORG_CODE as "osolOrgCode" ,
+				OSOL_ORG_NAME as "osolOrgName" ,
+				OSOL_POST_CODE as "osolPostCode" ,
+				OSOL_POST_NAME as "osolPostName" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_sys_operate_log
+		WHERE
+							OSOL_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oasysoperatelog">
+		SELECT
+				OSOL_GUID  as "osolGuid" ,		
+				OSOL_FUNC_CODE  as "osolFuncCode" ,		
+				OSOL_FUNC_NAME  as "osolFuncName" ,		
+				OSOL_USER_LABEL  as "osolUserLabel" ,		
+				OSOL_USER_NAME  as "osolUserName" ,		
+				OSOL_ORG_CODE  as "osolOrgCode" ,		
+				OSOL_ORG_NAME  as "osolOrgName" ,		
+				OSOL_POST_CODE  as "osolPostCode" ,		
+				OSOL_POST_NAME  as "osolPostName" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_sys_operate_log
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="osolGuid">OSOL_GUID =  #osolGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolFuncCode">OSOL_FUNC_CODE =  #osolFuncCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolFuncName">OSOL_FUNC_NAME =  #osolFuncName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolUserLabel">OSOL_USER_LABEL =  #osolUserLabel#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolUserName">OSOL_USER_NAME =  #osolUserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolOrgCode">OSOL_ORG_CODE =  #osolOrgCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolOrgName">OSOL_ORG_NAME =  #osolOrgName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolPostCode">OSOL_POST_CODE =  #osolPostCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osolPostName">OSOL_POST_NAME =  #osolPostName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_sys_operate_log 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="osolGuid">OSOL_GUID =  #osolGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolFuncCode">OSOL_FUNC_CODE =  #osolFuncCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolFuncName">OSOL_FUNC_NAME =  #osolFuncName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolUserLabel">OSOL_USER_LABEL =  #osolUserLabel#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolUserName">OSOL_USER_NAME =  #osolUserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolOrgCode">OSOL_ORG_CODE =  #osolOrgCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolOrgName">OSOL_ORG_NAME =  #osolOrgName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolPostCode">OSOL_POST_CODE =  #osolPostCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osolPostName">OSOL_POST_NAME =  #osolPostName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oasysoperatelog">
+		INSERT INTO t_auto_oa_sys_operate_log ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="osolGuid">OSOL_GUID </isNotNull>
+					<isNotNull prepend=", " property="osolFuncCode">OSOL_FUNC_CODE </isNotNull>
+					<isNotNull prepend=", " property="osolFuncName">OSOL_FUNC_NAME </isNotNull>
+					<isNotNull prepend=", " property="osolUserLabel">OSOL_USER_LABEL </isNotNull>
+					<isNotNull prepend=", " property="osolUserName">OSOL_USER_NAME </isNotNull>
+					<isNotNull prepend=", " property="osolOrgCode">OSOL_ORG_CODE </isNotNull>
+					<isNotNull prepend=", " property="osolOrgName">OSOL_ORG_NAME </isNotNull>
+					<isNotNull prepend=", " property="osolPostCode">OSOL_POST_CODE </isNotNull>
+					<isNotNull prepend=", " property="osolPostName">OSOL_POST_NAME </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="osolGuid">#osolGuid#</isNotNull>
+        <isNotNull prepend=", " property="osolFuncCode">#osolFuncCode#</isNotNull>
+        <isNotNull prepend=", " property="osolFuncName">#osolFuncName#</isNotNull>
+        <isNotNull prepend=", " property="osolUserLabel">#osolUserLabel#</isNotNull>
+        <isNotNull prepend=", " property="osolUserName">#osolUserName#</isNotNull>
+        <isNotNull prepend=", " property="osolOrgCode">#osolOrgCode#</isNotNull>
+        <isNotNull prepend=", " property="osolOrgName">#osolOrgName#</isNotNull>
+        <isNotNull prepend=", " property="osolPostCode">#osolPostCode#</isNotNull>
+        <isNotNull prepend=", " property="osolPostName">#osolPostName#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_sys_operate_log
+		WHERE 		OSOL_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oasysoperatelog">
+		UPDATE  t_auto_oa_sys_operate_log	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="osolGuid">OSOL_GUID = #osolGuid#</isNotNull>
+		<isNotNull prepend="," property="osolFuncCode">OSOL_FUNC_CODE = #osolFuncCode#</isNotNull>
+		<isNotNull prepend="," property="osolFuncName">OSOL_FUNC_NAME = #osolFuncName#</isNotNull>
+		<isNotNull prepend="," property="osolUserLabel">OSOL_USER_LABEL = #osolUserLabel#</isNotNull>
+		<isNotNull prepend="," property="osolUserName">OSOL_USER_NAME = #osolUserName#</isNotNull>
+		<isNotNull prepend="," property="osolOrgCode">OSOL_ORG_CODE = #osolOrgCode#</isNotNull>
+		<isNotNull prepend="," property="osolOrgName">OSOL_ORG_NAME = #osolOrgName#</isNotNull>
+		<isNotNull prepend="," property="osolPostCode">OSOL_POST_CODE = #osolPostCode#</isNotNull>
+		<isNotNull prepend="," property="osolPostName">OSOL_POST_NAME = #osolPostName#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		OSOL_GUID=#osolGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oasysoperatelog">
+		UPDATE t_auto_oa_sys_operate_log	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="osolGuid">OSOL_GUID = #osolGuid#</isNotNull>
+	    <isNull prepend=", " property="osolGuid">OSOL_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="osolFuncCode">OSOL_FUNC_CODE = #osolFuncCode#</isNotNull>
+	    <isNull prepend=", " property="osolFuncCode">OSOL_FUNC_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="osolFuncName">OSOL_FUNC_NAME = #osolFuncName#</isNotNull>
+	    <isNull prepend=", " property="osolFuncName">OSOL_FUNC_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osolUserLabel">OSOL_USER_LABEL = #osolUserLabel#</isNotNull>
+	    <isNull prepend=", " property="osolUserLabel">OSOL_USER_LABEL = NULL</isNull>
+	    <isNotNull prepend=", " property="osolUserName">OSOL_USER_NAME = #osolUserName#</isNotNull>
+	    <isNull prepend=", " property="osolUserName">OSOL_USER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osolOrgCode">OSOL_ORG_CODE = #osolOrgCode#</isNotNull>
+	    <isNull prepend=", " property="osolOrgCode">OSOL_ORG_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="osolOrgName">OSOL_ORG_NAME = #osolOrgName#</isNotNull>
+	    <isNull prepend=", " property="osolOrgName">OSOL_ORG_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osolPostCode">OSOL_POST_CODE = #osolPostCode#</isNotNull>
+	    <isNull prepend=", " property="osolPostCode">OSOL_POST_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="osolPostName">OSOL_POST_NAME = #osolPostName#</isNotNull>
+	    <isNull prepend=", " property="osolPostName">OSOL_POST_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		OSOL_GUID=#osolGuid# 			</update>
+</sqlMap>

@@ -1,0 +1,42 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!--后台用户登录、登出、session超时拦截器-->
+	<package name="oaLogin" extends="struts-default" namespace="/oaLogin">
+		<interceptors>
+			<interceptor name="adminLogin" class="com.auto.oa.login.action.AutoManagerInterceptor"></interceptor>
+			<interceptor-stack name="adminmanageStack">
+				<interceptor-ref name="adminLogin"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+        <default-interceptor-ref name="adminmanageStack"/>
+
+        <global-results>
+        	<result name="login" type="dispatcher">/AUTO/OA/LOGIN/login.jsp</result>
+        </global-results>
+        
+		<action name="autoManagerLogin" class="com.auto.oa.login.action.AutoManagerLoginAction"
+			method="autoManagerLogin">
+<!--			<result name="success">/AUTO/OA/index.jsp</result>-->
+			<result name="success" type="redirectAction">
+				<param name="namespace">/oaIndex</param>
+				<param name="actionName">autoManagerIndex</param>
+			</result>
+<!-- 			<result name="login" type="dispatcher">/AUTO/OA/LOGIN/login.jsp</result> -->
+		</action>
+		<action name="autoManagerLogout" class="com.auto.oa.login.action.AutoManagerLoginAction"
+			method="autoManagerLogout">
+			<result name="success" type="redirect">/AUTO/OA/LOGIN/login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="oaIndex" extends="oaLogin" namespace="/oaIndex">
+		<action name="autoManagerIndex" class="com.auto.oa.login.action.AutoManagerIndexAction"
+			method="autoManagerIndex">
+			<result name="success" type="redirect">/AUTO/OA/index.jsp</result>
+		</action>
+	</package>
+</struts>

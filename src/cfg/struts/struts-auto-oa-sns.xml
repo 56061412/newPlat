@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<!--	sns	-->
+	<package name="sns" extends="oaLogin" namespace="/sns">
+		<action name="queryPageListSNSPostInfo" class="com.auto.oa.sns.action.SNSManagerAction"
+			method="queryPageListSNSPostInfo">
+		</action>
+		<action name="deleteSNSPostInfo" class="com.auto.oa.sns.action.SNSManagerAction"
+			method="deleteSNSPostInfo">
+		</action>
+		
+		<action name="queryPageListSNSTask" class="com.auto.oa.sns.action.SNSManagerAction"
+			method="queryPageListSNSTask">
+		</action>
+		<action name="deleteSNSTaskInfo" class="com.auto.oa.sns.action.SNSManagerAction"
+			method="deleteSNSTaskInfo">
+		</action>
+	</package>
+	
+	
+</struts>

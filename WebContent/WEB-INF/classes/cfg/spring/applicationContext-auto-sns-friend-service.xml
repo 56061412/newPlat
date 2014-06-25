@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="SnsFriendGroupService" class="com.auto.sns.friend.service.impl.SnsFriendGroupServiceImpl"></bean>
+	<bean id="SnsFriendInfoService" class="com.auto.sns.friend.service.impl.SnsFriendInfoServiceImpl"></bean>
+	
+	<bean id="SnsFriendServiceFactory" class="com.auto.sns.friend.service.SnsFriendServiceFactory">
+		<property name="snsFriendGroupService">
+			<ref bean="SnsFriendGroupService" />
+		</property>
+		<property name="snsFriendInfoService">
+			<ref bean="SnsFriendInfoService" />
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.org.domain.OaOrgArea">
+	<typeAlias alias="oaorgarea" type="com.auto.oa.org.domain.OaOrgArea"/>
+	<select id="load" parameterClass="string" resultClass="oaorgarea">
+		SELECT 
+				AUAR_GUID as "auarGuid" ,
+				AUAR_PARENT_GUID as "auarParentGuid" ,
+				AUAR_TYPE_CODE as "auarTypeCode" ,
+				AUAR_TYPE_NAME as "auarTypeName" ,
+				AUAR_NAME as "auarName" ,
+				AUAR_DESC as "auarDesc" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM t_auto_oa_org_area
+		WHERE
+							AUAR_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oaorgarea">
+		SELECT
+				AUAR_GUID  as "auarGuid" ,		
+				AUAR_PARENT_GUID  as "auarParentGuid" ,		
+				AUAR_TYPE_CODE  as "auarTypeCode" ,		
+				AUAR_TYPE_NAME  as "auarTypeName" ,		
+				AUAR_NAME  as "auarName" ,		
+				AUAR_DESC  as "auarDesc" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				RECORD_VERSION  as "recordVersion" 		
+				FROM t_auto_oa_org_area
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="auarGuid">AUAR_GUID =  #auarGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auarParentGuid">AUAR_PARENT_GUID =  #auarParentGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auarTypeCode">AUAR_TYPE_CODE =  #auarTypeCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auarTypeName">AUAR_TYPE_NAME =  #auarTypeName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auarName">AUAR_NAME =  #auarName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auarDesc">AUAR_DESC =  #auarDesc#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_org_area 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="auarGuid">AUAR_GUID =  #auarGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auarParentGuid">AUAR_PARENT_GUID =  #auarParentGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auarTypeCode">AUAR_TYPE_CODE =  #auarTypeCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auarTypeName">AUAR_TYPE_NAME =  #auarTypeName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auarName">AUAR_NAME =  #auarName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auarDesc">AUAR_DESC =  #auarDesc#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oaorgarea">
+		INSERT INTO t_auto_oa_org_area ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="auarGuid">AUAR_GUID </isNotNull>
+					<isNotNull prepend=", " property="auarParentGuid">AUAR_PARENT_GUID </isNotNull>
+					<isNotNull prepend=", " property="auarTypeCode">AUAR_TYPE_CODE </isNotNull>
+					<isNotNull prepend=", " property="auarTypeName">AUAR_TYPE_NAME </isNotNull>
+					<isNotNull prepend=", " property="auarName">AUAR_NAME </isNotNull>
+					<isNotNull prepend=", " property="auarDesc">AUAR_DESC </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="recordVersion">RECORD_VERSION </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="auarGuid">#auarGuid#</isNotNull>
+        <isNotNull prepend=", " property="auarParentGuid">#auarParentGuid#</isNotNull>
+        <isNotNull prepend=", " property="auarTypeCode">#auarTypeCode#</isNotNull>
+        <isNotNull prepend=", " property="auarTypeName">#auarTypeName#</isNotNull>
+        <isNotNull prepend=", " property="auarName">#auarName#</isNotNull>
+        <isNotNull prepend=", " property="auarDesc">#auarDesc#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="recordVersion">#recordVersion#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_org_area
+		WHERE 		AUAR_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oaorgarea">
+		UPDATE  t_auto_oa_org_area	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="auarGuid">AUAR_GUID = #auarGuid#</isNotNull>
+		<isNotNull prepend="," property="auarParentGuid">AUAR_PARENT_GUID = #auarParentGuid#</isNotNull>
+		<isNotNull prepend="," property="auarTypeCode">AUAR_TYPE_CODE = #auarTypeCode#</isNotNull>
+		<isNotNull prepend="," property="auarTypeName">AUAR_TYPE_NAME = #auarTypeName#</isNotNull>
+		<isNotNull prepend="," property="auarName">AUAR_NAME = #auarName#</isNotNull>
+		<isNotNull prepend="," property="auarDesc">AUAR_DESC = #auarDesc#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+		</dynamic>
+		WHERE 		AUAR_GUID=#auarGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oaorgarea">
+		UPDATE t_auto_oa_org_area	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="auarGuid">AUAR_GUID = #auarGuid#</isNotNull>
+	    <isNull prepend=", " property="auarGuid">AUAR_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auarParentGuid">AUAR_PARENT_GUID = #auarParentGuid#</isNotNull>
+	    <isNull prepend=", " property="auarParentGuid">AUAR_PARENT_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auarTypeCode">AUAR_TYPE_CODE = #auarTypeCode#</isNotNull>
+	    <isNull prepend=", " property="auarTypeCode">AUAR_TYPE_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auarTypeName">AUAR_TYPE_NAME = #auarTypeName#</isNotNull>
+	    <isNull prepend=", " property="auarTypeName">AUAR_TYPE_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auarName">AUAR_NAME = #auarName#</isNotNull>
+	    <isNull prepend=", " property="auarName">AUAR_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auarDesc">AUAR_DESC = #auarDesc#</isNotNull>
+	    <isNull prepend=", " property="auarDesc">AUAR_DESC = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+	    <isNull prepend=", " property="recordVersion">RECORD_VERSION = NULL</isNull>
+		</dynamic>
+		WHERE 		AUAR_GUID=#auarGuid# 			</update>
+</sqlMap>

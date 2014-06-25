@@ -1,0 +1,26 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<!--	upload	-->
+	<package name="upload" extends="struts-default" namespace="/upload">
+		<interceptors>
+			<interceptor name="paramsRemove" 
+				class="com.opensymphony.xwork2.interceptor.ParameterRemoverInterceptor">
+	    	</interceptor>
+		</interceptors>
+		
+    	
+		<action name="uploadFile" class="com.auto.oa.upload.action.uploadAction" method="uploadFile"> 
+        	<interceptor-ref name="fileUpload"> 
+<!--	            <param name="allowedTypes">image/jpeg, image/jpg, image/gif</param>-->
+	            <param name="maximumSize">20485760</param>
+	        </interceptor-ref>
+	        <interceptor-ref name="params" />
+        	<interceptor-ref name="paramsRemove" />
+        </action>
+        
+	</package>
+	
+</struts>

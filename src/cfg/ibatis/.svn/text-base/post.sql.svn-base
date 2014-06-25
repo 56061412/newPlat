@@ -1,0 +1,245 @@
+DROP TABLE IF EXISTS T_AUTO_SNS_POST_CONTENT;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_POST_CONTENT                               */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_POST_CONTENT
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   CONTENT_GUID         VARCHAR(40) NOT NULL COMMENT '文件GUID',
+   TIE_CONTENT          TEXT COMMENT '内容',
+   SOURCE_GUID          VARCHAR(40) COMMENT '来源GUID',
+   SOURCE_MODEL         VARCHAR(40) COMMENT '来源模块',
+   SOURCE_LABEL1        VARCHAR(40) COMMENT '来源标签1',
+   SOURCE_LABEL2        VARCHAR(40) COMMENT '来源标签2',
+   STATUS               VARCHAR(10) COMMENT '状态',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (CONTENT_GUID)
+);
+
+DROP TABLE IF EXISTS T_AUTO_SNS_POST_INFO;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_POST_INFO                                  */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_POST_INFO
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   POST_GUID            VARCHAR(40) NOT NULL COMMENT '帖子GUID',
+   POST_TYPE            VARCHAR(20) COMMENT '帖子类型',
+   POST_STATE           VARCHAR(20) COMMENT '帖子状态',
+   POST_OBJECT          VARCHAR(20) COMMENT '帖子对象',
+   POST_CREATER         VARCHAR(20) COMMENT '创建人',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (POST_GUID)
+);
+
+DROP TABLE IF EXISTS T_AUTO_SNS_POST_HUIFU;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_POST_HUIFU                                 */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_POST_HUIFU
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   HUIFU_GUID           VARCHAR(40) NOT NULL COMMENT '回复GUID',
+   POST_GUID            VARCHAR(40) NOT NULL COMMENT '帖子GUID',
+   POST_CREATER         VARCHAR(20) COMMENT '创建人',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (HUIFU_GUID)
+);
+
+ALTER TABLE T_AUTO_SNS_POST_HUIFU ADD CONSTRAINT FK_REFERENCE_12 FOREIGN KEY (POST_GUID)
+      REFERENCES T_AUTO_SNS_POST_INFO (POST_GUID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+DROP TABLE IF EXISTS T_AUTO_SNS_TASK_INFO;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_TASK_INFO                                  */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_TASK_INFO
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   TASK_GUID            VARCHAR(50) NOT NULL COMMENT '任务GUID',
+   TASK_NAME            VARCHAR(100) COMMENT '任务名称',
+   PUBLISH_PERSON       VARCHAR(50) COMMENT '发布人',
+   PUBLISH_TIME         DATETIME COMMENT '发布时间',
+   CONTENT              VARCHAR(1000) COMMENT '内容',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (TASK_GUID)
+);
+
+
+DROP TABLE IF EXISTS T_AUTO_SNS_TASK_PERSON;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_TASK_PERSON                                */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_TASK_PERSON
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   ROW_GUID             VARCHAR(50) NOT NULL COMMENT '主键',
+   TASK_GUID            VARCHAR(50) COMMENT '任务GUID',
+   TASK_PERSON          VARCHAR(50) COMMENT '任务人',
+   TASK_STATUS          VARCHAR(10) COMMENT '状态',
+   CONTENT              VARCHAR(1000) COMMENT '反馈',
+   FANKUI_TIME          DATETIME COMMENT '反馈时间',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (ROW_GUID)
+);
+
+ALTER TABLE T_AUTO_SNS_TASK_PERSON ADD CONSTRAINT FK_REFERENCE_11 FOREIGN KEY (TASK_GUID)
+      REFERENCES T_AUTO_SNS_TASK_INFO (TASK_GUID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+DROP TABLE IF EXISTS T_AUTO_SNS_KNOWLEDGE_TYPE;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_KNOWLEDGE_TYPE                             */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_KNOWLEDGE_TYPE
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   TYPE_GUID            VARCHAR(40) NOT NULL COMMENT '类型GUID',
+   TYPE_NAME            VARCHAR(100) COMMENT '类型名称',
+   TYPE_ORDER           VARCHAR(10) COMMENT '排序',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (TYPE_GUID)
+);
+
+DROP TABLE IF EXISTS T_AUTO_SNS_KNOWLEDGE_INFO;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_KNOWLEDGE_INFO                             */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_KNOWLEDGE_INFO
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   KNOWLEDGE_GUID       VARCHAR(40) NOT NULL COMMENT '知识GUID',
+   TYPE_GUID            VARCHAR(40) NOT NULL COMMENT '类型GUID',
+   TITLE                VARCHAR(100) COMMENT '标题',
+   PUBLISH_PERSON       VARCHAR(50) COMMENT '知识人',
+   PUBLISH_TIME         DATETIME COMMENT '知识时间',
+   CONTENT              VARCHAR(1000) COMMENT '内容',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (KNOWLEDGE_GUID)
+);
+
+ALTER TABLE T_AUTO_SNS_KNOWLEDGE_INFO ADD CONSTRAINT FK_REFERENCE_14 FOREIGN KEY (TYPE_GUID)
+      REFERENCES T_AUTO_SNS_KNOWLEDGE_TYPE (TYPE_GUID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+DROP TABLE IF EXISTS T_AUTO_SNS_FRIEND_GROUP;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_FRIEND_GROUP                               */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_FRIEND_GROUP
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   GROUP_GUID           VARCHAR(40) NOT NULL COMMENT '分组GUID',
+   GROUP_NAME           VARCHAR(100) COMMENT '分组名称',
+   GROUP_CREATER        VARCHAR(40) COMMENT '创建人工号',
+   REMARK               VARCHAR(500) COMMENT '备注',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (GROUP_GUID)
+);
+
+DROP TABLE IF EXISTS T_AUTO_SNS_FRIEND_INFO;
+
+/*==============================================================*/
+/* Table: T_AUTO_SNS_FRIEND_INFO                                */
+/*==============================================================*/
+CREATE TABLE T_AUTO_SNS_FRIEND_INFO
+(
+   CREATE_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '创建人',
+   MODIFY_USER          VARCHAR(50) NOT NULL DEFAULT ' ' COMMENT '修改人',
+   DELETE_USER          VARCHAR(50) DEFAULT ' ' COMMENT '删除人',
+   CREATE_TIME          DATETIME NOT NULL COMMENT '创建时间',
+   UPDATE_TIME          DATETIME NOT NULL COMMENT '修改时间',
+   DELETE_TIME          DATETIME COMMENT '删除时间',
+   ROW_GUID             VARCHAR(40) NOT NULL COMMENT '主键',
+   GROUP_GUID           VARCHAR(40) NOT NULL COMMENT '分组GUID',
+   USER_CODE            VARCHAR(50) COMMENT '好友工号',
+   USER_BIE             VARCHAR(100) COMMENT '好友别名',
+   REMARK               VARCHAR(500) COMMENT '备注',
+   EXTRA1               VARCHAR(100) COMMENT '扩展1',
+   EXTRA2               VARCHAR(100) COMMENT '扩展2',
+   EXTRA3               VARCHAR(100) COMMENT '扩展3',
+   EXTRA4               VARCHAR(100) COMMENT '扩展4',
+   EXTRA5               VARCHAR(100) COMMENT '扩展5',
+   PRIMARY KEY (ROW_GUID)
+);
+
+ALTER TABLE T_AUTO_SNS_FRIEND_INFO ADD CONSTRAINT FK_REFERENCE_15 FOREIGN KEY (GROUP_GUID)
+      REFERENCES T_AUTO_SNS_FRIEND_GROUP (GROUP_GUID) ON DELETE RESTRICT ON UPDATE RESTRICT;

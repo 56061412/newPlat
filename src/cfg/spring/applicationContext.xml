@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop    
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd   
+    http://www.springframework.org/schema/tx    
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    
+    <context:annotation-config />
+    <context:component-scan base-package="com.auto" />
+
+	<!--配置事务管理器--> 
+	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+	         <property name="dataSource" ref="dataSource"></property> 
+	 </bean>
+	 
+	<!--配置哪些方法,什么情况下需要回滚--> 
+	 <tx:advice id="serviceAdvice" transaction-manager="transactionManager">  
+	     <tx:attributes>   
+	         <!--当代理的service层中的方法抛出异常的时候才回滚,必须加rollback-for参数--> 
+<!-- 	         <tx:method name="*" propagation="REQUIRED"/> -->
+<!-- 	         <tx:method name="insert*" propagation="REQUIRED" rollback-for="Throwable"/> -->
+			 <tx:method name="insert*" propagation="REQUIRED" rollback-for="Throwable"/>
+	         <tx:method name="save*" propagation="REQUIRED" rollback-for="Throwable"/> 
+	         <tx:method name="add*" propagation="REQUIRED" rollback-for="Throwable"/> 
+	         <tx:method name="query*" propagation="REQUIRED" rollback-for="Throwable"/> 
+	         <tx:method name="list*" propagation="REQUIRED" rollback-for="Throwable"/> 
+	         <tx:method name="get*" propagation="REQUIRED" rollback-for="Throwable"/> 
+	         <tx:method name="delete*" propagation="REQUIRED" rollback-for="Throwable"/>  
+	         <tx:method name="update*" propagation="REQUIRED" rollback-for="Throwable"/>  
+	         <!--除了上面标识的方法,其他方法全是只读方法--> 
+	         <tx:method name="*" read-only="true"/>  
+	     </tx:attributes>  
+	 </tx:advice>
+	 
+	 <!-- 配置哪些类的方法需要进行事务管理 -->  
+	 <aop:aspectj-autoproxy proxy-target-class="true"  />
+	 <aop:config proxy-target-class="true">  
+<!--	execution(* *..*ServiceImpl.*(..))  execution(* com.auto.*.*.service.*.*(..))-->
+<!-- 	 	<aop:pointcut id="servicePointcut" expression="execution(* com.auto.oa.menu.service.impl.*Impl.*(..))"/>   -->
+	 	<aop:pointcut id="servicePointcut" expression="execution(* com.auto.*.*.service.*.*(..))"/>  
+	 	<aop:advisor pointcut-ref="servicePointcut" advice-ref="serviceAdvice"/>
+	 </aop:config>
+	 
+<!-- 	 <bean id="StartWS" class="com.auto.ws.StartWS"></bean> -->
+ 
+</beans>

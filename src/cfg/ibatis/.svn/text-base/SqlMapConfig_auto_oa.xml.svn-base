@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+
+	<!--menu-->
+	<sqlMap resource="com/auto/oa/menu/sql/OaMenuInfo.xml" />
+	<sqlMap resource="com/auto/oa/menu/sql/OaMenuRole.xml" />
+	<sqlMap resource="com/auto/oa/menu/sql/OaMenuRoleMap.xml" />
+	<sqlMap resource="com/auto/oa/menu/sql/OaMenuRoleUserMap.xml" />
+	
+	<!--org-->
+	<sqlMap resource="com/auto/oa/org/sql/OaOrgArea.xml" />
+	<sqlMap resource="com/auto/oa/org/sql/OaOrgInfo.xml" />
+	
+	<!--sys-->
+	<sqlMap resource="com/auto/oa/sys/sql/OaSysAttachment.xml" />
+	<sqlMap resource="com/auto/oa/sys/sql/OaSysConstantCode.xml" />
+	<sqlMap resource="com/auto/oa/sys/sql/OaSysOperateLog.xml" />
+	<sqlMap resource="com/auto/oa/sys/sql/OaSysUserLog.xml" />
+	
+	<!--user-->
+	<sqlMap resource="com/auto/oa/user/sql/OaUserInfo.xml" />
+	<sqlMap resource="com/auto/oa/user/sql/OaUserLogin.xml" />
+	<sqlMap resource="com/auto/oa/user/sql/OaUserOrgMap.xml" />
+	<sqlMap resource="com/auto/oa/user/sql/OaUserPost.xml" />
+
+</sqlMapConfig>

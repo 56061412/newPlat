@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.user.domain.OaUserOrgMap">
+	<typeAlias alias="oauserorgmap" type="com.auto.oa.user.domain.OaUserOrgMap"/>
+	<select id="load" parameterClass="string" resultClass="oauserorgmap">
+		SELECT 
+				AOUM_GUID as "aoumGuid" ,
+				AUORG_GUID as "auorgGuid" ,
+				AUSER_GUID as "auserGuid" ,
+				AOUM_POST_CODE as "aoumPostCode" ,
+				AOUM_POST_NAME as "aoumPostName" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_user_org_map
+		WHERE
+							AOUM_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oauserorgmap">
+		SELECT
+				AOUM_GUID  as "aoumGuid" ,		
+				AUORG_GUID  as "auorgGuid" ,		
+				AUSER_GUID  as "auserGuid" ,		
+				AOUM_POST_CODE  as "aoumPostCode" ,		
+				AOUM_POST_NAME  as "aoumPostName" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_user_org_map
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="aoumGuid">AOUM_GUID =  #aoumGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgGuid">AUORG_GUID =  #auorgGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auserGuid">AUSER_GUID =  #auserGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aoumPostCode">AOUM_POST_CODE =  #aoumPostCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aoumPostName">AOUM_POST_NAME =  #aoumPostName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_user_org_map 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="aoumGuid">AOUM_GUID =  #aoumGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgGuid">AUORG_GUID =  #auorgGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auserGuid">AUSER_GUID =  #auserGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aoumPostCode">AOUM_POST_CODE =  #aoumPostCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aoumPostName">AOUM_POST_NAME =  #aoumPostName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oauserorgmap">
+		INSERT INTO t_auto_oa_user_org_map ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="aoumGuid">AOUM_GUID </isNotNull>
+					<isNotNull prepend=", " property="auorgGuid">AUORG_GUID </isNotNull>
+					<isNotNull prepend=", " property="auserGuid">AUSER_GUID </isNotNull>
+					<isNotNull prepend=", " property="aoumPostCode">AOUM_POST_CODE </isNotNull>
+					<isNotNull prepend=", " property="aoumPostName">AOUM_POST_NAME </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="aoumGuid">#aoumGuid#</isNotNull>
+        <isNotNull prepend=", " property="auorgGuid">#auorgGuid#</isNotNull>
+        <isNotNull prepend=", " property="auserGuid">#auserGuid#</isNotNull>
+        <isNotNull prepend=", " property="aoumPostCode">#aoumPostCode#</isNotNull>
+        <isNotNull prepend=", " property="aoumPostName">#aoumPostName#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_org_map
+		WHERE 		AOUM_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oauserorgmap">
+		UPDATE  t_auto_oa_user_org_map	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="aoumGuid">AOUM_GUID = #aoumGuid#</isNotNull>
+		<isNotNull prepend="," property="auorgGuid">AUORG_GUID = #auorgGuid#</isNotNull>
+		<isNotNull prepend="," property="auserGuid">AUSER_GUID = #auserGuid#</isNotNull>
+		<isNotNull prepend="," property="aoumPostCode">AOUM_POST_CODE = #aoumPostCode#</isNotNull>
+		<isNotNull prepend="," property="aoumPostName">AOUM_POST_NAME = #aoumPostName#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		AOUM_GUID=#aoumGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oauserorgmap">
+		UPDATE t_auto_oa_user_org_map	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="aoumGuid">AOUM_GUID = #aoumGuid#</isNotNull>
+	    <isNull prepend=", " property="aoumGuid">AOUM_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgGuid">AUORG_GUID = #auorgGuid#</isNotNull>
+	    <isNull prepend=", " property="auorgGuid">AUORG_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auserGuid">AUSER_GUID = #auserGuid#</isNotNull>
+	    <isNull prepend=", " property="auserGuid">AUSER_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="aoumPostCode">AOUM_POST_CODE = #aoumPostCode#</isNotNull>
+	    <isNull prepend=", " property="aoumPostCode">AOUM_POST_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="aoumPostName">AOUM_POST_NAME = #aoumPostName#</isNotNull>
+	    <isNull prepend=", " property="aoumPostName">AOUM_POST_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		AOUM_GUID=#aoumGuid# 			</update>
+<!-- 		Add SQL -->
+	
+	<delete id="deleteByAuorgGuid" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_org_map
+		WHERE 		AUORG_GUID = #auorgGuid#
+	</delete>
+	
+	<delete id="deleteByAuserGuid" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_org_map
+		WHERE 		AUSER_GUID = #auserGuid#
+	</delete>
+</sqlMap>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.user.domain.OaUserPost">
+	<typeAlias alias="oauserpost" type="com.auto.oa.user.domain.OaUserPost"/>
+	<select id="load" parameterClass="string" resultClass="oauserpost">
+		SELECT 
+				AUPO_GUID as "aupoGuid" ,
+				AUPO_POST_CODE as "aupoPostCode" ,
+				AUPO_POST_NAME as "aupoPostName" ,
+				AUPO_ORG_CODE as "aupoOrgCode" ,
+				AUPO_ORG_NAME as "aupoOrgName" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_user_post
+		WHERE
+							AUPO_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oauserpost">
+		SELECT
+				AUPO_GUID  as "aupoGuid" ,		
+				AUPO_POST_CODE  as "aupoPostCode" ,		
+				AUPO_POST_NAME  as "aupoPostName" ,		
+				AUPO_ORG_CODE  as "aupoOrgCode" ,		
+				AUPO_ORG_NAME  as "aupoOrgName" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_user_post
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="aupoGuid">AUPO_GUID =  #aupoGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aupoPostCode">AUPO_POST_CODE =  #aupoPostCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aupoPostName">AUPO_POST_NAME =  #aupoPostName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aupoOrgCode">AUPO_ORG_CODE =  #aupoOrgCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aupoOrgName">AUPO_ORG_NAME =  #aupoOrgName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_user_post 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="aupoGuid">AUPO_GUID =  #aupoGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aupoPostCode">AUPO_POST_CODE =  #aupoPostCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aupoPostName">AUPO_POST_NAME =  #aupoPostName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aupoOrgCode">AUPO_ORG_CODE =  #aupoOrgCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aupoOrgName">AUPO_ORG_NAME =  #aupoOrgName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oauserpost">
+		INSERT INTO t_auto_oa_user_post ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="aupoGuid">AUPO_GUID </isNotNull>
+					<isNotNull prepend=", " property="aupoPostCode">AUPO_POST_CODE </isNotNull>
+					<isNotNull prepend=", " property="aupoPostName">AUPO_POST_NAME </isNotNull>
+					<isNotNull prepend=", " property="aupoOrgCode">AUPO_ORG_CODE </isNotNull>
+					<isNotNull prepend=", " property="aupoOrgName">AUPO_ORG_NAME </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="aupoGuid">#aupoGuid#</isNotNull>
+        <isNotNull prepend=", " property="aupoPostCode">#aupoPostCode#</isNotNull>
+        <isNotNull prepend=", " property="aupoPostName">#aupoPostName#</isNotNull>
+        <isNotNull prepend=", " property="aupoOrgCode">#aupoOrgCode#</isNotNull>
+        <isNotNull prepend=", " property="aupoOrgName">#aupoOrgName#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_post
+		WHERE 		AUPO_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oauserpost">
+		UPDATE  t_auto_oa_user_post	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="aupoGuid">AUPO_GUID = #aupoGuid#</isNotNull>
+		<isNotNull prepend="," property="aupoPostCode">AUPO_POST_CODE = #aupoPostCode#</isNotNull>
+		<isNotNull prepend="," property="aupoPostName">AUPO_POST_NAME = #aupoPostName#</isNotNull>
+		<isNotNull prepend="," property="aupoOrgCode">AUPO_ORG_CODE = #aupoOrgCode#</isNotNull>
+		<isNotNull prepend="," property="aupoOrgName">AUPO_ORG_NAME = #aupoOrgName#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		AUPO_GUID=#aupoGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oauserpost">
+		UPDATE t_auto_oa_user_post	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="aupoGuid">AUPO_GUID = #aupoGuid#</isNotNull>
+	    <isNull prepend=", " property="aupoGuid">AUPO_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="aupoPostCode">AUPO_POST_CODE = #aupoPostCode#</isNotNull>
+	    <isNull prepend=", " property="aupoPostCode">AUPO_POST_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="aupoPostName">AUPO_POST_NAME = #aupoPostName#</isNotNull>
+	    <isNull prepend=", " property="aupoPostName">AUPO_POST_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="aupoOrgCode">AUPO_ORG_CODE = #aupoOrgCode#</isNotNull>
+	    <isNull prepend=", " property="aupoOrgCode">AUPO_ORG_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="aupoOrgName">AUPO_ORG_NAME = #aupoOrgName#</isNotNull>
+	    <isNull prepend=", " property="aupoOrgName">AUPO_ORG_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		AUPO_GUID=#aupoGuid# 			</update>
+<!-- 		ADD SQL -->
+</sqlMap>

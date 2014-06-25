@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.post.domain.SnsPostZanLog">
+	<typeAlias alias="snspostzanlog" type="com.auto.sns.post.domain.SnsPostZanLog"/>
+	<select id="load" parameterClass="string" resultClass="snspostzanlog">
+		SELECT 
+				ZAN_GUID as "zanGuid" ,
+				ZAN_POST_GUID as "zanPostGuid" ,
+				ZAN_USER_CODE as "zanUserCode" ,
+				ZAN_USER_NAME as "zanUserName" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_sns_post_zan_log
+		WHERE
+							ZAN_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="snspostzanlog">
+		SELECT
+				ZAN_GUID  as "zanGuid" ,		
+				ZAN_POST_GUID  as "zanPostGuid" ,		
+				ZAN_USER_CODE  as "zanUserCode" ,		
+				ZAN_USER_NAME  as "zanUserName" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_sns_post_zan_log
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="zanGuid">ZAN_GUID =  #zanGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="zanPostGuid">ZAN_POST_GUID =  #zanPostGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="zanUserCode">ZAN_USER_CODE =  #zanUserCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="zanUserName">ZAN_USER_NAME =  #zanUserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_post_zan_log 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="zanGuid">ZAN_GUID =  #zanGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="zanPostGuid">ZAN_POST_GUID =  #zanPostGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="zanUserCode">ZAN_USER_CODE =  #zanUserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="zanUserName">ZAN_USER_NAME =  #zanUserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="snspostzanlog">
+		INSERT INTO t_auto_sns_post_zan_log ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="zanGuid">ZAN_GUID </isNotNull>
+					<isNotNull prepend=", " property="zanPostGuid">ZAN_POST_GUID </isNotNull>
+					<isNotNull prepend=", " property="zanUserCode">ZAN_USER_CODE </isNotNull>
+					<isNotNull prepend=", " property="zanUserName">ZAN_USER_NAME </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="zanGuid">#zanGuid#</isNotNull>
+        <isNotNull prepend=", " property="zanPostGuid">#zanPostGuid#</isNotNull>
+        <isNotNull prepend=", " property="zanUserCode">#zanUserCode#</isNotNull>
+        <isNotNull prepend=", " property="zanUserName">#zanUserName#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_post_zan_log
+		WHERE 		ZAN_GUID=#value# 	
+	</delete>
+	
+	<delete id="deleteByPostGuidAndUserCode" parameterClass="string">
+		DELETE FROM  t_auto_sns_post_zan_log
+		WHERE 		ZAN_POST_GUID = #zanPostGuid# 
+		AND		ZAN_USER_CODE = #zanUserCode#
+	</delete>
+
+	<update id="update" parameterClass="snspostzanlog">
+		UPDATE  t_auto_sns_post_zan_log	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="zanGuid">ZAN_GUID = #zanGuid#</isNotNull>
+		<isNotNull prepend="," property="zanPostGuid">ZAN_POST_GUID = #zanPostGuid#</isNotNull>
+		<isNotNull prepend="," property="zanUserCode">ZAN_USER_CODE = #zanUserCode#</isNotNull>
+		<isNotNull prepend="," property="zanUserName">ZAN_USER_NAME = #zanUserName#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		ZAN_GUID=#zanGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="snspostzanlog">
+		UPDATE t_auto_sns_post_zan_log	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="zanGuid">ZAN_GUID = #zanGuid#</isNotNull>
+	    <isNull prepend=", " property="zanGuid">ZAN_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="zanPostGuid">ZAN_POST_GUID = #zanPostGuid#</isNotNull>
+	    <isNull prepend=", " property="zanPostGuid">ZAN_POST_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="zanUserCode">ZAN_USER_CODE = #zanUserCode#</isNotNull>
+	    <isNull prepend=", " property="zanUserCode">ZAN_USER_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="zanUserName">ZAN_USER_NAME = #zanUserName#</isNotNull>
+	    <isNull prepend=", " property="zanUserName">ZAN_USER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		ZAN_GUID=#zanGuid# 			</update>
+</sqlMap>

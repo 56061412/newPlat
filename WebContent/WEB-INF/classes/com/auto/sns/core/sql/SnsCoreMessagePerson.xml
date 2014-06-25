@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.core.domain.SnsCoreMessagePerson">
+	<typeAlias alias="snscoremessageperson" type="com.auto.sns.core.domain.SnsCoreMessagePerson"/>
+	<select id="load" parameterClass="string" resultClass="snscoremessageperson">
+		SELECT 
+				SCMP_GUID as "scmpGuid" ,
+				SCME_GUID as "scmeGuid" ,
+				SCMP_REC_PERSON as "scmpRecPerson" ,
+				SCMP_READ_FLAG as "scmpReadFlag" ,
+				SCMP_READ_DATE as "scmpReadDate" ,
+				CREATE_USER as "createUser" ,
+				MODIFY_USER as "modifyUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_sns_core_message_person
+		WHERE
+							SCMP_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="snscoremessageperson">
+		SELECT
+				SCMP_GUID  as "scmpGuid" ,		
+				SCME_GUID  as "scmeGuid" ,		
+				SCMP_REC_PERSON  as "scmpRecPerson" ,		
+				SCMP_READ_FLAG  as "scmpReadFlag" ,		
+				SCMP_READ_DATE  as "scmpReadDate" ,		
+				CREATE_USER  as "createUser" ,		
+				MODIFY_USER  as "modifyUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_sns_core_message_person
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="scmpGuid">SCMP_GUID =  #scmpGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmeGuid">SCME_GUID =  #scmeGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmpRecPerson">SCMP_REC_PERSON =  #scmpRecPerson#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmpReadFlag">SCMP_READ_FLAG =  #scmpReadFlag#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmpReadDate">SCMP_READ_DATE =  #scmpReadDate#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_core_message_person 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="scmpGuid">SCMP_GUID =  #scmpGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmeGuid">SCME_GUID =  #scmeGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmpRecPerson">SCMP_REC_PERSON =  #scmpRecPerson#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmpReadFlag">SCMP_READ_FLAG =  #scmpReadFlag#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmpReadDate">SCMP_READ_DATE =  #scmpReadDate#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="snscoremessageperson">
+		INSERT INTO t_auto_sns_core_message_person ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="scmpGuid">SCMP_GUID </isNotNull>
+					<isNotNull prepend=", " property="scmeGuid">SCME_GUID </isNotNull>
+					<isNotNull prepend=", " property="scmpRecPerson">SCMP_REC_PERSON </isNotNull>
+					<isNotNull prepend=", " property="scmpReadFlag">SCMP_READ_FLAG </isNotNull>
+					<isNotNull prepend=", " property="scmpReadDate">SCMP_READ_DATE </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="modifyUser">MODIFY_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="scmpGuid">#scmpGuid#</isNotNull>
+        <isNotNull prepend=", " property="scmeGuid">#scmeGuid#</isNotNull>
+        <isNotNull prepend=", " property="scmpRecPerson">#scmpRecPerson#</isNotNull>
+        <isNotNull prepend=", " property="scmpReadFlag">#scmpReadFlag#</isNotNull>
+        <isNotNull prepend=", " property="scmpReadDate">
+           <isNotEmpty property="scmpReadDate">#scmpReadDate#</isNotEmpty>
+           <isEmpty property="scmpReadDate">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="modifyUser">#modifyUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_core_message_person
+		WHERE 		SCMP_GUID=#value# 	
+	</delete>
+	
+	<delete id="deleteByScmeGuid" parameterClass="string">
+		DELETE FROM  t_auto_sns_core_message_person
+		WHERE 		SCME_GUID = #scmeGuid#
+	</delete>
+
+	<update id="update" parameterClass="snscoremessageperson">
+		UPDATE  t_auto_sns_core_message_person	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="scmpGuid">SCMP_GUID = #scmpGuid#</isNotNull>
+		<isNotNull prepend="," property="scmeGuid">SCME_GUID = #scmeGuid#</isNotNull>
+		<isNotNull prepend="," property="scmpRecPerson">SCMP_REC_PERSON = #scmpRecPerson#</isNotNull>
+		<isNotNull prepend="," property="scmpReadFlag">SCMP_READ_FLAG = #scmpReadFlag#</isNotNull>
+		<isNotNull prepend="," property="scmpReadDate">SCMP_READ_DATE = #scmpReadDate#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		SCMP_GUID=#scmpGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="snscoremessageperson">
+		UPDATE t_auto_sns_core_message_person	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="scmpGuid">SCMP_GUID = #scmpGuid#</isNotNull>
+	    <isNull prepend=", " property="scmpGuid">SCMP_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="scmeGuid">SCME_GUID = #scmeGuid#</isNotNull>
+	    <isNull prepend=", " property="scmeGuid">SCME_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="scmpRecPerson">SCMP_REC_PERSON = #scmpRecPerson#</isNotNull>
+	    <isNull prepend=", " property="scmpRecPerson">SCMP_REC_PERSON = NULL</isNull>
+	    <isNotNull prepend=", " property="scmpReadFlag">SCMP_READ_FLAG = #scmpReadFlag#</isNotNull>
+	    <isNull prepend=", " property="scmpReadFlag">SCMP_READ_FLAG = NULL</isNull>
+	    <isNotNull prepend=", " property="scmpReadDate">SCMP_READ_DATE = #scmpReadDate#</isNotNull>
+	    <isNull prepend=", " property="scmpReadDate">SCMP_READ_DATE = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+	    <isNull prepend=", " property="modifyUser">MODIFY_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		SCMP_GUID=#scmpGuid# 			</update>
+</sqlMap>

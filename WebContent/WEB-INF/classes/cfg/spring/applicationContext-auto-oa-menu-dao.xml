@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="oaMenuInfoDAO" class="com.auto.oa.menu.dao.impl.OaMenuInfoDAOImpl"></bean>
+	<bean id="oaMenuRoleDAO" class="com.auto.oa.menu.dao.impl.OaMenuRoleDAOImpl"></bean>
+	<bean id="oaMenuRoleMapDAO" class="com.auto.oa.menu.dao.impl.OaMenuRoleMapDAOImpl"></bean>
+	<bean id="oaMenuRoleUserMapDAO" class="com.auto.oa.menu.dao.impl.OaMenuRoleUserMapDAOImpl"></bean>
+	
+</beans>

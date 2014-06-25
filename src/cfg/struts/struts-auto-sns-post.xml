@@ -1,0 +1,51 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!--	帖子	-->
+	<package name="snsPost" extends="struts-default" namespace="/snsPost">
+		<action name="saveOrUpdateSnsPost" class="com.auto.sns.post.action.SnsPostAction"
+			method="saveOrUpdateSnsPost">
+		</action>
+		<action name="listSnsPost" class="com.auto.sns.post.action.SnsPostAction"
+			method="listSnsPost">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="addSnsPostHuifu" class="com.auto.sns.post.action.SnsPostAction"
+			method="addSnsPostHuifu">
+		</action>
+		<action name="listSnsPostHuifu" class="com.auto.sns.post.action.SnsPostAction"
+			method="listSnsPostHuifu">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="deletePost" class="com.auto.sns.post.action.SnsPostAction"
+			method="deletePost">
+		</action>
+		<action name="signIn" class="com.auto.sns.post.action.SnsPostAction"
+			method="signIn">
+		</action>
+		<action name="tuijian" class="com.auto.sns.post.action.SnsPostAction"
+			method="tuijian">
+		</action>
+		<action name="shoucang" class="com.auto.sns.post.action.SnsPostAction"
+			method="shoucang">
+		</action>
+		<action name="listSnsTuiPost" class="com.auto.sns.post.action.SnsPostAction"
+			method="listSnsTuiPost">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="listSnsShouPost" class="com.auto.sns.post.action.SnsPostAction"
+			method="listSnsShouPost">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="addMessageInfo" class="com.auto.sns.post.action.SnsPostAction"
+			method="addMessageInfo">
+		</action>
+		<action name="listMessageInfo" class="com.auto.sns.post.action.SnsPostAction"
+			method="listMessageInfo">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+	</package>
+	
+</struts>

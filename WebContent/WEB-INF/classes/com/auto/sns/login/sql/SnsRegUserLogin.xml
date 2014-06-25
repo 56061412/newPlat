@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.login.domain.SnsRegUserLogin">
+	<typeAlias alias="snsreguserlogin" type="com.auto.sns.login.domain.SnsRegUserLogin"/>
+	<select id="load" parameterClass="string" resultClass="snsreguserlogin">
+		SELECT 
+				SRUL_GUID as "srulGuid" ,
+				SRUL_USER_CODE as "srulUserCode" ,
+				SRUL_USER_NAME as "srulUserName" ,
+				SRUL_USER_NICK_NAME as "srulUserNickName" ,
+				SRUL_USER_GENDER as "srulUserGender" ,
+				SRUL_USER_AGE as "srulUserAge" ,
+				SRUL_USER_PY as "srulUserPy" ,
+				SRUL_USER_PY_BREF as "srulUserPyBref" ,
+				SRUL_USER_BIRTHDAY as "srulUserBirthday" ,
+				SRUL_USER_BLOOD_TYPE as "srulUserBloodType" ,
+				SRUL_USER_QQ as "srulUserQq" ,
+				SRUL_USER_MOBILE as "srulUserMobile" ,
+				SRUL_USER_PHONE as "srulUserPhone" ,
+				SRUL_USER_MAIL as "srulUserMail" ,
+				SRUL_USER_CITY as "srulUserCity" ,
+				SRUL_USER_GRADUATE_SCHOOL as "srulUserGraduateSchool" ,
+				SRUL_USER_WORK_EXPERIENCE as "srulUserWorkExperience" ,
+				SRUL_USER_ADDRESS as "srulUserAddress" ,
+				SRUL_USER_ZIPCODE as "srulUserZipcode" ,
+				SRUL_USER_ID_TYPE as "srulUserIdType" ,
+				SRUL_USER_ID_CODE as "srulUserIdCode" ,
+				SRUL_USER_PASSWORD as "srulUserPassword" ,
+				SRUL_ORG_CODE as "srulOrgCode" ,
+				SRUL_ORG_NAME as "srulOrgName" ,
+				SRUL_POST_WORK_CODE as "srulPostWorkCode" ,
+				SRUL_POST_DUTY_CODE as "srulPostDutyCode" ,
+				SRUL_POST_SKILL_REPAIR as "srulPostSkillRepair" ,
+				SRUL_POST_SKILL_PROJECT as "srulPostSkillProject" ,
+				SRUL_POST_DESC as "srulPostDesc" ,
+				SRUL_STATUS as "srulStatus" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_sns_reg_user_login
+		WHERE
+							SRUL_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="snsreguserlogin">
+		SELECT
+				SRUL_GUID  as "srulGuid" ,		
+				SRUL_USER_CODE  as "srulUserCode" ,		
+				SRUL_USER_NAME  as "srulUserName" ,		
+				SRUL_USER_NICK_NAME  as "srulUserNickName" ,		
+				SRUL_USER_GENDER  as "srulUserGender" ,		
+				SRUL_USER_AGE  as "srulUserAge" ,		
+				SRUL_USER_PY  as "srulUserPy" ,		
+				SRUL_USER_PY_BREF  as "srulUserPyBref" ,		
+				SRUL_USER_BIRTHDAY  as "srulUserBirthday" ,		
+				SRUL_USER_BLOOD_TYPE  as "srulUserBloodType" ,		
+				SRUL_USER_QQ  as "srulUserQq" ,		
+				SRUL_USER_MOBILE  as "srulUserMobile" ,		
+				SRUL_USER_PHONE  as "srulUserPhone" ,		
+				SRUL_USER_MAIL  as "srulUserMail" ,		
+				SRUL_USER_CITY  as "srulUserCity" ,		
+				SRUL_USER_GRADUATE_SCHOOL  as "srulUserGraduateSchool" ,		
+				SRUL_USER_WORK_EXPERIENCE  as "srulUserWorkExperience" ,		
+				SRUL_USER_ADDRESS  as "srulUserAddress" ,		
+				SRUL_USER_ZIPCODE  as "srulUserZipcode" ,		
+				SRUL_USER_ID_TYPE  as "srulUserIdType" ,		
+				SRUL_USER_ID_CODE  as "srulUserIdCode" ,		
+				SRUL_USER_PASSWORD  as "srulUserPassword" ,		
+				SRUL_ORG_CODE  as "srulOrgCode" ,		
+				SRUL_ORG_NAME  as "srulOrgName" ,		
+				SRUL_POST_WORK_CODE  as "srulPostWorkCode" ,		
+				SRUL_POST_DUTY_CODE  as "srulPostDutyCode" ,		
+				SRUL_POST_SKILL_REPAIR  as "srulPostSkillRepair" ,		
+				SRUL_POST_SKILL_PROJECT  as "srulPostSkillProject" ,		
+				SRUL_POST_DESC  as "srulPostDesc" ,		
+				SRUL_STATUS  as "srulStatus" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_sns_reg_user_login
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="srulGuid">SRUL_GUID =  #srulGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserCode">SRUL_USER_CODE =  #srulUserCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserName">SRUL_USER_NAME =  #srulUserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserNickName">SRUL_USER_NICK_NAME =  #srulUserNickName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserGender">SRUL_USER_GENDER =  #srulUserGender#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserAge">SRUL_USER_AGE =  #srulUserAge#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserPy">SRUL_USER_PY =  #srulUserPy#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserPyBref">SRUL_USER_PY_BREF =  #srulUserPyBref#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserBirthday">SRUL_USER_BIRTHDAY =  #srulUserBirthday#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserBloodType">SRUL_USER_BLOOD_TYPE =  #srulUserBloodType#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserQq">SRUL_USER_QQ =  #srulUserQq#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserMobile">SRUL_USER_MOBILE =  #srulUserMobile#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserPhone">SRUL_USER_PHONE =  #srulUserPhone#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserMail">SRUL_USER_MAIL =  #srulUserMail#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserCity">SRUL_USER_CITY =  #srulUserCity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserGraduateSchool">SRUL_USER_GRADUATE_SCHOOL =  #srulUserGraduateSchool#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserWorkExperience">SRUL_USER_WORK_EXPERIENCE =  #srulUserWorkExperience#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserAddress">SRUL_USER_ADDRESS =  #srulUserAddress#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserZipcode">SRUL_USER_ZIPCODE =  #srulUserZipcode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserIdType">SRUL_USER_ID_TYPE =  #srulUserIdType#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserIdCode">SRUL_USER_ID_CODE =  #srulUserIdCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulUserPassword">SRUL_USER_PASSWORD =  #srulUserPassword#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulOrgCode">SRUL_ORG_CODE =  #srulOrgCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulOrgName">SRUL_ORG_NAME =  #srulOrgName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulPostWorkCode">SRUL_POST_WORK_CODE =  #srulPostWorkCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulPostDutyCode">SRUL_POST_DUTY_CODE =  #srulPostDutyCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulPostSkillRepair">SRUL_POST_SKILL_REPAIR =  #srulPostSkillRepair#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulPostSkillProject">SRUL_POST_SKILL_PROJECT =  #srulPostSkillProject#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulPostDesc">SRUL_POST_DESC =  #srulPostDesc#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srulStatus">SRUL_STATUS =  #srulStatus#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_reg_user_login 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="srulGuid">SRUL_GUID =  #srulGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserCode">SRUL_USER_CODE =  #srulUserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserName">SRUL_USER_NAME =  #srulUserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserNickName">SRUL_USER_NICK_NAME =  #srulUserNickName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserGender">SRUL_USER_GENDER =  #srulUserGender#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserAge">SRUL_USER_AGE =  #srulUserAge#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserPy">SRUL_USER_PY =  #srulUserPy#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserPyBref">SRUL_USER_PY_BREF =  #srulUserPyBref#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserBirthday">SRUL_USER_BIRTHDAY =  #srulUserBirthday#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserBloodType">SRUL_USER_BLOOD_TYPE =  #srulUserBloodType#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserQq">SRUL_USER_QQ =  #srulUserQq#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserMobile">SRUL_USER_MOBILE =  #srulUserMobile#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserPhone">SRUL_USER_PHONE =  #srulUserPhone#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserMail">SRUL_USER_MAIL =  #srulUserMail#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserCity">SRUL_USER_CITY =  #srulUserCity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserGraduateSchool">SRUL_USER_GRADUATE_SCHOOL =  #srulUserGraduateSchool#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserWorkExperience">SRUL_USER_WORK_EXPERIENCE =  #srulUserWorkExperience#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserAddress">SRUL_USER_ADDRESS =  #srulUserAddress#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserZipcode">SRUL_USER_ZIPCODE =  #srulUserZipcode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserIdType">SRUL_USER_ID_TYPE =  #srulUserIdType#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserIdCode">SRUL_USER_ID_CODE =  #srulUserIdCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulUserPassword">SRUL_USER_PASSWORD =  #srulUserPassword#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulOrgCode">SRUL_ORG_CODE =  #srulOrgCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulOrgName">SRUL_ORG_NAME =  #srulOrgName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulPostWorkCode">SRUL_POST_WORK_CODE =  #srulPostWorkCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulPostDutyCode">SRUL_POST_DUTY_CODE =  #srulPostDutyCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulPostSkillRepair">SRUL_POST_SKILL_REPAIR =  #srulPostSkillRepair#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulPostSkillProject">SRUL_POST_SKILL_PROJECT =  #srulPostSkillProject#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulPostDesc">SRUL_POST_DESC =  #srulPostDesc#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srulStatus">SRUL_STATUS =  #srulStatus#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="snsreguserlogin">
+		INSERT INTO t_auto_sns_reg_user_login ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="srulGuid">SRUL_GUID </isNotNull>
+					<isNotNull prepend=", " property="srulUserCode">SRUL_USER_CODE </isNotNull>
+					<isNotNull prepend=", " property="srulUserName">SRUL_USER_NAME </isNotNull>
+					<isNotNull prepend=", " property="srulUserNickName">SRUL_USER_NICK_NAME </isNotNull>
+					<isNotNull prepend=", " property="srulUserGender">SRUL_USER_GENDER </isNotNull>
+					<isNotNull prepend=", " property="srulUserAge">SRUL_USER_AGE </isNotNull>
+					<isNotNull prepend=", " property="srulUserPy">SRUL_USER_PY </isNotNull>
+					<isNotNull prepend=", " property="srulUserPyBref">SRUL_USER_PY_BREF </isNotNull>
+					<isNotNull prepend=", " property="srulUserBirthday">SRUL_USER_BIRTHDAY </isNotNull>
+					<isNotNull prepend=", " property="srulUserBloodType">SRUL_USER_BLOOD_TYPE </isNotNull>
+					<isNotNull prepend=", " property="srulUserQq">SRUL_USER_QQ </isNotNull>
+					<isNotNull prepend=", " property="srulUserMobile">SRUL_USER_MOBILE </isNotNull>
+					<isNotNull prepend=", " property="srulUserPhone">SRUL_USER_PHONE </isNotNull>
+					<isNotNull prepend=", " property="srulUserMail">SRUL_USER_MAIL </isNotNull>
+					<isNotNull prepend=", " property="srulUserCity">SRUL_USER_CITY </isNotNull>
+					<isNotNull prepend=", " property="srulUserGraduateSchool">SRUL_USER_GRADUATE_SCHOOL </isNotNull>
+					<isNotNull prepend=", " property="srulUserWorkExperience">SRUL_USER_WORK_EXPERIENCE </isNotNull>
+					<isNotNull prepend=", " property="srulUserAddress">SRUL_USER_ADDRESS </isNotNull>
+					<isNotNull prepend=", " property="srulUserZipcode">SRUL_USER_ZIPCODE </isNotNull>
+					<isNotNull prepend=", " property="srulUserIdType">SRUL_USER_ID_TYPE </isNotNull>
+					<isNotNull prepend=", " property="srulUserIdCode">SRUL_USER_ID_CODE </isNotNull>
+					<isNotNull prepend=", " property="srulUserPassword">SRUL_USER_PASSWORD </isNotNull>
+					<isNotNull prepend=", " property="srulOrgCode">SRUL_ORG_CODE </isNotNull>
+					<isNotNull prepend=", " property="srulOrgName">SRUL_ORG_NAME </isNotNull>
+					<isNotNull prepend=", " property="srulPostWorkCode">SRUL_POST_WORK_CODE </isNotNull>
+					<isNotNull prepend=", " property="srulPostDutyCode">SRUL_POST_DUTY_CODE </isNotNull>
+					<isNotNull prepend=", " property="srulPostSkillRepair">SRUL_POST_SKILL_REPAIR </isNotNull>
+					<isNotNull prepend=", " property="srulPostSkillProject">SRUL_POST_SKILL_PROJECT </isNotNull>
+					<isNotNull prepend=", " property="srulPostDesc">SRUL_POST_DESC </isNotNull>
+					<isNotNull prepend=", " property="srulStatus">SRUL_STATUS </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="srulGuid">#srulGuid#</isNotNull>
+        <isNotNull prepend=", " property="srulUserCode">#srulUserCode#</isNotNull>
+        <isNotNull prepend=", " property="srulUserName">#srulUserName#</isNotNull>
+        <isNotNull prepend=", " property="srulUserNickName">#srulUserNickName#</isNotNull>
+        <isNotNull prepend=", " property="srulUserGender">#srulUserGender#</isNotNull>
+        <isNotNull prepend=", " property="srulUserAge">#srulUserAge#</isNotNull>
+        <isNotNull prepend=", " property="srulUserPy">#srulUserPy#</isNotNull>
+        <isNotNull prepend=", " property="srulUserPyBref">#srulUserPyBref#</isNotNull>
+        <isNotNull prepend=", " property="srulUserBirthday">
+           <isNotEmpty property="srulUserBirthday">#srulUserBirthday#</isNotEmpty>
+           <isEmpty property="srulUserBirthday">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="srulUserBloodType">#srulUserBloodType#</isNotNull>
+        <isNotNull prepend=", " property="srulUserQq">#srulUserQq#</isNotNull>
+        <isNotNull prepend=", " property="srulUserMobile">#srulUserMobile#</isNotNull>
+        <isNotNull prepend=", " property="srulUserPhone">#srulUserPhone#</isNotNull>
+        <isNotNull prepend=", " property="srulUserMail">#srulUserMail#</isNotNull>
+        <isNotNull prepend=", " property="srulUserCity">#srulUserCity#</isNotNull>
+        <isNotNull prepend=", " property="srulUserGraduateSchool">#srulUserGraduateSchool#</isNotNull>
+        <isNotNull prepend=", " property="srulUserWorkExperience">#srulUserWorkExperience#</isNotNull>
+        <isNotNull prepend=", " property="srulUserAddress">#srulUserAddress#</isNotNull>
+        <isNotNull prepend=", " property="srulUserZipcode">#srulUserZipcode#</isNotNull>
+        <isNotNull prepend=", " property="srulUserIdType">#srulUserIdType#</isNotNull>
+        <isNotNull prepend=", " property="srulUserIdCode">#srulUserIdCode#</isNotNull>
+        <isNotNull prepend=", " property="srulUserPassword">#srulUserPassword#</isNotNull>
+        <isNotNull prepend=", " property="srulOrgCode">#srulOrgCode#</isNotNull>
+        <isNotNull prepend=", " property="srulOrgName">#srulOrgName#</isNotNull>
+        <isNotNull prepend=", " property="srulPostWorkCode">#srulPostWorkCode#</isNotNull>
+        <isNotNull prepend=", " property="srulPostDutyCode">#srulPostDutyCode#</isNotNull>
+        <isNotNull prepend=", " property="srulPostSkillRepair">#srulPostSkillRepair#</isNotNull>
+        <isNotNull prepend=", " property="srulPostSkillProject">#srulPostSkillProject#</isNotNull>
+        <isNotNull prepend=", " property="srulPostDesc">#srulPostDesc#</isNotNull>
+        <isNotNull prepend=", " property="srulStatus">#srulStatus#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_reg_user_login
+		WHERE 		SRUL_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="snsreguserlogin">
+		UPDATE  t_auto_sns_reg_user_login	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="srulGuid">SRUL_GUID = #srulGuid#</isNotNull>
+		<isNotNull prepend="," property="srulUserCode">SRUL_USER_CODE = #srulUserCode#</isNotNull>
+		<isNotNull prepend="," property="srulUserName">SRUL_USER_NAME = #srulUserName#</isNotNull>
+		<isNotNull prepend="," property="srulUserNickName">SRUL_USER_NICK_NAME = #srulUserNickName#</isNotNull>
+		<isNotNull prepend="," property="srulUserGender">SRUL_USER_GENDER = #srulUserGender#</isNotNull>
+		<isNotNull prepend="," property="srulUserAge">SRUL_USER_AGE = #srulUserAge#</isNotNull>
+		<isNotNull prepend="," property="srulUserPy">SRUL_USER_PY = #srulUserPy#</isNotNull>
+		<isNotNull prepend="," property="srulUserPyBref">SRUL_USER_PY_BREF = #srulUserPyBref#</isNotNull>
+		<isNotNull prepend="," property="srulUserBirthday">SRUL_USER_BIRTHDAY = #srulUserBirthday#</isNotNull>
+		<isNotNull prepend="," property="srulUserBloodType">SRUL_USER_BLOOD_TYPE = #srulUserBloodType#</isNotNull>
+		<isNotNull prepend="," property="srulUserQq">SRUL_USER_QQ = #srulUserQq#</isNotNull>
+		<isNotNull prepend="," property="srulUserMobile">SRUL_USER_MOBILE = #srulUserMobile#</isNotNull>
+		<isNotNull prepend="," property="srulUserPhone">SRUL_USER_PHONE = #srulUserPhone#</isNotNull>
+		<isNotNull prepend="," property="srulUserMail">SRUL_USER_MAIL = #srulUserMail#</isNotNull>
+		<isNotNull prepend="," property="srulUserCity">SRUL_USER_CITY = #srulUserCity#</isNotNull>
+		<isNotNull prepend="," property="srulUserGraduateSchool">SRUL_USER_GRADUATE_SCHOOL = #srulUserGraduateSchool#</isNotNull>
+		<isNotNull prepend="," property="srulUserWorkExperience">SRUL_USER_WORK_EXPERIENCE = #srulUserWorkExperience#</isNotNull>
+		<isNotNull prepend="," property="srulUserAddress">SRUL_USER_ADDRESS = #srulUserAddress#</isNotNull>
+		<isNotNull prepend="," property="srulUserZipcode">SRUL_USER_ZIPCODE = #srulUserZipcode#</isNotNull>
+		<isNotNull prepend="," property="srulUserIdType">SRUL_USER_ID_TYPE = #srulUserIdType#</isNotNull>
+		<isNotNull prepend="," property="srulUserIdCode">SRUL_USER_ID_CODE = #srulUserIdCode#</isNotNull>
+		<isNotNull prepend="," property="srulUserPassword">SRUL_USER_PASSWORD = #srulUserPassword#</isNotNull>
+		<isNotNull prepend="," property="srulOrgCode">SRUL_ORG_CODE = #srulOrgCode#</isNotNull>
+		<isNotNull prepend="," property="srulOrgName">SRUL_ORG_NAME = #srulOrgName#</isNotNull>
+		<isNotNull prepend="," property="srulPostWorkCode">SRUL_POST_WORK_CODE = #srulPostWorkCode#</isNotNull>
+		<isNotNull prepend="," property="srulPostDutyCode">SRUL_POST_DUTY_CODE = #srulPostDutyCode#</isNotNull>
+		<isNotNull prepend="," property="srulPostSkillRepair">SRUL_POST_SKILL_REPAIR = #srulPostSkillRepair#</isNotNull>
+		<isNotNull prepend="," property="srulPostSkillProject">SRUL_POST_SKILL_PROJECT = #srulPostSkillProject#</isNotNull>
+		<isNotNull prepend="," property="srulPostDesc">SRUL_POST_DESC = #srulPostDesc#</isNotNull>
+		<isNotNull prepend="," property="srulStatus">SRUL_STATUS = #srulStatus#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		SRUL_GUID=#srulGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="snsreguserlogin">
+		UPDATE t_auto_sns_reg_user_login	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="srulGuid">SRUL_GUID = #srulGuid#</isNotNull>
+	    <isNull prepend=", " property="srulGuid">SRUL_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserCode">SRUL_USER_CODE = #srulUserCode#</isNotNull>
+	    <isNull prepend=", " property="srulUserCode">SRUL_USER_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserName">SRUL_USER_NAME = #srulUserName#</isNotNull>
+	    <isNull prepend=", " property="srulUserName">SRUL_USER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserNickName">SRUL_USER_NICK_NAME = #srulUserNickName#</isNotNull>
+	    <isNull prepend=", " property="srulUserNickName">SRUL_USER_NICK_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserGender">SRUL_USER_GENDER = #srulUserGender#</isNotNull>
+	    <isNull prepend=", " property="srulUserGender">SRUL_USER_GENDER = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserAge">SRUL_USER_AGE = #srulUserAge#</isNotNull>
+	    <isNull prepend=", " property="srulUserAge">SRUL_USER_AGE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserPy">SRUL_USER_PY = #srulUserPy#</isNotNull>
+	    <isNull prepend=", " property="srulUserPy">SRUL_USER_PY = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserPyBref">SRUL_USER_PY_BREF = #srulUserPyBref#</isNotNull>
+	    <isNull prepend=", " property="srulUserPyBref">SRUL_USER_PY_BREF = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserBirthday">SRUL_USER_BIRTHDAY = #srulUserBirthday#</isNotNull>
+	    <isNull prepend=", " property="srulUserBirthday">SRUL_USER_BIRTHDAY = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserBloodType">SRUL_USER_BLOOD_TYPE = #srulUserBloodType#</isNotNull>
+	    <isNull prepend=", " property="srulUserBloodType">SRUL_USER_BLOOD_TYPE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserQq">SRUL_USER_QQ = #srulUserQq#</isNotNull>
+	    <isNull prepend=", " property="srulUserQq">SRUL_USER_QQ = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserMobile">SRUL_USER_MOBILE = #srulUserMobile#</isNotNull>
+	    <isNull prepend=", " property="srulUserMobile">SRUL_USER_MOBILE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserPhone">SRUL_USER_PHONE = #srulUserPhone#</isNotNull>
+	    <isNull prepend=", " property="srulUserPhone">SRUL_USER_PHONE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserMail">SRUL_USER_MAIL = #srulUserMail#</isNotNull>
+	    <isNull prepend=", " property="srulUserMail">SRUL_USER_MAIL = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserCity">SRUL_USER_CITY = #srulUserCity#</isNotNull>
+	    <isNull prepend=", " property="srulUserCity">SRUL_USER_CITY = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserGraduateSchool">SRUL_USER_GRADUATE_SCHOOL = #srulUserGraduateSchool#</isNotNull>
+	    <isNull prepend=", " property="srulUserGraduateSchool">SRUL_USER_GRADUATE_SCHOOL = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserWorkExperience">SRUL_USER_WORK_EXPERIENCE = #srulUserWorkExperience#</isNotNull>
+	    <isNull prepend=", " property="srulUserWorkExperience">SRUL_USER_WORK_EXPERIENCE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserAddress">SRUL_USER_ADDRESS = #srulUserAddress#</isNotNull>
+	    <isNull prepend=", " property="srulUserAddress">SRUL_USER_ADDRESS = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserZipcode">SRUL_USER_ZIPCODE = #srulUserZipcode#</isNotNull>
+	    <isNull prepend=", " property="srulUserZipcode">SRUL_USER_ZIPCODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserIdType">SRUL_USER_ID_TYPE = #srulUserIdType#</isNotNull>
+	    <isNull prepend=", " property="srulUserIdType">SRUL_USER_ID_TYPE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserIdCode">SRUL_USER_ID_CODE = #srulUserIdCode#</isNotNull>
+	    <isNull prepend=", " property="srulUserIdCode">SRUL_USER_ID_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulUserPassword">SRUL_USER_PASSWORD = #srulUserPassword#</isNotNull>
+	    <isNull prepend=", " property="srulUserPassword">SRUL_USER_PASSWORD = NULL</isNull>
+	    <isNotNull prepend=", " property="srulOrgCode">SRUL_ORG_CODE = #srulOrgCode#</isNotNull>
+	    <isNull prepend=", " property="srulOrgCode">SRUL_ORG_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulOrgName">SRUL_ORG_NAME = #srulOrgName#</isNotNull>
+	    <isNull prepend=", " property="srulOrgName">SRUL_ORG_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="srulPostWorkCode">SRUL_POST_WORK_CODE = #srulPostWorkCode#</isNotNull>
+	    <isNull prepend=", " property="srulPostWorkCode">SRUL_POST_WORK_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulPostDutyCode">SRUL_POST_DUTY_CODE = #srulPostDutyCode#</isNotNull>
+	    <isNull prepend=", " property="srulPostDutyCode">SRUL_POST_DUTY_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srulPostSkillRepair">SRUL_POST_SKILL_REPAIR = #srulPostSkillRepair#</isNotNull>
+	    <isNull prepend=", " property="srulPostSkillRepair">SRUL_POST_SKILL_REPAIR = NULL</isNull>
+	    <isNotNull prepend=", " property="srulPostSkillProject">SRUL_POST_SKILL_PROJECT = #srulPostSkillProject#</isNotNull>
+	    <isNull prepend=", " property="srulPostSkillProject">SRUL_POST_SKILL_PROJECT = NULL</isNull>
+	    <isNotNull prepend=", " property="srulPostDesc">SRUL_POST_DESC = #srulPostDesc#</isNotNull>
+	    <isNull prepend=", " property="srulPostDesc">SRUL_POST_DESC = NULL</isNull>
+	    <isNotNull prepend=", " property="srulStatus">SRUL_STATUS = #srulStatus#</isNotNull>
+	    <isNull prepend=", " property="srulStatus">SRUL_STATUS = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		SRUL_GUID=#srulGuid# 			</update>
+</sqlMap>

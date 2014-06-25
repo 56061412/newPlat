@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.org.domain.OaOrgInfo">
+	<typeAlias alias="oaorginfo" type="com.auto.oa.org.domain.OaOrgInfo"/>
+	<select id="load" parameterClass="string" resultClass="oaorginfo">
+		SELECT 
+				AUORG_GUID as "auorgGuid" ,
+				AUORG_PARENT_GUID as "auorgParentGuid" ,
+				AUORG_CODE as "auorgCode" ,
+				AUORG_NAME as "auorgName" ,
+				AUORG_BRAND_CODE as "auorgBrandCode" ,
+				AUORG_BRAND_NAME as "auorgBrandName" ,
+				AUORG_TYPE_CODE as "auorgTypeCode" ,
+				AUORG_TYPE_NAME as "auorgTypeName" ,
+				AUORG_FULL_SPELL as "auorgFullSpell" ,
+				AUORG_BRIEF_SPELL as "auorgBriefSpell" ,
+				AUORG_AREA as "auorgArea" ,
+				AUORG_ADDRESS as "auorgAddress" ,
+				AUORG_PHONE as "auorgPhone" ,
+				AUORG_MAIL as "auorgMail" ,
+				AUORG_ZIPCODE as "auorgZipcode" ,
+				AUORG_DEPTH as "auorgDepth" ,
+				AUORG_FULL_PATH as "auorgFullPath" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM t_auto_oa_org_info
+		WHERE
+							AUORG_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oaorginfo">
+		SELECT
+				AUORG_GUID  as "auorgGuid" ,		
+				AUORG_PARENT_GUID  as "auorgParentGuid" ,		
+				AUORG_CODE  as "auorgCode" ,		
+				AUORG_NAME  as "auorgName" ,		
+				AUORG_BRAND_CODE  as "auorgBrandCode" ,		
+				AUORG_BRAND_NAME  as "auorgBrandName" ,		
+				AUORG_TYPE_CODE  as "auorgTypeCode" ,		
+				AUORG_TYPE_NAME  as "auorgTypeName" ,		
+				AUORG_FULL_SPELL  as "auorgFullSpell" ,		
+				AUORG_BRIEF_SPELL  as "auorgBriefSpell" ,		
+				AUORG_AREA  as "auorgArea" ,		
+				AUORG_ADDRESS  as "auorgAddress" ,		
+				AUORG_PHONE  as "auorgPhone" ,		
+				AUORG_MAIL  as "auorgMail" ,		
+				AUORG_ZIPCODE  as "auorgZipcode" ,		
+				AUORG_DEPTH  as "auorgDepth" ,		
+				AUORG_FULL_PATH  as "auorgFullPath" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				RECORD_VERSION  as "recordVersion" 		
+				FROM t_auto_oa_org_info
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="auorgGuid">AUORG_GUID =  #auorgGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgGuidList">
+							<isNotEmpty prepend="  " property="auorgGuidList">
+					            <iterate property="auorgGuidList" open = "(" close = ")" conjunction = " OR ">
+									AUORG_GUID =  #auorgGuidList[].auorgGuid#
+							    </iterate>
+							</isNotEmpty>
+						</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgParentGuid">AUORG_PARENT_GUID =  #auorgParentGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgCode">AUORG_CODE =  #auorgCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgName">AUORG_NAME =  #auorgName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgBrandCode">AUORG_BRAND_CODE =  #auorgBrandCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgBrandName">AUORG_BRAND_NAME =  #auorgBrandName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgTypeCode">AUORG_TYPE_CODE =  #auorgTypeCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgTypeName">AUORG_TYPE_NAME =  #auorgTypeName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgFullSpell">AUORG_FULL_SPELL =  #auorgFullSpell#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgBriefSpell">AUORG_BRIEF_SPELL =  #auorgBriefSpell#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgArea">AUORG_AREA =  #auorgArea#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgAddress">AUORG_ADDRESS =  #auorgAddress#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgPhone">AUORG_PHONE =  #auorgPhone#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgMail">AUORG_MAIL =  #auorgMail#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgZipcode">AUORG_ZIPCODE =  #auorgZipcode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgDepth">AUORG_DEPTH =  #auorgDepth#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auorgFullPath">AUORG_FULL_PATH =  #auorgFullPath#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_org_info 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="auorgGuid">AUORG_GUID =  #auorgGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgParentGuid">AUORG_PARENT_GUID =  #auorgParentGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgCode">AUORG_CODE =  #auorgCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgName">AUORG_NAME =  #auorgName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgBrandCode">AUORG_BRAND_CODE =  #auorgBrandCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgBrandName">AUORG_BRAND_NAME =  #auorgBrandName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgTypeCode">AUORG_TYPE_CODE =  #auorgTypeCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgTypeName">AUORG_TYPE_NAME =  #auorgTypeName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgFullSpell">AUORG_FULL_SPELL =  #auorgFullSpell#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgBriefSpell">AUORG_BRIEF_SPELL =  #auorgBriefSpell#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgArea">AUORG_AREA =  #auorgArea#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgAddress">AUORG_ADDRESS =  #auorgAddress#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgPhone">AUORG_PHONE =  #auorgPhone#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgMail">AUORG_MAIL =  #auorgMail#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgZipcode">AUORG_ZIPCODE =  #auorgZipcode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgDepth">AUORG_DEPTH =  #auorgDepth#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auorgFullPath">AUORG_FULL_PATH =  #auorgFullPath#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oaorginfo">
+		INSERT INTO t_auto_oa_org_info ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="auorgGuid">AUORG_GUID </isNotNull>
+					<isNotNull prepend=", " property="auorgParentGuid">AUORG_PARENT_GUID </isNotNull>
+					<isNotNull prepend=", " property="auorgCode">AUORG_CODE </isNotNull>
+					<isNotNull prepend=", " property="auorgName">AUORG_NAME </isNotNull>
+					<isNotNull prepend=", " property="auorgBrandCode">AUORG_BRAND_CODE </isNotNull>
+					<isNotNull prepend=", " property="auorgBrandName">AUORG_BRAND_NAME </isNotNull>
+					<isNotNull prepend=", " property="auorgTypeCode">AUORG_TYPE_CODE </isNotNull>
+					<isNotNull prepend=", " property="auorgTypeName">AUORG_TYPE_NAME </isNotNull>
+					<isNotNull prepend=", " property="auorgFullSpell">AUORG_FULL_SPELL </isNotNull>
+					<isNotNull prepend=", " property="auorgBriefSpell">AUORG_BRIEF_SPELL </isNotNull>
+					<isNotNull prepend=", " property="auorgArea">AUORG_AREA </isNotNull>
+					<isNotNull prepend=", " property="auorgAddress">AUORG_ADDRESS </isNotNull>
+					<isNotNull prepend=", " property="auorgPhone">AUORG_PHONE </isNotNull>
+					<isNotNull prepend=", " property="auorgMail">AUORG_MAIL </isNotNull>
+					<isNotNull prepend=", " property="auorgZipcode">AUORG_ZIPCODE </isNotNull>
+					<isNotNull prepend=", " property="auorgDepth">AUORG_DEPTH </isNotNull>
+					<isNotNull prepend=", " property="auorgFullPath">AUORG_FULL_PATH </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="recordVersion">RECORD_VERSION </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="auorgGuid">#auorgGuid#</isNotNull>
+        <isNotNull prepend=", " property="auorgParentGuid">#auorgParentGuid#</isNotNull>
+        <isNotNull prepend=", " property="auorgCode">#auorgCode#</isNotNull>
+        <isNotNull prepend=", " property="auorgName">#auorgName#</isNotNull>
+        <isNotNull prepend=", " property="auorgBrandCode">#auorgBrandCode#</isNotNull>
+        <isNotNull prepend=", " property="auorgBrandName">#auorgBrandName#</isNotNull>
+        <isNotNull prepend=", " property="auorgTypeCode">#auorgTypeCode#</isNotNull>
+        <isNotNull prepend=", " property="auorgTypeName">#auorgTypeName#</isNotNull>
+        <isNotNull prepend=", " property="auorgFullSpell">#auorgFullSpell#</isNotNull>
+        <isNotNull prepend=", " property="auorgBriefSpell">#auorgBriefSpell#</isNotNull>
+        <isNotNull prepend=", " property="auorgArea">#auorgArea#</isNotNull>
+        <isNotNull prepend=", " property="auorgAddress">#auorgAddress#</isNotNull>
+        <isNotNull prepend=", " property="auorgPhone">#auorgPhone#</isNotNull>
+        <isNotNull prepend=", " property="auorgMail">#auorgMail#</isNotNull>
+        <isNotNull prepend=", " property="auorgZipcode">#auorgZipcode#</isNotNull>
+        <isNotNull prepend=", " property="auorgDepth">#auorgDepth#</isNotNull>
+        <isNotNull prepend=", " property="auorgFullPath">#auorgFullPath#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="recordVersion">#recordVersion#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_org_info
+		WHERE 		AUORG_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oaorginfo">
+		UPDATE  t_auto_oa_org_info	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="auorgGuid">AUORG_GUID = #auorgGuid#</isNotNull>
+		<isNotNull prepend="," property="auorgParentGuid">AUORG_PARENT_GUID = #auorgParentGuid#</isNotNull>
+		<isNotNull prepend="," property="auorgCode">AUORG_CODE = #auorgCode#</isNotNull>
+		<isNotNull prepend="," property="auorgName">AUORG_NAME = #auorgName#</isNotNull>
+		<isNotNull prepend="," property="auorgBrandCode">AUORG_BRAND_CODE = #auorgBrandCode#</isNotNull>
+		<isNotNull prepend="," property="auorgBrandName">AUORG_BRAND_NAME = #auorgBrandName#</isNotNull>
+		<isNotNull prepend="," property="auorgTypeCode">AUORG_TYPE_CODE = #auorgTypeCode#</isNotNull>
+		<isNotNull prepend="," property="auorgTypeName">AUORG_TYPE_NAME = #auorgTypeName#</isNotNull>
+		<isNotNull prepend="," property="auorgFullSpell">AUORG_FULL_SPELL = #auorgFullSpell#</isNotNull>
+		<isNotNull prepend="," property="auorgBriefSpell">AUORG_BRIEF_SPELL = #auorgBriefSpell#</isNotNull>
+		<isNotNull prepend="," property="auorgArea">AUORG_AREA = #auorgArea#</isNotNull>
+		<isNotNull prepend="," property="auorgAddress">AUORG_ADDRESS = #auorgAddress#</isNotNull>
+		<isNotNull prepend="," property="auorgPhone">AUORG_PHONE = #auorgPhone#</isNotNull>
+		<isNotNull prepend="," property="auorgMail">AUORG_MAIL = #auorgMail#</isNotNull>
+		<isNotNull prepend="," property="auorgZipcode">AUORG_ZIPCODE = #auorgZipcode#</isNotNull>
+		<isNotNull prepend="," property="auorgDepth">AUORG_DEPTH = #auorgDepth#</isNotNull>
+		<isNotNull prepend="," property="auorgFullPath">AUORG_FULL_PATH = #auorgFullPath#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+		</dynamic>
+		WHERE 		AUORG_GUID=#auorgGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oaorginfo">
+		UPDATE t_auto_oa_org_info	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="auorgGuid">AUORG_GUID = #auorgGuid#</isNotNull>
+	    <isNull prepend=", " property="auorgGuid">AUORG_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgParentGuid">AUORG_PARENT_GUID = #auorgParentGuid#</isNotNull>
+	    <isNull prepend=", " property="auorgParentGuid">AUORG_PARENT_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgCode">AUORG_CODE = #auorgCode#</isNotNull>
+	    <isNull prepend=", " property="auorgCode">AUORG_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgName">AUORG_NAME = #auorgName#</isNotNull>
+	    <isNull prepend=", " property="auorgName">AUORG_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgBrandCode">AUORG_BRAND_CODE = #auorgBrandCode#</isNotNull>
+	    <isNull prepend=", " property="auorgBrandCode">AUORG_BRAND_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgBrandName">AUORG_BRAND_NAME = #auorgBrandName#</isNotNull>
+	    <isNull prepend=", " property="auorgBrandName">AUORG_BRAND_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgTypeCode">AUORG_TYPE_CODE = #auorgTypeCode#</isNotNull>
+	    <isNull prepend=", " property="auorgTypeCode">AUORG_TYPE_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgTypeName">AUORG_TYPE_NAME = #auorgTypeName#</isNotNull>
+	    <isNull prepend=", " property="auorgTypeName">AUORG_TYPE_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgFullSpell">AUORG_FULL_SPELL = #auorgFullSpell#</isNotNull>
+	    <isNull prepend=", " property="auorgFullSpell">AUORG_FULL_SPELL = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgBriefSpell">AUORG_BRIEF_SPELL = #auorgBriefSpell#</isNotNull>
+	    <isNull prepend=", " property="auorgBriefSpell">AUORG_BRIEF_SPELL = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgArea">AUORG_AREA = #auorgArea#</isNotNull>
+	    <isNull prepend=", " property="auorgArea">AUORG_AREA = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgAddress">AUORG_ADDRESS = #auorgAddress#</isNotNull>
+	    <isNull prepend=", " property="auorgAddress">AUORG_ADDRESS = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgPhone">AUORG_PHONE = #auorgPhone#</isNotNull>
+	    <isNull prepend=", " property="auorgPhone">AUORG_PHONE = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgMail">AUORG_MAIL = #auorgMail#</isNotNull>
+	    <isNull prepend=", " property="auorgMail">AUORG_MAIL = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgZipcode">AUORG_ZIPCODE = #auorgZipcode#</isNotNull>
+	    <isNull prepend=", " property="auorgZipcode">AUORG_ZIPCODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgDepth">AUORG_DEPTH = #auorgDepth#</isNotNull>
+	    <isNull prepend=", " property="auorgDepth">AUORG_DEPTH = NULL</isNull>
+	    <isNotNull prepend=", " property="auorgFullPath">AUORG_FULL_PATH = #auorgFullPath#</isNotNull>
+	    <isNull prepend=", " property="auorgFullPath">AUORG_FULL_PATH = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+	    <isNull prepend=", " property="recordVersion">RECORD_VERSION = NULL</isNull>
+		</dynamic>
+		WHERE 		AUORG_GUID=#auorgGuid# 			</update>
+</sqlMap>

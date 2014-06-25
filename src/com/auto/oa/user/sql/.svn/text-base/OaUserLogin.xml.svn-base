@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.user.domain.OaUserLogin">
+	<typeAlias alias="oauserlogin" type="com.auto.oa.user.domain.OaUserLogin"/>
+	<select id="load" parameterClass="string" resultClass="oauserlogin">
+		SELECT 
+				AULO_GUID as "auloGuid" ,
+				AULO_USER_CODE as "auloUserCode" ,
+				AULO_LOGIN_TIME as "auloLoginTime" ,
+				AULO_POINT as "auloPoint" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_user_login
+		WHERE
+							AULO_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oauserlogin">
+		SELECT
+				AULO_GUID  as "auloGuid" ,		
+				AULO_USER_CODE  as "auloUserCode" ,		
+				AULO_LOGIN_TIME  as "auloLoginTime" ,		
+				AULO_POINT  as "auloPoint" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_user_login
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="auloGuid">AULO_GUID =  #auloGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auloUserCode">AULO_USER_CODE =  #auloUserCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auloLoginTime">AULO_LOGIN_TIME =  #auloLoginTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="auloPoint">AULO_POINT =  #auloPoint#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_user_login 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="auloGuid">AULO_GUID =  #auloGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auloUserCode">AULO_USER_CODE =  #auloUserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auloLoginTime">AULO_LOGIN_TIME =  #auloLoginTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="auloPoint">AULO_POINT =  #auloPoint#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oauserlogin">
+		INSERT INTO t_auto_oa_user_login ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="auloGuid">AULO_GUID </isNotNull>
+					<isNotNull prepend=", " property="auloUserCode">AULO_USER_CODE </isNotNull>
+					<isNotNull prepend=", " property="auloLoginTime">AULO_LOGIN_TIME </isNotNull>
+					<isNotNull prepend=", " property="auloPoint">AULO_POINT </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="auloGuid">#auloGuid#</isNotNull>
+        <isNotNull prepend=", " property="auloUserCode">#auloUserCode#</isNotNull>
+        <isNotNull prepend=", " property="auloLoginTime">
+           <isNotEmpty property="auloLoginTime">#auloLoginTime#</isNotEmpty>
+           <isEmpty property="auloLoginTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="auloPoint">#auloPoint#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_user_login
+		WHERE 		AULO_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oauserlogin">
+		UPDATE  t_auto_oa_user_login	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="auloGuid">AULO_GUID = #auloGuid#</isNotNull>
+		<isNotNull prepend="," property="auloUserCode">AULO_USER_CODE = #auloUserCode#</isNotNull>
+		<isNotNull prepend="," property="auloLoginTime">AULO_LOGIN_TIME = #auloLoginTime#</isNotNull>
+		<isNotNull prepend="," property="auloPoint">AULO_POINT = #auloPoint#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		AULO_GUID=#auloGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oauserlogin">
+		UPDATE t_auto_oa_user_login	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="auloGuid">AULO_GUID = #auloGuid#</isNotNull>
+	    <isNull prepend=", " property="auloGuid">AULO_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="auloUserCode">AULO_USER_CODE = #auloUserCode#</isNotNull>
+	    <isNull prepend=", " property="auloUserCode">AULO_USER_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="auloLoginTime">AULO_LOGIN_TIME = #auloLoginTime#</isNotNull>
+	    <isNull prepend=", " property="auloLoginTime">AULO_LOGIN_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="auloPoint">AULO_POINT = #auloPoint#</isNotNull>
+	    <isNull prepend=", " property="auloPoint">AULO_POINT = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		AULO_GUID=#auloGuid# 			</update>
+</sqlMap>

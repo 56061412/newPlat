@@ -1,0 +1,58 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!--后台用户登录、登出、session超时拦截器-->
+	<package name="snsLogin" extends="struts-default" namespace="/snsLogin">
+		<interceptors>
+			<interceptor name="userSnsLogin" class="com.auto.sns.login.action.SnsUserInterceptor"></interceptor>
+			<interceptor-stack name="userSnsStack">
+				<interceptor-ref name="userSnsLogin"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+        <default-interceptor-ref name="userSnsStack"/>
+        
+        <global-results>
+        	<result name="login">/AUTO/SNS/login.jsp</result>
+        </global-results>
+        
+		<action name="userLogin" class="com.auto.sns.login.action.SnsLoginAction"
+			method="userLogin">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/snsIndex</param>
+				<param name="actionName">autoRepairerIndex</param>
+			</result>
+		</action>
+		
+		<action name="userLogout" class="com.auto.sns.login.action.SnsLoginAction"
+			method="userLogout">
+			<result name="success">/AUTO/SNS/login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="snsIndex" extends="snsLogin" namespace="/snsIndex">
+		<action name="autoRepairerIndex" class="com.auto.sns.login.action.SnsIndexAction"
+			method="autoRepairerIndex">
+			<result name="success">/AUTO/SNS/MAIN/my-trends.jsp?postPage=myPage</result>
+		</action>
+		<action name="queryPageListSnsRegUserLogin" class="com.auto.sns.login.action.SnsIndexAction"
+			method="queryPageListSnsRegUserLogin">
+		</action>
+		<action name="saveOrUpdateSnsRegUserLogin" class="com.auto.sns.login.action.SnsIndexAction"
+			method="saveOrUpdateSnsRegUserLogin">
+		</action>
+	</package>
+	
+	<package name="snsRegister" extends="struts-default" namespace="/snsRegister">
+		<action name="userRegisterStepOne" class="com.auto.sns.login.action.SnsRegisterAction"	method="userRegisterStepOne">
+			<result name="success">/AUTO/SNS/REG/registerStepTwo.jsp</result>
+			<result name="input">/AUTO/SNS/REG/registerStepOne.jsp</result>
+		</action>
+		<action name="userRegisterStepTwo" class="com.auto.sns.login.action.SnsRegisterAction"	
+			method="userRegisterStepTwo">
+		</action>
+	</package>
+	
+</struts>

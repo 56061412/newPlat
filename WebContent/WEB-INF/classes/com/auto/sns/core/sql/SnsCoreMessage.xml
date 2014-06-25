@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.core.domain.SnsCoreMessage">
+	<typeAlias alias="snscoremessage" type="com.auto.sns.core.domain.SnsCoreMessage"/>
+	<select id="load" parameterClass="string" resultClass="snscoremessage">
+		SELECT 
+				SCME_GUID as "scmeGuid" ,
+				SCME_PARENT_GUID as "scmeParentGuid" ,
+				SCME_TITLE as "scmeTitle" ,
+				SCME_CONTENT as "scmeContent" ,
+				SCME_PERSON as "scmePerson" ,
+				SCME_REC_PERSON as "scmeRecPerson" ,
+				SCME_DATE as "scmeDate" ,
+				CREATE_USER as "createUser" ,
+				MODIFY_USER as "modifyUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_sns_core_message
+		WHERE
+							SCME_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="snscoremessage">
+		SELECT
+				SCME_GUID  as "scmeGuid" ,		
+				SCME_PARENT_GUID  as "scmeParentGuid" ,		
+				SCME_TITLE  as "scmeTitle" ,		
+				SCME_CONTENT  as "scmeContent" ,		
+				SCME_PERSON  as "scmePerson" ,		
+				SCME_REC_PERSON as "scmeRecPerson" ,
+				SCME_DATE  as "scmeDate" ,		
+				CREATE_USER  as "createUser" ,		
+				MODIFY_USER  as "modifyUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_sns_core_message
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="scmeGuid">SCME_GUID =  #scmeGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmeParentGuid">SCME_PARENT_GUID =  #scmeParentGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmeTitle">SCME_TITLE =  #scmeTitle#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmeContent">SCME_CONTENT =  #scmeContent#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmePerson">SCME_PERSON =  #scmePerson#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmeRecPerson">SCME_REC_PERSON =  #scmeRecPerson#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="scmeDate">SCME_DATE =  #scmeDate#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_core_message 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="scmeGuid">SCME_GUID =  #scmeGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmeParentGuid">SCME_PARENT_GUID =  #scmeParentGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmeTitle">SCME_TITLE =  #scmeTitle#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmeContent">SCME_CONTENT =  #scmeContent#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmePerson">SCME_PERSON =  #scmePerson#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmeRecPerson">SCME_REC_PERSON =  #scmeRecPerson#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="scmeDate">SCME_DATE =  #scmeDate#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="snscoremessage">
+		INSERT INTO t_auto_sns_core_message ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="scmeGuid">SCME_GUID </isNotNull>
+					<isNotNull prepend=", " property="scmeParentGuid">SCME_PARENT_GUID </isNotNull>
+					<isNotNull prepend=", " property="scmeTitle">SCME_TITLE </isNotNull>
+					<isNotNull prepend=", " property="scmeContent">SCME_CONTENT </isNotNull>
+					<isNotNull prepend=", " property="scmePerson">SCME_PERSON </isNotNull>
+					<isNotNull prepend=", " property="scmeRecPerson">SCME_REC_PERSON </isNotNull>
+					<isNotNull prepend=", " property="scmeDate">SCME_DATE </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="modifyUser">MODIFY_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="scmeGuid">#scmeGuid#</isNotNull>
+        <isNotNull prepend=", " property="scmeParentGuid">#scmeParentGuid#</isNotNull>
+        <isNotNull prepend=", " property="scmeTitle">#scmeTitle#</isNotNull>
+        <isNotNull prepend=", " property="scmeContent">#scmeContent#</isNotNull>
+        <isNotNull prepend=", " property="scmePerson">#scmePerson#</isNotNull>
+        <isNotNull prepend=", " property="scmeRecPerson">#scmeRecPerson#</isNotNull>
+        <isNotNull prepend=", " property="scmeDate">
+           <isNotEmpty property="scmeDate">#scmeDate#</isNotEmpty>
+           <isEmpty property="scmeDate">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="modifyUser">#modifyUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_core_message
+		WHERE 		SCME_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="snscoremessage">
+		UPDATE  t_auto_sns_core_message	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="scmeGuid">SCME_GUID = #scmeGuid#</isNotNull>
+		<isNotNull prepend="," property="scmeParentGuid">SCME_PARENT_GUID = #scmeParentGuid#</isNotNull>
+		<isNotNull prepend="," property="scmeTitle">SCME_TITLE = #scmeTitle#</isNotNull>
+		<isNotNull prepend="," property="scmeContent">SCME_CONTENT = #scmeContent#</isNotNull>
+		<isNotNull prepend="," property="scmePerson">SCME_PERSON = #scmePerson#</isNotNull>
+		<isNotNull prepend="," property="scmeRecPerson">SCME_REC_PERSON = #scmeRecPerson#</isNotNull>
+		<isNotNull prepend="," property="scmeDate">SCME_DATE = #scmeDate#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		SCME_GUID=#scmeGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="snscoremessage">
+		UPDATE t_auto_sns_core_message	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="scmeGuid">SCME_GUID = #scmeGuid#</isNotNull>
+	    <isNull prepend=", " property="scmeGuid">SCME_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="scmeParentGuid">SCME_PARENT_GUID = #scmeParentGuid#</isNotNull>
+	    <isNull prepend=", " property="scmeParentGuid">SCME_PARENT_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="scmeTitle">SCME_TITLE = #scmeTitle#</isNotNull>
+	    <isNull prepend=", " property="scmeTitle">SCME_TITLE = NULL</isNull>
+	    <isNotNull prepend=", " property="scmeContent">SCME_CONTENT = #scmeContent#</isNotNull>
+	    <isNull prepend=", " property="scmeContent">SCME_CONTENT = NULL</isNull>
+	    <isNotNull prepend=", " property="scmePerson">SCME_PERSON = #scmePerson#</isNotNull>
+	    <isNull prepend=", " property="scmePerson">SCME_PERSON = NULL</isNull>
+	    <isNotNull prepend=", " property="scmeDate">SCME_DATE = #scmeDate#</isNotNull>
+	    <isNull prepend=", " property="scmeDate">SCME_DATE = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+	    <isNull prepend=", " property="modifyUser">MODIFY_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		SCME_GUID=#scmeGuid# 			</update>
+		
+		
+		<select id="queryCoreMessageDialogue"  parameterClass="hashmap" resultClass="snscoremessage">
+			SELECT 
+				T.SCME_GUID  as "scmeGuid" ,		
+				T.SCME_TITLE  as "scmeTitle" ,		
+				T.SCME_CONTENT  as "scmeContent" ,		
+				T.SCME_PERSON  as "scmePerson" ,		
+				T.SCME_REC_PERSON as "scmeRecPerson" ,
+				T.CREATE_TIME AS "createTime" 
+			FROM t_auto_sns_core_message T
+				WHERE T.SCME_PERSON = #scmePerson#
+				AND		T.SCME_REC_PERSON = #scmeRecPerson#
+				UNION
+				(
+			SELECT 
+				A.SCME_GUID  as "scmeGuid" ,		
+				A.SCME_TITLE  as "scmeTitle" ,		
+				A.SCME_CONTENT  as "scmeContent" ,		
+				A.SCME_PERSON  as "scmePerson" ,		
+				A.SCME_REC_PERSON as "scmeRecPerson" ,
+				A.CREATE_TIME AS "createTime" 
+			FROM t_auto_sns_core_message A
+				WHERE A.SCME_PERSON= #scmeRecPerson#
+				AND		A.SCME_REC_PERSON = #scmePerson#
+				ORDER BY A.CREATE_TIME ASC
+				)
+				ORDER BY "createTime" ASC
+		</select>
+		
+		<select id="queryMyMessage"  parameterClass="hashmap" resultClass="snscoremessage">
+			SELECT 
+				scmeGuid  as "scmeGuid" ,		
+				scmeTitle  as "scmeTitle" ,		
+				scmeContent  as "scmeContent" ,		
+				scmePerson  as "scmePerson" ,		
+				scmeRecPerson as "scmeRecPerson" ,
+				createTime AS "createTime" 
+			FROM (	
+			SELECT 
+				T.SCME_GUID  as "scmeGuid" ,		
+				T.SCME_TITLE  as "scmeTitle" ,		
+				T.SCME_CONTENT  as "scmeContent" ,		
+				T.SCME_PERSON  as "scmePerson" ,		
+				T.SCME_REC_PERSON as "scmeRecPerson" ,
+				T.CREATE_TIME AS "createTime" 
+			FROM t_auto_sns_core_message T
+				WHERE T.SCME_PERSON = #scmePerson#
+			UNION
+			SELECT 
+				A.SCME_GUID  as "scmeGuid" ,		
+				A.SCME_TITLE  as "scmeTitle" ,		
+				A.SCME_CONTENT  as "scmeContent" ,		
+				A.SCME_PERSON  as "scmePerson" ,		
+				A.SCME_REC_PERSON as "scmeRecPerson" ,
+				A.CREATE_TIME AS "createTime" 
+			FROM t_auto_sns_core_message A
+				WHERE A.SCME_REC_PERSON = #scmePerson#
+				) TEMP
+				ORDER BY createTime DESC
+		</select>
+		
+</sqlMap>

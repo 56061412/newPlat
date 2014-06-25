@@ -1,0 +1,44 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<!--	OaUserInfo	-->
+	<package name="user" extends="oaLogin" namespace="/user">
+		<action name="queryPageListOaUserInfo" class="com.auto.oa.user.action.OaUserInfoAction"
+			method="queryPageListOaUserInfo">
+		</action>
+		<action name="saveOrUpdateOaUserInfo" class="com.auto.oa.user.action.OaUserInfoAction"
+			method="saveOrUpdateOaUserInfo">
+		</action>
+		<action name="deleteOaUserInfo" class="com.auto.oa.user.action.OaUserInfoAction"
+			method="deleteOaUserInfo">
+		</action>
+		<action name="getOaUserInfo" class="com.auto.oa.user.action.OaUserInfoAction"
+			method="getOaUserInfo">
+		</action>
+		<action name="resetPWDOaUserInfo" class="com.auto.oa.user.action.OaUserInfoAction"
+			method="resetPWDOaUserInfo">
+		</action>
+		<action name="resetUserPWD" class="com.auto.oa.user.action.OaUserInfoAction"
+			method="resetUserPWD">
+		</action>
+	</package>
+	
+	<!--	OaUserPost	-->
+	<package name="userPost" extends="oaLogin" namespace="/userPost">
+		<action name="queryPageListOaUserPost" class="com.auto.oa.user.action.OaUserPostAction"
+			method="queryPageListOaUserPost">
+		</action>
+		<action name="saveOrUpdateOaUserPost" class="com.auto.oa.user.action.OaUserPostAction"
+			method="saveOrUpdateOaUserPost">
+		</action>
+		<action name="deleteOaUserPost" class="com.auto.oa.user.action.OaUserPostAction"
+			method="deleteOaUserPost">
+		</action>
+		<action name="getOaUserPost" class="com.auto.oa.user.action.OaUserPostAction"
+			method="getOaUserPost">
+		</action>
+	</package>
+	
+</struts>

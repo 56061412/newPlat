@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.menu.domain.OaMenuRole">
+	<typeAlias alias="oamenurole" type="com.auto.oa.menu.domain.OaMenuRole"/>
+	<select id="load" parameterClass="string" resultClass="oamenurole">
+		SELECT 
+				APRO_GUID as "aproGuid" ,
+				APRO_ROLE_CODE as "aproRoleCode" ,
+				APRO_ROLE_NAME as "aproRoleName" ,
+				APRO_ROLE_DESC as "aproRoleDesc" ,
+				APRO_SORT as "aproSort" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM t_auto_oa_menu_role
+		WHERE
+							APRO_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oamenurole">
+		SELECT
+				APRO_GUID  as "aproGuid" ,		
+				APRO_ROLE_CODE  as "aproRoleCode" ,		
+				APRO_ROLE_NAME  as "aproRoleName" ,		
+				APRO_ROLE_DESC  as "aproRoleDesc" ,		
+				APRO_SORT  as "aproSort" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				RECORD_VERSION  as "recordVersion" 		
+				FROM t_auto_oa_menu_role
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="aproGuid">APRO_GUID =  #aproGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aproRoleCode">APRO_ROLE_CODE =  #aproRoleCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aproRoleName">APRO_ROLE_NAME =  #aproRoleName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aproRoleDesc">APRO_ROLE_DESC =  #aproRoleDesc#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="aproSort">APRO_SORT =  #aproSort#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_menu_role 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="aproGuid">APRO_GUID =  #aproGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aproRoleCode">APRO_ROLE_CODE =  #aproRoleCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aproRoleName">APRO_ROLE_NAME =  #aproRoleName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aproRoleDesc">APRO_ROLE_DESC =  #aproRoleDesc#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="aproSort">APRO_SORT =  #aproSort#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oamenurole">
+		INSERT INTO t_auto_oa_menu_role ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="aproGuid">APRO_GUID </isNotNull>
+					<isNotNull prepend=", " property="aproRoleCode">APRO_ROLE_CODE </isNotNull>
+					<isNotNull prepend=", " property="aproRoleName">APRO_ROLE_NAME </isNotNull>
+					<isNotNull prepend=", " property="aproRoleDesc">APRO_ROLE_DESC </isNotNull>
+					<isNotNull prepend=", " property="aproSort">APRO_SORT </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="recordVersion">RECORD_VERSION </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="aproGuid">#aproGuid#</isNotNull>
+        <isNotNull prepend=", " property="aproRoleCode">#aproRoleCode#</isNotNull>
+        <isNotNull prepend=", " property="aproRoleName">#aproRoleName#</isNotNull>
+        <isNotNull prepend=", " property="aproRoleDesc">#aproRoleDesc#</isNotNull>
+        <isNotNull prepend=", " property="aproSort">#aproSort#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="recordVersion">#recordVersion#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_menu_role
+		WHERE 		APRO_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oamenurole">
+		UPDATE  t_auto_oa_menu_role	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="aproGuid">APRO_GUID = #aproGuid#</isNotNull>
+		<isNotNull prepend="," property="aproRoleCode">APRO_ROLE_CODE = #aproRoleCode#</isNotNull>
+		<isNotNull prepend="," property="aproRoleName">APRO_ROLE_NAME = #aproRoleName#</isNotNull>
+		<isNotNull prepend="," property="aproRoleDesc">APRO_ROLE_DESC = #aproRoleDesc#</isNotNull>
+		<isNotNull prepend="," property="aproSort">APRO_SORT = #aproSort#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+		</dynamic>
+		WHERE 		APRO_GUID=#aproGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oamenurole">
+		UPDATE t_auto_oa_menu_role	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="aproGuid">APRO_GUID = #aproGuid#</isNotNull>
+	    <isNull prepend=", " property="aproGuid">APRO_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="aproRoleCode">APRO_ROLE_CODE = #aproRoleCode#</isNotNull>
+	    <isNull prepend=", " property="aproRoleCode">APRO_ROLE_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="aproRoleName">APRO_ROLE_NAME = #aproRoleName#</isNotNull>
+	    <isNull prepend=", " property="aproRoleName">APRO_ROLE_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="aproRoleDesc">APRO_ROLE_DESC = #aproRoleDesc#</isNotNull>
+	    <isNull prepend=", " property="aproRoleDesc">APRO_ROLE_DESC = NULL</isNull>
+	    <isNotNull prepend=", " property="aproSort">APRO_SORT = #aproSort#</isNotNull>
+	    <isNull prepend=", " property="aproSort">APRO_SORT = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+	    <isNull prepend=", " property="recordVersion">RECORD_VERSION = NULL</isNull>
+		</dynamic>
+		WHERE 		APRO_GUID=#aproGuid# 			</update>
+		
+<!-- 	Add SQL -->
+	<select id="queryOrgInfoExtend"  parameterClass="hashmap" resultClass="oamenurole">
+		SELECT
+				B.APRUM_GUID as "aprumGuid" ,
+				A.APRO_GUID  as "aproGuid" ,		
+				A.APRO_ROLE_CODE  as "aproRoleCode" ,		
+				A.APRO_ROLE_NAME  as "aproRoleName" ,		
+				A.APRO_ROLE_DESC  as "aproRoleDesc" ,	
+		        C.AUSER_GUID as "auserGuid" ,
+				C.AUSER_CODE as "auserCode" ,
+				C.AUSER_NAME as "auserName" ,
+				C.AUSER_NICK_NAME as "auserNickName" ,
+		        D.AUORG_GUID as "auorgGuid" ,
+				D.AUORG_PARENT_GUID as "auorgParentGuid" ,
+				D.AUORG_CODE as "auorgCode" ,
+				D.AUORG_NAME as "auorgName" ,
+				D.AUORG_TYPE_CODE as "auorgTypeCode" ,
+				D.AUORG_TYPE_NAME as "auorgTypeName" ,
+				A.APRO_SORT  as "aproSort" ,		
+				A.IS_VALIDITY  as "isValidity" ,		
+				A.CREATE_USER as "createUser" ,
+				A.UPDATE_USER as "updateUser" ,
+				A.CREATE_TIME as "createTime" ,
+				A.UPDATE_TIME as "updateTime" 
+			FROM  t_auto_oa_menu_role A,
+			      t_auto_oa_menu_role_user_map B,
+			      t_auto_oa_user_info C,
+			      t_auto_oa_org_info D,
+			      t_auto_oa_user_org_map E
+			WHERE     A.APRO_GUID = B.APRO_GUID
+		      AND B.AUSER_GUID = C.AUSER_GUID
+		      AND C.AUSER_GUID = E.AUSER_GUID
+		      AND D.AUORG_GUID = E.AUORG_GUID
+				<isNotEmpty prepend=" AND " property="aproGuid">A.APRO_GUID =  #aproGuid#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="aproRoleCode">A.APRO_ROLE_CODE =  #aproRoleCode#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="aproRoleName">A.APRO_ROLE_NAME =  #aproRoleName#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="aproRoleDesc">A.APRO_ROLE_DESC =  #aproRoleDesc#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="aproSort">A.APRO_SORT =  #aproSort#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="isValidity">A.IS_VALIDITY =  #isValidity#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="createUser">A.CREATE_USER =  #createUser#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="updateUser">A.UPDATE_USER =  #updateUser#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="createTime">A.CREATE_TIME =  #createTime#</isNotEmpty>
+				<isNotEmpty prepend=" AND " property="updateTime">A.UPDATE_TIME =  #updateTime#</isNotEmpty>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,21 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!--	知识	-->
+	<package name="snsKnowledge" extends="struts-default" namespace="/snsKnowledge">
+		<action name="addKnowledgeInfo" class="com.auto.sns.knowledge.action.SnsKnowledgeAction"
+			method="addKnowledgeInfo">
+		</action>
+		<action name="listKnowledgeInfoGroup" class="com.auto.sns.knowledge.action.SnsKnowledgeAction"
+			method="listKnowledgeInfoGroup">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="listKnowledgeInfoInfo" class="com.auto.sns.knowledge.action.SnsKnowledgeAction"
+			method="listKnowledgeInfoInfo">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+	</package>
+	
+</struts>

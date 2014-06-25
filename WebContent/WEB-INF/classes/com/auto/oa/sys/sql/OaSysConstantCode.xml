@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.sys.domain.OaSysConstantCode">
+	<typeAlias alias="oasysconstantcode" type="com.auto.oa.sys.domain.OaSysConstantCode"/>
+	<select id="load" parameterClass="string" resultClass="oasysconstantcode">
+		SELECT 
+				OSCC_GUID as "osccGuid" ,
+				OSCC_PARENT_GUID as "osccParentGuid" ,
+				OSCC_CODE as "osccCode" ,
+				OSCC_NAME as "osccName" ,
+				OSCC_DISPLAY_ORDER as "osccDisplayOrder" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM t_auto_oa_sys_constant_code
+		WHERE
+							OSCC_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oasysconstantcode">
+		SELECT
+				OSCC_GUID  as "osccGuid" ,		
+				OSCC_PARENT_GUID  as "osccParentGuid" ,		
+				OSCC_CODE  as "osccCode" ,		
+				OSCC_NAME  as "osccName" ,		
+				OSCC_DISPLAY_ORDER  as "osccDisplayOrder" ,		
+				IS_VALIDITY  as "isValidity" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				RECORD_VERSION  as "recordVersion" 		
+				FROM t_auto_oa_sys_constant_code
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="osccGuid">OSCC_GUID =  #osccGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osccParentGuid">OSCC_PARENT_GUID =  #osccParentGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osccCode">OSCC_CODE =  #osccCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osccName">OSCC_NAME =  #osccName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osccDisplayOrder">OSCC_DISPLAY_ORDER =  #osccDisplayOrder#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+	
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_sys_constant_code 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="osccGuid">OSCC_GUID =  #osccGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccParentGuid">OSCC_PARENT_GUID =  #osccParentGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccCode">OSCC_CODE =  #osccCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccName">OSCC_NAME =  #osccName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccDisplayOrder">OSCC_DISPLAY_ORDER =  #osccDisplayOrder#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oasysconstantcode">
+		INSERT INTO t_auto_oa_sys_constant_code ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="osccGuid">OSCC_GUID </isNotNull>
+					<isNotNull prepend=", " property="osccParentGuid">OSCC_PARENT_GUID </isNotNull>
+					<isNotNull prepend=", " property="osccCode">OSCC_CODE </isNotNull>
+					<isNotNull prepend=", " property="osccName">OSCC_NAME </isNotNull>
+					<isNotNull prepend=", " property="osccDisplayOrder">OSCC_DISPLAY_ORDER </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="recordVersion">RECORD_VERSION </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="osccGuid">#osccGuid#</isNotNull>
+        <isNotNull prepend=", " property="osccParentGuid">#osccParentGuid#</isNotNull>
+        <isNotNull prepend=", " property="osccCode">#osccCode#</isNotNull>
+        <isNotNull prepend=", " property="osccName">#osccName#</isNotNull>
+        <isNotNull prepend=", " property="osccDisplayOrder">#osccDisplayOrder#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="recordVersion">#recordVersion#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_sys_constant_code
+		WHERE 		OSCC_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oasysconstantcode">
+		UPDATE  t_auto_oa_sys_constant_code	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="osccGuid">OSCC_GUID = #osccGuid#</isNotNull>
+		<isNotNull prepend="," property="osccParentGuid">OSCC_PARENT_GUID = #osccParentGuid#</isNotNull>
+		<isNotNull prepend="," property="osccCode">OSCC_CODE = #osccCode#</isNotNull>
+		<isNotNull prepend="," property="osccName">OSCC_NAME = #osccName#</isNotNull>
+		<isNotNull prepend="," property="osccDisplayOrder">OSCC_DISPLAY_ORDER = #osccDisplayOrder#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+		</dynamic>
+		WHERE 		OSCC_GUID=#osccGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oasysconstantcode">
+		UPDATE t_auto_oa_sys_constant_code	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="osccGuid">OSCC_GUID = #osccGuid#</isNotNull>
+	    <isNull prepend=", " property="osccGuid">OSCC_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="osccParentGuid">OSCC_PARENT_GUID = #osccParentGuid#</isNotNull>
+	    <isNull prepend=", " property="osccParentGuid">OSCC_PARENT_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="osccCode">OSCC_CODE = #osccCode#</isNotNull>
+	    <isNull prepend=", " property="osccCode">OSCC_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="osccName">OSCC_NAME = #osccName#</isNotNull>
+	    <isNull prepend=", " property="osccName">OSCC_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osccDisplayOrder">OSCC_DISPLAY_ORDER = #osccDisplayOrder#</isNotNull>
+	    <isNull prepend=", " property="osccDisplayOrder">OSCC_DISPLAY_ORDER = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+	    <isNull prepend=", " property="recordVersion">RECORD_VERSION = NULL</isNull>
+		</dynamic>
+		WHERE 		OSCC_GUID=#osccGuid# 			</update>
+		
+<!-- 		ADD SQL -->
+	<select id="queryChildren"  parameterClass="hashmap" resultClass="oasysconstantcode">
+		SELECT
+				A.OSCC_GUID  as "osccGuid" ,		
+				A.OSCC_PARENT_GUID  as "osccParentGuid" ,		
+				A.OSCC_CODE  as "osccCode" ,		
+				A.OSCC_NAME  as "osccName" ,		
+				A.IS_VALIDITY  as "isValidity" ,		
+				A.CREATE_USER  as "createUser" ,		
+				A.UPDATE_USER  as "updateUser" ,		
+				A.CREATE_TIME  as "createTime" ,		
+				A.UPDATE_TIME  as "updateTime" ,		
+				A.RECORD_VERSION  as "recordVersion" 
+				FROM t_auto_oa_sys_constant_code A, T_AUTO_OA_SYS_CONSTANT_CODE T
+				WHERE A.OSCC_PARENT_GUID = T.OSCC_GUID
+					<isNotEmpty prepend=" AND " property="osccGuid">A.OSCC_GUID =  #osccGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccParentGuid">A.OSCC_PARENT_GUID =  #osccParentGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccCode">T.OSCC_CODE =  #osccCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osccName">A.OSCC_NAME =  #osccName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="isValidity">A.IS_VALIDITY =  #isValidity#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">A.CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">A.UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">A.CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">A.UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">A.RECORD_VERSION =  #recordVersion#</isNotEmpty>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+</sqlMap>

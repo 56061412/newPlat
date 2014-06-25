@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.login.domain.SnsRegRefree">
+	<typeAlias alias="snsregrefree" type="com.auto.sns.login.domain.SnsRegRefree"/>
+	<select id="load" parameterClass="string" resultClass="snsregrefree">
+		SELECT 
+				SRRE_GUID as "srreGuid" ,
+				SRRE_USER_CODE as "srreUserCode" ,
+				SRRE_USER_NAME as "srreUserName" ,
+				SRRE_REG_USER_CODE as "srreRegUserCode" ,
+				SRRE_REG_USER_NAME as "srreRegUserName" ,
+				CREATE_TIME as "createTime" 
+				FROM t_auto_sns_reg_refree
+		WHERE
+							SRRE_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="snsregrefree">
+		SELECT
+				SRRE_GUID  as "srreGuid" ,		
+				SRRE_USER_CODE  as "srreUserCode" ,		
+				SRRE_USER_NAME  as "srreUserName" ,		
+				SRRE_REG_USER_CODE  as "srreRegUserCode" ,		
+				SRRE_REG_USER_NAME  as "srreRegUserName" ,		
+				CREATE_TIME  as "createTime" 		
+				FROM t_auto_sns_reg_refree
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="srreGuid">SRRE_GUID =  #srreGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srreUserCode">SRRE_USER_CODE =  #srreUserCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srreUserName">SRRE_USER_NAME =  #srreUserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srreRegUserCode">SRRE_REG_USER_CODE =  #srreRegUserCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="srreRegUserName">SRRE_REG_USER_NAME =  #srreRegUserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_reg_refree 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="srreGuid">SRRE_GUID =  #srreGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srreUserCode">SRRE_USER_CODE =  #srreUserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srreUserName">SRRE_USER_NAME =  #srreUserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srreRegUserCode">SRRE_REG_USER_CODE =  #srreRegUserCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="srreRegUserName">SRRE_REG_USER_NAME =  #srreRegUserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="snsregrefree">
+		INSERT INTO t_auto_sns_reg_refree ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="srreGuid">SRRE_GUID </isNotNull>
+					<isNotNull prepend=", " property="srreUserCode">SRRE_USER_CODE </isNotNull>
+					<isNotNull prepend=", " property="srreUserName">SRRE_USER_NAME </isNotNull>
+					<isNotNull prepend=", " property="srreRegUserCode">SRRE_REG_USER_CODE </isNotNull>
+					<isNotNull prepend=", " property="srreRegUserName">SRRE_REG_USER_NAME </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="srreGuid">#srreGuid#</isNotNull>
+        <isNotNull prepend=", " property="srreUserCode">#srreUserCode#</isNotNull>
+        <isNotNull prepend=", " property="srreUserName">#srreUserName#</isNotNull>
+        <isNotNull prepend=", " property="srreRegUserCode">#srreRegUserCode#</isNotNull>
+        <isNotNull prepend=", " property="srreRegUserName">#srreRegUserName#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_reg_refree
+		WHERE 		SRRE_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="snsregrefree">
+		UPDATE  t_auto_sns_reg_refree	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="srreGuid">SRRE_GUID = #srreGuid#</isNotNull>
+		<isNotNull prepend="," property="srreUserCode">SRRE_USER_CODE = #srreUserCode#</isNotNull>
+		<isNotNull prepend="," property="srreUserName">SRRE_USER_NAME = #srreUserName#</isNotNull>
+		<isNotNull prepend="," property="srreRegUserCode">SRRE_REG_USER_CODE = #srreRegUserCode#</isNotNull>
+		<isNotNull prepend="," property="srreRegUserName">SRRE_REG_USER_NAME = #srreRegUserName#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		</dynamic>
+		WHERE 		SRRE_GUID=#srreGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="snsregrefree">
+		UPDATE t_auto_sns_reg_refree	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="srreGuid">SRRE_GUID = #srreGuid#</isNotNull>
+	    <isNotNull prepend=", " property="srulGuid">SRUL_GUID = #srulGuid#</isNotNull>
+	    <isNull prepend=", " property="srulGuid">SRUL_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="srreUserCode">SRRE_USER_CODE = #srreUserCode#</isNotNull>
+	    <isNull prepend=", " property="srreUserCode">SRRE_USER_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srreUserName">SRRE_USER_NAME = #srreUserName#</isNotNull>
+	    <isNull prepend=", " property="srreUserName">SRRE_USER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="srreRegUserCode">SRRE_REG_USER_CODE = #srreRegUserCode#</isNotNull>
+	    <isNull prepend=", " property="srreRegUserCode">SRRE_REG_USER_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="srreRegUserName">SRRE_REG_USER_NAME = #srreRegUserName#</isNotNull>
+	    <isNull prepend=", " property="srreRegUserName">SRRE_REG_USER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		SRRE_GUID=#srreGuid# 			</update>
+</sqlMap>

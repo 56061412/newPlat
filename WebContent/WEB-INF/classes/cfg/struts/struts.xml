@@ -1,0 +1,40 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<!--设置开发模式-->
+	<constant name="struts.devMode" value="false"/>
+
+<!-- constant cfg -->
+	<constant name="struts.action.extension" value="do,action" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.custom.i18n.resources" value="cfg.i18n.message" />
+	<!-- end constant cfg -->
+	
+    <!-- 因为改变了struts.xml默认路径，所以必须显示配置以下两个文件 -->
+    <include file="struts-default.xml" />
+    <include file="struts-plugin.xml" />
+    
+	<!-- 文件上传   -->
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<constant name="struts.multipart.maxSize" value="20485760"/> 
+    <include file="cfg/struts/struts-upload.xml" />
+    
+    <!-- 业务模块配置	OA -->
+    <include file="cfg/struts/struts-auto-oa-login.xml" />
+	<include file="cfg/struts/struts-auto-oa-menu.xml" />
+	<include file="cfg/struts/struts-auto-oa-org.xml" />
+	<include file="cfg/struts/struts-auto-oa-sys.xml" />
+	<include file="cfg/struts/struts-auto-oa-user.xml" />
+	<include file="cfg/struts/struts-auto-oa-sns.xml" />
+	
+	<!-- 业务模块配置 	SNS-->
+	<include file="cfg/struts/struts-auto-sns-login.xml" />
+	<include file="cfg/struts/struts-auto-sns-post.xml" />
+	<include file="cfg/struts/struts-auto-sns-task.xml" />
+	<include file="cfg/struts/struts-auto-sns-friend.xml" />
+	<include file="cfg/struts/struts-auto-sns-knowledge.xml" />
+	
+</struts>

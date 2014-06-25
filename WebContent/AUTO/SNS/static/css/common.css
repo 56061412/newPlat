@@ -1,0 +1,310 @@
+a{
+	text-decoration: none;
+}
+
+.ui-input-text {
+	border: 1px solid #ccc;
+	padding: 2px;
+	zoom: 1;
+	line-height: 25px;
+	height: 25px;
+}
+
+.ui_input_text_hover {
+	border-color: #d60209;
+}
+
+.ui-input-text34 {
+	border: 1px solid #ccc;
+	padding: 2px;
+	zoom: 1;
+	line-height: 34px;
+	height: 34px;
+}
+
+/* 单行不换行，溢出产生省略号 */
+.ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.form-item {
+	overflow: hidden;
+	clear: both;
+	padding-top: 3px;
+	margin-top:10px;
+}
+.item-title-w90{
+	display: inline;
+	float: left;
+	height: 35px;
+	line-height: 25px;
+	text-align: right;
+	font-size: 14px;
+	padding-right: 5px;
+}
+
+.item-title-w90{
+	width:90px;
+}
+.red{
+	color: #d10307;
+}
+.vm{
+	vertical-align: middle;
+}
+.ui_textarea {
+	border: 1px solid #CCCCCC;
+	padding: 5px 3px;
+	margin: 5px 0;
+	resize: none;
+}
+
+.a-style{
+	text-decoration: none;
+}
+.a-style:hover{
+	text-decoration: underline;
+}
+.ui-input-text-hover{
+	background: #ffffed;
+	border-color: #c62722;
+}
+
+.ml40{
+	margin-left:40px;
+}
+.ofh{
+	overflow:hidden;
+}
+.db{
+	display:block;
+}
+.theme-title{
+	background: url("../images/xcr/theme.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+    width: 797px;
+    padding-top:15px;
+}
+.none-border{
+	border:none;
+	background:none;
+}
+.tt-select{
+	background: url("../images/xcr/theme.png") no-repeat scroll -14px -246px transparent;
+    margin-right: 2px;
+    padding: 4px 7px;
+}
+.tt-select select{
+	height:20px;
+	width:90px;
+}
+.tt-input{
+    background: url("../images/xcr/theme.png") no-repeat scroll -14px -187px transparent;
+    margin-right: 2px;
+    padding: 2px 7px;
+}
+.tt-input input{
+	width:200px;
+	height:24px;
+}
+.tti-sent{
+    background: none repeat scroll 0 0 #E6E6E6;
+    border: 1px solid #ccc;
+    padding: 4px 11px;
+    color:#333;
+}
+.tti-sent:hover{
+	background-color:#ddd;
+}
+.theme-tab{
+	border-bottom:2px solid #d00c0d;
+	height:60px;
+}
+.theme-mem{
+	height:60px;
+}
+.theme-list{
+	border:1px solid #ddd;
+	height: 100px;
+    padding: 5px 10px;
+    width: 373px;
+}
+.tl-title{
+	font-size:16px;
+	color:#333;
+}
+.tl-much{
+	font-famine:宋体;
+	color:#aaa;
+}
+.tl-attention{
+	background: url("../images/xcr/theme.png") no-repeat scroll -14px -73px transparent;
+    height: 30px;
+    width: 78px;
+    cursor:pointer;
+}
+.tl-attention:hover{
+	background: url("../images/xcr/theme.png") no-repeat scroll -14px -133px transparent;
+}
+.picture-title{
+	background: url("../images/xcr/picture.png") no-repeat scroll 0 -2px transparent;
+    height: 40px;
+    width: 797px;
+}
+.pl-img{
+	padding:5px;
+	border:1px solid #ddd;
+}
+.round-box{
+	 position: absolute;
+	 left:0px;
+}
+
+.pl-img:hover{
+	border:1px solid #c90004;
+}
+.picture-list{
+    padding: 5px 10px;
+    width: 373px;
+}
+.picture-locdin{
+ 	background: url("../images/xcr/picture.png") no-repeat scroll 0 -91px transparent;
+    display: inline-block;
+    height: 20px;
+    width: 27px;
+}
+.picture-locdin:hover{
+	background: url("../images/xcr/picture.png") no-repeat scroll 0 -141px transparent;
+}
+.pt-input{
+	border:1px solid #333;
+	padding:2px 4px;
+}
+.pt-input input{
+	height:24px;
+	width:90px
+}
+.hide{
+	display:none;
+}
+.pt-send{
+ 	background-color: #e60505;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 3px 12px;
+}
+.pt-send:hover{
+	background-color: #7b1c1c;
+}
+.pt-promulgator{
+	color:#333;
+}
+.pl-title{
+	color: #333333;
+    display: inline-block;
+    font-size: 16px;
+    width: 136px;
+    text-overflow: ellipsis;				
+	white-space:nowrap;                  
+	overflow:hidden;
+}
+.question-title{
+	background: url("../images/xcr/question.png") no-repeat scroll 0 -1px transparent;
+    height: 40px;
+    padding-top: 15px;
+    width: 797px;
+}
+.ql-title{
+	font-size:16px;
+}
+.ql-answer{
+	background: url("../images/xcr/question.png") no-repeat scroll 0 -156px #f9f8f8;
+	padding:30px 10px;
+}
+.qusetion-list{
+	border-bottom:1px dotted #b0b0b0;
+	padding:0 0 20px;
+}
+.document-title{
+    background: url("../images/xcr/document.png") no-repeat scroll 0 -2px transparent;
+    height: 40px;
+    width: 797px;
+}
+.dl-title{
+	color: #01317e;
+    display: inline-block;
+    font-size: 16px;
+    font-weight:bold;
+}
+.dl-title:hover{
+	color:#1d4fa0;
+}
+.font-blue{
+	color: #01317e;
+}
+.question{
+	 cursor: pointer;
+}
+.active-title{
+	background: url("../images/xcr/active.png") no-repeat scroll -1px -3px transparent;
+    height: 40px;
+    padding-top: 15px;
+    width: 797px;
+}
+.al-month{
+	width:70px;
+	text-align:center;
+	background-color:#9c2a2c;
+	color:#fff;
+}
+.al-date{
+	width:68;
+	font-size:24px;
+	background-color:#fafafa;
+	border:1px solid #ddd;
+	border-top:none;
+	text-align:center;
+	padding:5px 0;
+}
+.h0{
+	height:0;
+}
+
+
+.light {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+	height: 200px;
+    left: -60px;
+    position: absolute;
+    top: 0px;
+    transform: skewX(-25deg);
+    -webkit-transform:skewX(-25deg);    /* for Chrome || Safari */
+    -moz-transform:skewX(-25deg);       /* for Firefox */
+    -ms-transform:skewX(-25deg);        /* for IE */
+    -o-transform:skewX(-25deg);         /* for Opera */
+    -webkit-transition:all 0s ease 0s;    /* for Chrome || Safari */
+    -moz-transition:all 0s ease 0s;      /* for Firefox */
+    -ms-transition:all 0s ease 0s;      /* for IE */
+    -o-transition:all 0s ease 0s;      /* for Opera */
+    width:150px;
+    overflow: hidden;
+    display:block;
+    background-image:-webkit-linear-gradient(0deg,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0))
+   
+} 
+
+.box-bag{
+	height: 145px;
+    overflow: hidden;
+    position: relative;
+    width: 145px;
+}
+.box-bag:hover .light{
+	left: 250px;
+    -webkit-transition:all 0.5s ease 0s;    /* for Chrome || Safari */
+    -moz-transition:all 0.5s ease 0s;      /* for Firefox */
+    -ms-transition:all 0.5s ease 0s;       /* for IE */
+    -o-transition:all 0.5s ease 0s;        /* for Opera */
+}

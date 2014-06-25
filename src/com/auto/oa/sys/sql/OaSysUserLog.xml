@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.sys.domain.OaSysUserLog">
+	<typeAlias alias="oasysuserlog" type="com.auto.oa.sys.domain.OaSysUserLog"/>
+	<select id="load" parameterClass="string" resultClass="oasysuserlog">
+		SELECT 
+				OSUL_GUID as "osulGuid" ,
+				OSUL_USER_LABEL as "osulUserLabel" ,
+				OSUL_USER_NAME as "osulUserName" ,
+				OSUL_ORG_CODE as "osulOrgCode" ,
+				OSUL_ORG_NAME as "osulOrgName" ,
+				OSUL_POST_CODE as "osulPostCode" ,
+				OSUL_POST_NAME as "osulPostName" ,
+				OSUL_LOGIN_NUMBER as "osulLoginNumber" ,
+				OSUL_LOGIN_LAST_TIME as "osulLoginLastTime" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" 
+				FROM t_auto_oa_sys_user_log
+		WHERE
+							OSUL_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oasysuserlog">
+		SELECT
+				OSUL_GUID  as "osulGuid" ,		
+				OSUL_USER_LABEL  as "osulUserLabel" ,		
+				OSUL_USER_NAME  as "osulUserName" ,		
+				OSUL_ORG_CODE  as "osulOrgCode" ,		
+				OSUL_ORG_NAME  as "osulOrgName" ,		
+				OSUL_POST_CODE  as "osulPostCode" ,		
+				OSUL_POST_NAME  as "osulPostName" ,		
+				OSUL_LOGIN_NUMBER  as "osulLoginNumber" ,		
+				OSUL_LOGIN_LAST_TIME  as "osulLoginLastTime" ,		
+				CREATE_USER  as "createUser" ,		
+				UPDATE_USER  as "updateUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" 		
+				FROM t_auto_oa_sys_user_log
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="osulGuid">OSUL_GUID =  #osulGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulUserLabel">OSUL_USER_LABEL =  #osulUserLabel#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulUserName">OSUL_USER_NAME =  #osulUserName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulOrgCode">OSUL_ORG_CODE =  #osulOrgCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulOrgName">OSUL_ORG_NAME =  #osulOrgName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulPostCode">OSUL_POST_CODE =  #osulPostCode#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulPostName">OSUL_POST_NAME =  #osulPostName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulLoginNumber">OSUL_LOGIN_NUMBER =  #osulLoginNumber#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="osulLoginLastTime">OSUL_LOGIN_LAST_TIME =  #osulLoginLastTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_oa_sys_user_log 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="osulGuid">OSUL_GUID =  #osulGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulUserLabel">OSUL_USER_LABEL =  #osulUserLabel#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulUserName">OSUL_USER_NAME =  #osulUserName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulOrgCode">OSUL_ORG_CODE =  #osulOrgCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulOrgName">OSUL_ORG_NAME =  #osulOrgName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulPostCode">OSUL_POST_CODE =  #osulPostCode#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulPostName">OSUL_POST_NAME =  #osulPostName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulLoginNumber">OSUL_LOGIN_NUMBER =  #osulLoginNumber#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="osulLoginLastTime">OSUL_LOGIN_LAST_TIME =  #osulLoginLastTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="oasysuserlog">
+		INSERT INTO t_auto_oa_sys_user_log ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="osulGuid">OSUL_GUID </isNotNull>
+					<isNotNull prepend=", " property="osulUserLabel">OSUL_USER_LABEL </isNotNull>
+					<isNotNull prepend=", " property="osulUserName">OSUL_USER_NAME </isNotNull>
+					<isNotNull prepend=", " property="osulOrgCode">OSUL_ORG_CODE </isNotNull>
+					<isNotNull prepend=", " property="osulOrgName">OSUL_ORG_NAME </isNotNull>
+					<isNotNull prepend=", " property="osulPostCode">OSUL_POST_CODE </isNotNull>
+					<isNotNull prepend=", " property="osulPostName">OSUL_POST_NAME </isNotNull>
+					<isNotNull prepend=", " property="osulLoginNumber">OSUL_LOGIN_NUMBER </isNotNull>
+					<isNotNull prepend=", " property="osulLoginLastTime">OSUL_LOGIN_LAST_TIME </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="osulGuid">#osulGuid#</isNotNull>
+        <isNotNull prepend=", " property="osulUserLabel">#osulUserLabel#</isNotNull>
+        <isNotNull prepend=", " property="osulUserName">#osulUserName#</isNotNull>
+        <isNotNull prepend=", " property="osulOrgCode">#osulOrgCode#</isNotNull>
+        <isNotNull prepend=", " property="osulOrgName">#osulOrgName#</isNotNull>
+        <isNotNull prepend=", " property="osulPostCode">#osulPostCode#</isNotNull>
+        <isNotNull prepend=", " property="osulPostName">#osulPostName#</isNotNull>
+        <isNotNull prepend=", " property="osulLoginNumber">#osulLoginNumber#</isNotNull>
+        <isNotNull prepend=", " property="osulLoginLastTime">
+           <isNotEmpty property="osulLoginLastTime">#osulLoginLastTime#</isNotEmpty>
+           <isEmpty property="osulLoginLastTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_sys_user_log
+		WHERE 		OSUL_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oasysuserlog">
+		UPDATE  t_auto_oa_sys_user_log	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="osulGuid">OSUL_GUID = #osulGuid#</isNotNull>
+		<isNotNull prepend="," property="osulUserLabel">OSUL_USER_LABEL = #osulUserLabel#</isNotNull>
+		<isNotNull prepend="," property="osulUserName">OSUL_USER_NAME = #osulUserName#</isNotNull>
+		<isNotNull prepend="," property="osulOrgCode">OSUL_ORG_CODE = #osulOrgCode#</isNotNull>
+		<isNotNull prepend="," property="osulOrgName">OSUL_ORG_NAME = #osulOrgName#</isNotNull>
+		<isNotNull prepend="," property="osulPostCode">OSUL_POST_CODE = #osulPostCode#</isNotNull>
+		<isNotNull prepend="," property="osulPostName">OSUL_POST_NAME = #osulPostName#</isNotNull>
+		<isNotNull prepend="," property="osulLoginNumber">OSUL_LOGIN_NUMBER = #osulLoginNumber#</isNotNull>
+		<isNotNull prepend="," property="osulLoginLastTime">OSUL_LOGIN_LAST_TIME = #osulLoginLastTime#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		</dynamic>
+		WHERE 		OSUL_GUID=#osulGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oasysuserlog">
+		UPDATE t_auto_oa_sys_user_log	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="osulGuid">OSUL_GUID = #osulGuid#</isNotNull>
+	    <isNull prepend=", " property="osulGuid">OSUL_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="osulUserLabel">OSUL_USER_LABEL = #osulUserLabel#</isNotNull>
+	    <isNull prepend=", " property="osulUserLabel">OSUL_USER_LABEL = NULL</isNull>
+	    <isNotNull prepend=", " property="osulUserName">OSUL_USER_NAME = #osulUserName#</isNotNull>
+	    <isNull prepend=", " property="osulUserName">OSUL_USER_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osulOrgCode">OSUL_ORG_CODE = #osulOrgCode#</isNotNull>
+	    <isNull prepend=", " property="osulOrgCode">OSUL_ORG_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="osulOrgName">OSUL_ORG_NAME = #osulOrgName#</isNotNull>
+	    <isNull prepend=", " property="osulOrgName">OSUL_ORG_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osulPostCode">OSUL_POST_CODE = #osulPostCode#</isNotNull>
+	    <isNull prepend=", " property="osulPostCode">OSUL_POST_CODE = NULL</isNull>
+	    <isNotNull prepend=", " property="osulPostName">OSUL_POST_NAME = #osulPostName#</isNotNull>
+	    <isNull prepend=", " property="osulPostName">OSUL_POST_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="osulLoginNumber">OSUL_LOGIN_NUMBER = #osulLoginNumber#</isNotNull>
+	    <isNull prepend=", " property="osulLoginNumber">OSUL_LOGIN_NUMBER = NULL</isNull>
+	    <isNotNull prepend=", " property="osulLoginLastTime">OSUL_LOGIN_LAST_TIME = #osulLoginLastTime#</isNotNull>
+	    <isNull prepend=", " property="osulLoginLastTime">OSUL_LOGIN_LAST_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+		</dynamic>
+		WHERE 		OSUL_GUID=#osulGuid# 			</update>
+</sqlMap>

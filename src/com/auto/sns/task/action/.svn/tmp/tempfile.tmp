@@ -1,0 +1,121 @@
+package com.auto.sns.task.action;
+
+import java.util.Date;
+import java.util.List;
+
+import net.sf.json.JSONObject;
+
+import com.auto.sns.task.domain.TaskInfo;
+import com.auto.sns.task.domain.TaskPerson;
+import com.auto.sns.task.service.SnsTaskServiceFactory;
+import com.opensymphony.xwork2.Action;
+import com.system.common.BaseAction;
+import com.system.util.GuidUtil;
+import com.system.util.JsonUtil;
+
+/**
+ * 帖子action
+ * @author 
+ *
+ */
+public class SnsTaskAction extends BaseAction {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6528727880343491529L;
+
+	/**
+	 * 新增任务
+	 * @throws Exception 
+	 */
+	public void addTaskInfo() throws Exception{
+		String jsonTaskInfo = getRequest().getParameter("jsonTaskInfo");
+		JSONObject jsonObject = JSONObject.fromObject(jsonTaskInfo);
+		
+		TaskInfo taskInfo = (TaskInfo)JsonUtil.jsonToBean(jsonTaskInfo, TaskInfo.class);//帖子
+		String taskGuid = GuidUtil.newGuid();
+		String userLabel = getSessionUserCode(getRequest());
+		taskInfo.setTaskGuid(taskGuid);
+		taskInfo.setPublishPerson(userLabel);
+		taskInfo.setPublishTime(new Date());	
+		SnsTaskServiceFactory.snsTaskInfoService.saveTaskInfo(taskInfo);
+		
+		String taskPersonS = jsonObject.getString("taskPersonS");
+		try {
+			if(taskPersonS!=null){	
+				String[] ps = taskPersonS.split(",");
+				for (int i = 0; i < ps.length; i++) {
+					TaskPerson taskPerson = new TaskPerson();
+					taskPerson.setTaskGuid(taskGuid);
+					taskPerson.setTaskStatus("0");
+					taskPerson.setTaskPerson(ps[i]);
+					SnsTaskServiceFactory.snsTaskPersonService.saveTaskPerson(taskPerson);
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 任务发布列表
+	 * @throws Exception 
+	 */
+	public String listTaskInfo() throws Exception{
+		String userLabel = getSessionUserCode(getRequest());
+		
+		List list = SnsTaskServiceFactory.snsTaskInfoService.listTaskInfo(userLabel);
+		getRequest().setAttribute("rtnList", list);
+		return Action.SUCCESS;
+	}
+	
+	/**
+	 * 任务接收列表
+	 * @throws Exception 
+	 */
+	public String listTaskInfoByPerson() throws Exception{
+		String userLabel = getSessionUserCode(getRequest());
+		List list = SnsTaskServiceFactory.snsTaskInfoService.listTaskInfoByPerson(userLabel);
+		getRequest().setAttribute("rtnList", list);
+		return Action.SUCCESS;
+	}
+	
+	/**
+	 * 当日任务
+	 * @throws Exception 
+	 */
+	public String getTodayTaskInfoByPerson() throws Exception{
+		String userLabel = getSessionUserCode(getRequest());
+		List list = SnsTaskServiceFactory.snsTaskInfoService.getTodayTaskInfoByPerson(userLabel, new Date());
+		getRequest().setAttribute("rtnList", list);
+		return Action.SUCCESS;
+	}
+	
+	/**
+	 * 获取任务详细
+	 */
+	public String getTaskInfo(){
+		String taskGuid = getRequest().getParameter("taskGuid");
+		TaskInfo taskInfo = SnsTaskServiceFactory.snsTaskInfoService.queryTaskInfo(taskGuid);
+		getRequest().setAttribute("rtnObj", taskInfo);
+		return Action.SUCCESS;
+	}
+	
+	/**
+	 * 反馈任务
+	 */
+	public void fankuiTask(){
+		String jsonTaskPerson = getRequest().getParameter("jsonTaskPerson");
+		TaskPerson taskPerson = JsonUtil.jsonToBean(jsonTaskPerson, TaskPerson.class);
+		try {		
+			taskPerson.setFankuiTime(new Date());
+			taskPerson.setTaskStatus("1");
+			SnsTaskServiceFactory.snsTaskPersonService.updateTaskPerson(taskPerson);			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="SnsPostInfoService" class="com.auto.sns.post.service.impl.SnsPostInfoServiceImpl"></bean>
+	<bean id="SnsPostHuifuService" class="com.auto.sns.post.service.impl.SnsPostHuifuServiceImpl"></bean>
+	<bean id="SnsPostContentService" class="com.auto.sns.post.service.impl.SnsPostContentServiceImpl"></bean>
+	
+	<bean id="SnsPostServiceFactory" class="com.auto.sns.post.service.SnsPostServiceFactory">
+		<property name="snsPostInfoService">
+			<ref bean="SnsPostInfoService" />
+		</property>
+		<property name="snsPostHuifuService">
+			<ref bean="SnsPostHuifuService" />
+		</property>
+		<property name="snsPostContentService">
+			<ref bean="SnsPostContentService" />
+		</property>
+	</bean>
+	
+</beans>

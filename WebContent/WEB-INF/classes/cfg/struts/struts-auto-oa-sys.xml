@@ -1,0 +1,62 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!-- extends="oaLogin" -->
+	<package name="sys" extends="struts-default" namespace="/sys">
+		<action name="queryListOaSysConstantCode" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryListOaSysConstantCode">
+		</action>
+		<action name="queryTreeOaSysConstantCode" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryTreeOaSysConstantCode">
+		</action>
+		<action name="queryPageListOaSysConstantCode" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryPageListOaSysConstantCode">
+		</action>
+		<action name="saveOrUpdateOaSysConstantCode" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="saveOrUpdateOaSysConstantCode">
+		</action>
+		<action name="deleteOaSysConstantCode" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="deleteOaSysConstantCode">
+		</action>
+		<action name="getOaSysConstantCode" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="getOaSysConstantCode">
+		</action>
+		<action name="queryAreaList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryAreaList">
+		</action>
+		<action name="queryGenderList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryGenderList">
+		</action>
+		<action name="queryOrgTypeList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryOrgTypeList">
+		</action>
+		<action name="queryIdCardTypeList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryIdCardTypeList">
+		</action>
+		<action name="queryIsValidityList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryIsValidityList">
+		</action>
+		<action name="queryBloodTypeList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryBloodTypeList">
+		</action>
+		<action name="queryBrandList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryBrandList">
+		</action>
+		
+		<action name="queryAreaChildrenList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryAreaChildrenList">
+		</action>
+		<action name="queryRegionList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryRegionList">
+		</action>
+		<action name="queryProvinceList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryProvinceList">
+		</action>
+		<action name="queryCityList" class="com.auto.oa.sys.action.OaSysConstantCodeAction"
+			method="queryCityList">
+		</action>
+	</package>
+	
+</struts>

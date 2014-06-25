@@ -1,0 +1,421 @@
+.body{
+	display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 980px;
+}
+.logo{
+	background:url(../images/logo.png);
+	display: block;
+    height: 75px;
+    margin: 25px 0px;
+    width: 200px; 
+    position: relative;
+}
+.login-top{
+	background:url(../images/login-bg.png);
+	height:93px;
+	width:100%;
+}
+.login-top-btn{
+	width:320px;
+	float:right;
+	margin-top:30px;
+}
+.login-top-btn a{
+	color:#FFFFFF;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+	width:86px;
+	height:35px;
+	display:block;
+	line-height:35px;
+	text-align:center;
+	float:left;
+}
+.login-top-btn a:hover{
+	background:url(../images/login-btn-hover.png);
+	width:86px;
+	height:35px;
+	color:#d60209;
+}
+.login-top-btn-select{
+	background:url(../images/login-btn-hover.png);
+	width:86px;
+	height:35px;
+	color:#d60209;
+}
+.login-line{
+	background:#c9caca;
+	height:5px;
+	width:100%;
+}
+.middle-bg{
+	background:url(../images/login-middle-bg.png);
+	width:543px;
+	height:301px;
+	margin-left:500px;;
+	margin-top:30px;
+}
+.login-layout{
+	background:url(../images/login-layout-bg.png) no-repeat;
+	width:226px;
+	height:443px;
+	left:200px;
+}
+.login-logo{
+	background:url(../images/login-ico.png) 0 -10px;
+	width:150px;
+	height:57px;
+	margin:auto;
+	margin-top:10px;
+}
+.login-error{
+	color:#d60209;
+	font-weight:bold;
+	font-size:12px;
+	margin:auto;
+	width:180px;
+	text-align:center;
+	margin-top:30px;
+}
+.login-text{
+	width:160px;
+	padding:10px 25px 0 22px;
+}
+.login-text-border{
+	width:180px;
+	height:30px;
+	border:1px solid #cccccc;
+	position:relative;
+}
+.email-ico{
+	background:url(../images/login-ico.png) -11px -77px;
+	width:20px;
+	height:20px;
+	position:absolute;
+	left:5px;
+	top:5px;
+}
+.password-ico{
+	background:url(../images/login-ico.png) -11px -116px;
+	width:20px;
+	height:20px;
+	position:absolute;
+	left:5px;
+	top:5px;
+}
+.register a{
+	text-decoration:none;
+	color:#005eac;
+	font-weight:bold;
+}
+.register a:hover{
+	text-decoration:underline;
+	color:#d60209;
+	font-weight:bold;
+}
+.go-btn{
+	background:url(../images/login-ico.png) -11px -147px;
+	width:179px;
+	height:35px;
+	display:block;
+	color:#fff;
+	text-align:center;
+	font-size:14px;
+	line-height:33px;
+	font-weight:bold;
+	text-decoration:none;
+	margin:auto;
+}
+.go-btn:hover{
+	background:url(../images/login-ico.png) -11px -185px;
+	width:179px;
+	height:35px;
+	display:block;
+	color:#fff;
+	text-align:center;
+	font-size:14px;
+	line-height:33px;
+	font-weight:bold;
+	text-decoration:none;
+	margin:auto;
+}
+.login-bottom{
+	width:980px;
+	margin:auto;
+	border-top:2px solid #cdcdcd;
+	margin-top:45px;
+	padding:20px 0 20px 0;
+}
+.login-bottom label{
+	color:#666666;
+}
+.login-bottom li{
+	float:left;
+	border-left:1px solid #666666;
+	padding:0 5px 0 5px;
+	height:14px;
+	line-height:12px;
+	color:#666666;
+}
+.login-bottom li a{
+	text-decoration:none;
+	height:14px;
+	line-height:12px;
+	color:#666666;
+}
+.login-bottom li a:hover{
+	color:#d60209;
+	text-decoration:underline;
+}
+.login-bgd{
+	 background: url("../images/login-bgd.png") repeat-x scroll 0 0 transparent;
+    height: 320px;
+    margin-bottom: 80px;
+    width: 100%;
+}
+.login-font{
+	font-weight:bold;
+	font-family:"微软雅黑","microsoft yahei","arial","宋体";
+	color:#ffffff;
+	font-size:30px;
+}
+.login-main-body{
+	background: url("../images/login-banner.png") no-repeat scroll 0 -40px transparent;
+    display: block;
+    height: 420px;
+    margin: 0 auto;
+    position: absolute;
+    top: 73px;
+    width: 980px;
+}
+.login-on{
+	background:url(../images/login-banner.png) no-repeat -0px -0px;
+	height:35px;
+	width:86px;
+	display:block;
+	margin: 45px 0;
+}
+.login-on:hover{
+	background:url(../images/login-banner.png) no-repeat -177px -0px;
+}
+.login-help{
+	background: url("../images/login-banner.png") no-repeat scroll -86px 0 transparent;
+    display: block;
+    height: 35px;
+    margin: 45px 10px;
+    width: 90px;
+}
+.login-help:hover{
+	background: url("../images/login-banner.png") no-repeat scroll -270px 0 transparent;
+    width: 90px;
+}
+.login-input{
+	width:290px;
+	height:38px;
+	border:1px solid #acacac;
+	position:relative;
+	top: 150px;
+}
+.resume{
+	background: url("../images/login-banner.png") no-repeat scroll -400px 0 transparent;
+    display: block;
+    height: 40px;
+    left: 290px;
+    position: absolute;
+    top: -1px;
+    width: 155px;
+}
+.resume:hover{
+	background: url("../images/login-banner.png") no-repeat scroll -583px 0 transparent;
+}
+.longin-pt{
+	width:287px;
+	border: none; 
+	font-size:18px; 
+	color:#666666;
+}
+.head-part{
+		background: url("../images/head-line.png") repeat-x;
+		height:98px;
+}
+.head-main{
+	margin:0 auto;
+	width:980px;
+}
+.logo-white{
+	 background: url("../images/register-sus.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 98px;
+    margin-top: 5px;
+    width: 210px;
+}
+.login-buttom{
+	background: url("../images/register-sus.png") no-repeat -295px -24px;
+	height:40px;
+	width:90px;
+	display:block;
+}
+.login-buttom:hover{
+	background: url("../images/register-sus.png") no-repeat -505px -24px;
+}
+.help-buttom{
+	 background: url("../images/register-sus.png") no-repeat scroll -383px -25px transparent;
+    display: block;
+    height: 30px;
+    text-align: center;
+    width: 90px;
+}
+.help-buttom:hover{
+	 background: url("../images/register-sus.png") no-repeat scroll -635px -25px transparent;
+	 height:40px;
+}
+.rs-main{
+	 margin:0 auto;
+	 min-height:400px;
+	 margin-top:30px;
+	 width:980px;
+}
+.rs-bar{
+	 background: url("../images/register-sus.png") no-repeat scroll 0px -125px transparent;
+	 height:50px;
+	 width:980px;
+}
+.rs-font{
+	 color: #D10307;
+    display: block;
+    font: 40px/30px '微软雅黑','宋体','新宋体',sans-serif;
+    margin-top: 20px;
+}
+.re-font{
+	color: #000000;
+    display: block;
+    font: 16px/30px '微软雅黑','宋体','新宋体',sans-serif;
+    margin-top: 20px;
+}
+.red-font{
+	color:#d10307;
+}
+.red-font:hover{
+	color:#ff060b;
+}
+.rs-girl{
+	background: url("../images/register-sus.png") no-repeat scroll 0 -175px transparent;
+    height: 400px;
+    left: 500px;
+    position: absolute;
+    top: 60px;
+    width: 600px;
+}
+
+.rs-second{
+	background: url("../images/xcr/register.png") -8px -10px;
+	width: 933px;
+	height: 45px;
+}
+.personal-msg,.company-msg{
+	width: 980px;
+	min-height:500px;
+	padding-top:20px;
+	
+}
+.register-bg{
+	background: url("../images/xcr/register.png") -8px -207px;
+	width: 376px;
+	height: 251px;
+	position: absolute;
+	bottom:0px;
+	right:0px;
+	
+}
+.ps-msg-title,.company-msg-title{
+	font-size: 16px;
+	font-weight: bold;
+	color: #d10307;
+}
+
+.lh-span{
+	height:25px;
+	line-height: 25px;
+}
+.lh-span-h20{
+	height:20px;
+	line-height: 20px;
+}
+.work-exp{
+	display: inline;
+	float: left;
+	height: 100px;
+	line-height: 35px;
+	text-align: right;
+	font-size: 14px;
+	padding-right: 5px;
+	width: 90px;
+}
+.company-type{
+	display: inline;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	text-align: right;
+	font-size: 14px;
+	padding-right: 5px;
+	width: 90px;
+}
+.next-btn{
+	background: url("../images/xcr/register.png") -74px -134px;
+	width: 100px;
+	height: 35px;
+	display: block;
+}
+.next-btn:hover{
+	background: url("../images/xcr/register.png") -181px -134px;
+	width: 100px;
+	height: 35px;
+	display: block;
+}
+.next-div{
+	width: 500px;
+	padding-top: 20px;
+}
+
+.rs-third{
+	background: url("../images/xcr/register.png") -8px -70px;
+	width: 933px;
+	height: 45px;
+}
+.register-third-bg{
+	background: url("../images/xcr/register.png") -444px -123px;
+	width: 412px;
+	height:367px;
+	position: absolute;
+	bottom:0px;
+	right:0px;
+}
+.commit-btn{
+	background: url("../images/xcr/register.png") -21px -462px;
+	width: 84px;
+	height: 35px;
+	display: block;
+}
+.commit-btn:hover{
+	background: url("../images/xcr/register.png") -112px -462px;
+	width: 84px;
+	height: 35px;
+	display: block;
+}
+.mt-1000{
+	margin-top:1000px;
+}
+.error-tip{
+	background: url("../images/xcr/error-tip.png") no-repeat 0px 5px;
+	width: 250px;
+	height: 30px;
+	display: block;
+	padding-left:30px;
+}
+.msg-lh{
+	line-height:30px;
+}

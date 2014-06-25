@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.friend.domain.FriendGroup">
+	<typeAlias alias="friendgroup" type="com.auto.sns.friend.domain.FriendGroup"/>
+	<select id="load" parameterClass="string" resultClass="friendgroup">
+		SELECT 
+				CREATE_USER as "createUser" ,
+				MODIFY_USER as "modifyUser" ,
+				DELETE_USER as "deleteUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				DELETE_TIME as "deleteTime" ,
+				GROUP_GUID as "groupGuid" ,
+				GROUP_NAME as "groupName" ,
+				GROUP_CREATER as "groupCreater" ,
+				REMARK as "remark" ,
+				EXTRA1 as "extra1" ,
+				EXTRA2 as "extra2" ,
+				EXTRA3 as "extra3" ,
+				EXTRA4 as "extra4" ,
+				EXTRA5 as "extra5" 
+				FROM t_auto_sns_friend_group
+		WHERE
+							GROUP_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="friendgroup">
+		SELECT
+				CREATE_USER  as "createUser" ,		
+				MODIFY_USER  as "modifyUser" ,		
+				DELETE_USER  as "deleteUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				DELETE_TIME  as "deleteTime" ,		
+				GROUP_GUID  as "groupGuid" ,		
+				GROUP_NAME  as "groupName" ,		
+				GROUP_CREATER  as "groupCreater" ,		
+				REMARK  as "remark" ,		
+				EXTRA1  as "extra1" ,		
+				EXTRA2  as "extra2" ,		
+				EXTRA3  as "extra3" ,		
+				EXTRA4  as "extra4" ,		
+				EXTRA5  as "extra5" 		
+				FROM t_auto_sns_friend_group
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteTime">DELETE_TIME =  #deleteTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="groupGuid">GROUP_GUID =  #groupGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="groupName">GROUP_NAME =  #groupName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="groupCreater">GROUP_CREATER =  #groupCreater#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="remark">REMARK =  #remark#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra1">EXTRA1 =  #extra1#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra2">EXTRA2 =  #extra2#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra3">EXTRA3 =  #extra3#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra4">EXTRA4 =  #extra4#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra5">EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_friend_group 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="deleteTime">DELETE_TIME =  #deleteTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="groupGuid">GROUP_GUID =  #groupGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="groupName">GROUP_NAME =  #groupName#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="groupCreater">GROUP_CREATER =  #groupCreater#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="remark">REMARK =  #remark#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra1">EXTRA1 =  #extra1#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra2">EXTRA2 =  #extra2#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra3">EXTRA3 =  #extra3#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra4">EXTRA4 =  #extra4#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra5">EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="friendgroup">
+		INSERT INTO t_auto_sns_friend_group ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="modifyUser">MODIFY_USER </isNotNull>
+					<isNotNull prepend=", " property="deleteUser">DELETE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="deleteTime">DELETE_TIME </isNotNull>
+					<isNotNull prepend=", " property="groupGuid">GROUP_GUID </isNotNull>
+					<isNotNull prepend=", " property="groupName">GROUP_NAME </isNotNull>
+					<isNotNull prepend=", " property="groupCreater">GROUP_CREATER </isNotNull>
+					<isNotNull prepend=", " property="remark">REMARK </isNotNull>
+					<isNotNull prepend=", " property="extra1">EXTRA1 </isNotNull>
+					<isNotNull prepend=", " property="extra2">EXTRA2 </isNotNull>
+					<isNotNull prepend=", " property="extra3">EXTRA3 </isNotNull>
+					<isNotNull prepend=", " property="extra4">EXTRA4 </isNotNull>
+					<isNotNull prepend=", " property="extra5">EXTRA5 </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="modifyUser">#modifyUser#</isNotNull>
+        <isNotNull prepend=", " property="deleteUser">#deleteUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="deleteTime">
+           <isNotEmpty property="deleteTime">#deleteTime#</isNotEmpty>
+           <isEmpty property="deleteTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="groupGuid">#groupGuid#</isNotNull>
+        <isNotNull prepend=", " property="groupName">#groupName#</isNotNull>
+        <isNotNull prepend=", " property="groupCreater">#groupCreater#</isNotNull>
+        <isNotNull prepend=", " property="remark">#remark#</isNotNull>
+        <isNotNull prepend=", " property="extra1">#extra1#</isNotNull>
+        <isNotNull prepend=", " property="extra2">#extra2#</isNotNull>
+        <isNotNull prepend=", " property="extra3">#extra3#</isNotNull>
+        <isNotNull prepend=", " property="extra4">#extra4#</isNotNull>
+        <isNotNull prepend=", " property="extra5">#extra5#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_friend_group
+		WHERE 		GROUP_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="friendgroup">
+		UPDATE  t_auto_sns_friend_group	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+		<isNotNull prepend="," property="deleteUser">DELETE_USER = #deleteUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="deleteTime">DELETE_TIME = #deleteTime#</isNotNull>
+		<isNotNull prepend="," property="groupGuid">GROUP_GUID = #groupGuid#</isNotNull>
+		<isNotNull prepend="," property="groupName">GROUP_NAME = #groupName#</isNotNull>
+		<isNotNull prepend="," property="groupCreater">GROUP_CREATER = #groupCreater#</isNotNull>
+		<isNotNull prepend="," property="remark">REMARK = #remark#</isNotNull>
+		<isNotNull prepend="," property="extra1">EXTRA1 = #extra1#</isNotNull>
+		<isNotNull prepend="," property="extra2">EXTRA2 = #extra2#</isNotNull>
+		<isNotNull prepend="," property="extra3">EXTRA3 = #extra3#</isNotNull>
+		<isNotNull prepend="," property="extra4">EXTRA4 = #extra4#</isNotNull>
+		<isNotNull prepend="," property="extra5">EXTRA5 = #extra5#</isNotNull>
+		</dynamic>
+		WHERE 		GROUP_GUID=#groupGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="friendgroup">
+		UPDATE t_auto_sns_friend_group	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+	    <isNull prepend=", " property="modifyUser">MODIFY_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="deleteUser">DELETE_USER = #deleteUser#</isNotNull>
+	    <isNull prepend=", " property="deleteUser">DELETE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="deleteTime">DELETE_TIME = #deleteTime#</isNotNull>
+	    <isNull prepend=", " property="deleteTime">DELETE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="groupGuid">GROUP_GUID = #groupGuid#</isNotNull>
+	    <isNull prepend=", " property="groupGuid">GROUP_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="groupName">GROUP_NAME = #groupName#</isNotNull>
+	    <isNull prepend=", " property="groupName">GROUP_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="groupCreater">GROUP_CREATER = #groupCreater#</isNotNull>
+	    <isNull prepend=", " property="groupCreater">GROUP_CREATER = NULL</isNull>
+	    <isNotNull prepend=", " property="remark">REMARK = #remark#</isNotNull>
+	    <isNull prepend=", " property="remark">REMARK = NULL</isNull>
+	    <isNotNull prepend=", " property="extra1">EXTRA1 = #extra1#</isNotNull>
+	    <isNull prepend=", " property="extra1">EXTRA1 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra2">EXTRA2 = #extra2#</isNotNull>
+	    <isNull prepend=", " property="extra2">EXTRA2 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra3">EXTRA3 = #extra3#</isNotNull>
+	    <isNull prepend=", " property="extra3">EXTRA3 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra4">EXTRA4 = #extra4#</isNotNull>
+	    <isNull prepend=", " property="extra4">EXTRA4 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra5">EXTRA5 = #extra5#</isNotNull>
+	    <isNull prepend=", " property="extra5">EXTRA5 = NULL</isNull>
+		</dynamic>
+		WHERE 		GROUP_GUID=#groupGuid# 			</update>
+</sqlMap>

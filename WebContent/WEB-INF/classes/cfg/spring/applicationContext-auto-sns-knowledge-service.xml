@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="SnsKnowledgeTypeService" class="com.auto.sns.knowledge.service.impl.SnsKnowledgeTypeServiceImpl"></bean>
+	<bean id="SnsKnowledgeInfoService" class="com.auto.sns.knowledge.service.impl.SnsKnowledgeInfoServiceImpl"></bean>
+	
+	<bean id="SnsKnowledgeServiceFactory" class="com.auto.sns.knowledge.service.SnsKnowledgeServiceFactory">
+		<property name="snsKnowledgeTypeService">
+			<ref bean="SnsKnowledgeTypeService" />
+		</property>
+		<property name="snsKnowledgeInfoService">
+			<ref bean="SnsKnowledgeInfoService" />
+		</property>
+	</bean>
+	
+</beans>

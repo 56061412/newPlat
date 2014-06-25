@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="oaUserInfoDAO" class="com.auto.oa.user.dao.impl.OaUserInfoDAOImpl"></bean>
+	<bean id="oaUserLoginDAO" class="com.auto.oa.user.dao.impl.OaUserLoginDAOImpl"></bean>
+	<bean id="oaUserOrgMapDAO" class="com.auto.oa.user.dao.impl.OaUserOrgMapDAOImpl"></bean>
+	<bean id="oaUserPostDAO" class="com.auto.oa.user.dao.impl.OaUserPostDAOImpl"></bean>
+	
+</beans>

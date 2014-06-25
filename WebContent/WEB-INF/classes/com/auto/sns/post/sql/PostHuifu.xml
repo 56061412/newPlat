@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.post.domain.PostHuifu">
+	<typeAlias alias="posthuifu" type="com.auto.sns.post.domain.PostHuifu"/>
+	<select id="load" parameterClass="string" resultClass="posthuifu">
+		SELECT 
+				CREATE_USER as "createUser" ,
+				MODIFY_USER as "modifyUser" ,
+				DELETE_USER as "deleteUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				DELETE_TIME as "deleteTime" ,
+				HUIFU_GUID as "huifuGuid" ,
+				POST_GUID as "postGuid" ,
+				POST_CREATER as "postCreater" ,
+				EXTRA1 as "extra1" ,
+				EXTRA2 as "extra2" ,
+				EXTRA3 as "extra3" ,
+				EXTRA4 as "extra4" ,
+				EXTRA5 as "extra5" 
+				FROM t_auto_sns_post_huifu
+		WHERE
+							HUIFU_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="posthuifu">
+		SELECT
+				CREATE_USER  as "createUser" ,		
+				MODIFY_USER  as "modifyUser" ,		
+				DELETE_USER  as "deleteUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				DELETE_TIME  as "deleteTime" ,		
+				HUIFU_GUID  as "huifuGuid" ,		
+				POST_GUID  as "postGuid" ,		
+				POST_CREATER  as "postCreater" ,		
+				EXTRA1  as "extra1" ,		
+				EXTRA2  as "extra2" ,		
+				EXTRA3  as "extra3" ,		
+				EXTRA4  as "extra4" ,		
+				EXTRA5  as "extra5" 		
+				FROM t_auto_sns_post_huifu
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteTime">DELETE_TIME =  #deleteTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="huifuGuid">HUIFU_GUID =  #huifuGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="postGuid">POST_GUID =  #postGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="postCreater">POST_CREATER =  #postCreater#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra1">EXTRA1 =  #extra1#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra2">EXTRA2 =  #extra2#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra3">EXTRA3 =  #extra3#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra4">EXTRA4 =  #extra4#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra5">EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_post_huifu 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="deleteTime">DELETE_TIME =  #deleteTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="huifuGuid">HUIFU_GUID =  #huifuGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="postGuid">POST_GUID =  #postGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="postCreater">POST_CREATER =  #postCreater#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra1">EXTRA1 =  #extra1#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra2">EXTRA2 =  #extra2#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra3">EXTRA3 =  #extra3#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra4">EXTRA4 =  #extra4#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra5">EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="posthuifu">
+		INSERT INTO t_auto_sns_post_huifu ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="modifyUser">MODIFY_USER </isNotNull>
+					<isNotNull prepend=", " property="deleteUser">DELETE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="deleteTime">DELETE_TIME </isNotNull>
+					<isNotNull prepend=", " property="huifuGuid">HUIFU_GUID </isNotNull>
+					<isNotNull prepend=", " property="postGuid">POST_GUID </isNotNull>
+					<isNotNull prepend=", " property="postCreater">POST_CREATER </isNotNull>
+					<isNotNull prepend=", " property="extra1">EXTRA1 </isNotNull>
+					<isNotNull prepend=", " property="extra2">EXTRA2 </isNotNull>
+					<isNotNull prepend=", " property="extra3">EXTRA3 </isNotNull>
+					<isNotNull prepend=", " property="extra4">EXTRA4 </isNotNull>
+					<isNotNull prepend=", " property="extra5">EXTRA5 </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="modifyUser">#modifyUser#</isNotNull>
+        <isNotNull prepend=", " property="deleteUser">#deleteUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="deleteTime">
+           <isNotEmpty property="deleteTime">#deleteTime#</isNotEmpty>
+           <isEmpty property="deleteTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="huifuGuid">#huifuGuid#</isNotNull>
+        <isNotNull prepend=", " property="postGuid">#postGuid#</isNotNull>
+        <isNotNull prepend=", " property="postCreater">#postCreater#</isNotNull>
+        <isNotNull prepend=", " property="extra1">#extra1#</isNotNull>
+        <isNotNull prepend=", " property="extra2">#extra2#</isNotNull>
+        <isNotNull prepend=", " property="extra3">#extra3#</isNotNull>
+        <isNotNull prepend=", " property="extra4">#extra4#</isNotNull>
+        <isNotNull prepend=", " property="extra5">#extra5#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_post_huifu
+		WHERE 		HUIFU_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="posthuifu">
+		UPDATE  t_auto_sns_post_huifu	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+		<isNotNull prepend="," property="deleteUser">DELETE_USER = #deleteUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="deleteTime">DELETE_TIME = #deleteTime#</isNotNull>
+		<isNotNull prepend="," property="huifuGuid">HUIFU_GUID = #huifuGuid#</isNotNull>
+		<isNotNull prepend="," property="postGuid">POST_GUID = #postGuid#</isNotNull>
+		<isNotNull prepend="," property="postCreater">POST_CREATER = #postCreater#</isNotNull>
+		<isNotNull prepend="," property="extra1">EXTRA1 = #extra1#</isNotNull>
+		<isNotNull prepend="," property="extra2">EXTRA2 = #extra2#</isNotNull>
+		<isNotNull prepend="," property="extra3">EXTRA3 = #extra3#</isNotNull>
+		<isNotNull prepend="," property="extra4">EXTRA4 = #extra4#</isNotNull>
+		<isNotNull prepend="," property="extra5">EXTRA5 = #extra5#</isNotNull>
+		</dynamic>
+		WHERE 		HUIFU_GUID=#huifuGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="posthuifu">
+		UPDATE t_auto_sns_post_huifu	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+	    <isNull prepend=", " property="modifyUser">MODIFY_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="deleteUser">DELETE_USER = #deleteUser#</isNotNull>
+	    <isNull prepend=", " property="deleteUser">DELETE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="deleteTime">DELETE_TIME = #deleteTime#</isNotNull>
+	    <isNull prepend=", " property="deleteTime">DELETE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="huifuGuid">HUIFU_GUID = #huifuGuid#</isNotNull>
+	    <isNull prepend=", " property="huifuGuid">HUIFU_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="postGuid">POST_GUID = #postGuid#</isNotNull>
+	    <isNull prepend=", " property="postGuid">POST_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="postCreater">POST_CREATER = #postCreater#</isNotNull>
+	    <isNull prepend=", " property="postCreater">POST_CREATER = NULL</isNull>
+	    <isNotNull prepend=", " property="extra1">EXTRA1 = #extra1#</isNotNull>
+	    <isNull prepend=", " property="extra1">EXTRA1 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra2">EXTRA2 = #extra2#</isNotNull>
+	    <isNull prepend=", " property="extra2">EXTRA2 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra3">EXTRA3 = #extra3#</isNotNull>
+	    <isNull prepend=", " property="extra3">EXTRA3 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra4">EXTRA4 = #extra4#</isNotNull>
+	    <isNull prepend=", " property="extra4">EXTRA4 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra5">EXTRA5 = #extra5#</isNotNull>
+	    <isNull prepend=", " property="extra5">EXTRA5 = NULL</isNull>
+		</dynamic>
+		WHERE 		HUIFU_GUID=#huifuGuid# 			</update>
+		
+	<select id="listHuifu"  parameterClass="hashmap" resultClass="hashmap">
+		SELECT
+				A.CREATE_TIME as "createTime",
+				A.HUIFU_GUID  as "huifuGuid" ,
+				A.POST_GUID  as "postGuid" ,				
+				A.POST_CREATER  as "postCreater" ,
+				TIE_CONTENT as "tieContent"	,
+				A.EXTRA1 as "extra1"	,
+				A.EXTRA2  as "extra2" ,
+				A.EXTRA3  as "extra3"
+				FROM t_auto_sns_post_huifu A,t_auto_sns_post_content B
+			WHERE A.HUIFU_GUID = B.SOURCE_GUID
+			<dynamic prepend=" AND ">
+						<isNotEmpty prepend=" AND " property="createUser">A.CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="modifyUser">A.MODIFY_USER =  #modifyUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteUser">A.DELETE_USER =  #deleteUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">A.CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">A.UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteTime">A.DELETE_TIME =  #deleteTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="huifuGuid">A.HUIFU_GUID =  #huifuGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="postGuid">A.POST_GUID =  #postGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="postCreater">A.POST_CREATER =  #postCreater#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="postCreaterS">
+							<iterate property="postCreaterS" open = "(" close = ")" conjunction = " OR ">
+								A.POST_CREATER =  #postCreaterS[]#
+							</iterate>
+						</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra1">A.EXTRA1 =  #extra1#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra2">A.EXTRA2 =  #extra2#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra3">A.EXTRA3 =  #extra3#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra4">A.EXTRA4 =  #extra4#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra5">A.EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+</sqlMap>

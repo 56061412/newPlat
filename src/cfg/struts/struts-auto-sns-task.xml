@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!--	任务	-->
+	<package name="snsTask" extends="struts-default" namespace="/snsTask">
+		<action name="addTaskInfo" class="com.auto.sns.task.action.SnsTaskAction"
+			method="addTaskInfo">
+		</action>
+		<action name="listTaskInfo" class="com.auto.sns.task.action.SnsTaskAction"
+			method="listTaskInfo">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="listTaskInfoByPerson" class="com.auto.sns.task.action.SnsTaskAction"
+			method="listTaskInfoByPerson">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="getTodayTaskInfoByPerson" class="com.auto.sns.task.action.SnsTaskAction"
+			method="getTodayTaskInfoByPerson">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="fankuiTask" class="com.auto.sns.task.action.SnsTaskAction"
+			method="fankuiTask">
+		</action>
+		<action name="getTaskInfo" class="com.auto.sns.task.action.SnsTaskAction"
+			method="getTaskInfo">
+			<result name="success">/objToJson.jsp</result>
+		</action>
+		<action name="listTaskPerson" class="com.auto.sns.task.action.SnsTaskAction"
+			method="listTaskPerson">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+	</package>
+	
+</struts>

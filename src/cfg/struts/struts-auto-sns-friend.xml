@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!--	好友	-->
+	<package name="snsFriend" extends="struts-default" namespace="/snsFriend">
+		<action name="addFriendInfo" class="com.auto.sns.friend.action.SnsFriendAction"
+			method="addFriendInfo">
+		</action>
+		<action name="listFriendInfo" class="com.auto.sns.friend.action.SnsFriendAction"
+			method="listFriendInfo">
+			<result name="success">/listToJson.jsp</result>
+		</action>
+		<action name="deleteFriendInfo" class="com.auto.sns.friend.action.SnsFriendAction"
+			method="deleteFriendInfo">
+		</action>
+		<action name="queryOrgMember" class="com.auto.sns.friend.action.SnsFriendAction"
+			method="queryOrgMember">
+			<result name="success">/AUTO/SNS/MAIN/company-members.jsp</result>
+		</action>
+	</package>
+	
+</struts>

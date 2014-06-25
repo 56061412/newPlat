@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.oa.menu.domain.OaMenuInfo">
+	<typeAlias alias="oamenuinfo" type="com.auto.oa.menu.domain.OaMenuInfo"/>
+	<select id="load" parameterClass="string" resultClass="oamenuinfo">
+		SELECT 
+				APME_GUID as "apmeGuid" ,
+				APME_PARENT_GUID as "apmeParentGuid" ,
+				APME_MENU_NAME as "apmeMenuName" ,
+				APME_MENU_DESC as "apmeMenuDesc" ,
+				APME_MENU_URL as "apmeMenuUrl" ,
+				APME_SORT as "apmeSort" ,
+				APME_DEPTH as "apmeDepth" ,
+				APME_FULL_PATH as "apmeFullPath" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM T_AUTO_OA_MENU_INFO
+		WHERE
+							APME_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="oamenuinfo">
+		SELECT
+				APME_GUID as "apmeGuid" ,
+				APME_PARENT_GUID as "apmeParentGuid" ,
+				APME_MENU_NAME as "apmeMenuName" ,
+				APME_MENU_DESC as "apmeMenuDesc" ,
+				APME_MENU_URL as "apmeMenuUrl" ,
+				APME_SORT as "apmeSort" ,
+				APME_DEPTH as "apmeDepth" ,
+				APME_FULL_PATH as "apmeFullPath" ,
+				IS_VALIDITY as "isValidity" ,
+				CREATE_USER as "createUser" ,
+				UPDATE_USER as "updateUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				RECORD_VERSION as "recordVersion" 
+				FROM T_AUTO_OA_MENU_INFO
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="apmeGuid">APME_GUID =  #apmeGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeParentGuid">APME_PARENT_GUID =  #apmeParentGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeMenuName">APME_MENU_NAME =  #apmeMenuName#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeMenuDesc">APME_MENU_DESC =  #apmeMenuDesc#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeMenuUrl">APME_MENU_URL =  #apmeMenuUrl#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeSort">APME_SORT =  #apmeSort#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeDepth">APME_DEPTH =  #apmeDepth#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="apmeFullPath">
+							APME_FULL_PATH LIKE	CONCAT('%',#apmeFullPath#,'%')
+						</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="isValidity">IS_VALIDITY =  #isValidity#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="recordVersion">RECORD_VERSION =  #recordVersion#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+	
+	<select id="queryOaMenuInfoExtend"  parameterClass="hashmap" resultClass="oamenuinfo">
+		SELECT
+				C.APRMM_GUID as "aprmmGuid" ,
+				B.APRO_GUID as "aproGuid" ,
+				B.APRO_ROLE_CODE as "aproRoleCode" ,
+				B.APRO_ROLE_NAME as "aproRoleName" ,
+				B.APRO_ROLE_DESC as "aproRoleDesc" ,
+				A.APME_GUID  as "apmeGuid" ,		
+				A.APME_PARENT_GUID  as "apmeParentGuid" ,		
+				A.APME_MENU_NAME  as "apmeMenuName" ,		
+				A.APME_MENU_DESC  as "apmeMenuDesc" ,		
+				A.APME_MENU_URL  as "apmeMenuUrl" ,		
+				A.APME_SORT  as "apmeSort" ,		
+				A.APME_DEPTH  as "apmeDepth" ,		
+				A.APME_FULL_PATH  as "apmeFullPath" ,		
+				A.IS_VALIDITY  as "isValidity" ,		
+				A.CREATE_USER as "createUser" ,
+				A.UPDATE_USER as "updateUser" ,
+				A.CREATE_TIME as "createTime" ,
+				A.UPDATE_TIME as "updateTime" 
+			FROM t_auto_oa_menu_info A,
+		       t_auto_oa_menu_role B,
+		       t_auto_oa_menu_role_map C
+		 WHERE A.APME_GUID = C.APME_GUID 
+		 AND B.APRO_GUID = C.APRO_GUID
+		 	<isNotEmpty prepend=" AND " property="aproGuid">B.APRO_GUID =  #aproGuid#</isNotEmpty>
+		 	<isNotEmpty prepend=" AND " property="aproRoleCode">B.APRO_ROLE_CODE =  #aproRoleCode#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeGuid">A.APME_GUID =  #apmeGuid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeParentGuid">A.APME_PARENT_GUID =  #apmeParentGuid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeMenuName">A.APME_MENU_NAME =  #apmeMenuName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeMenuDesc">A.APME_MENU_DESC =  #apmeMenuDesc#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeMenuUrl">A.APME_MENU_URL =  #apmeMenuUrl#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeSort">A.APME_SORT =  #apmeSort#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="isValidity">A.IS_VALIDITY =  #isValidity#</isNotEmpty>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+	
+	<select id="queryOaMenuInfoForUser"  parameterClass="hashmap" resultClass="oamenuinfo">
+		SELECT
+				C.APRMM_GUID as "aprmmGuid" ,
+				A.APME_GUID  as "apmeGuid" ,		
+				A.APME_PARENT_GUID  as "apmeParentGuid" ,		
+				A.APME_MENU_NAME  as "apmeMenuName" ,		
+				A.APME_MENU_DESC  as "apmeMenuDesc" ,		
+				A.APME_MENU_URL  as "apmeMenuUrl" ,		
+				A.APME_SORT  as "apmeSort" ,		
+				B.APRO_GUID as "aproGuid" ,
+				B.APRO_ROLE_CODE as "aproRoleCode" ,
+				B.APRO_ROLE_NAME as "aproRoleName" ,
+				B.APRO_ROLE_DESC as "aproRoleDesc" ,
+				E.AUSER_GUID as "auserGuid" ,
+				E.AUSER_CODE as "auserCode" ,
+				E.AUSER_NAME as "auserName" ,
+				E.AUSER_NICK_NAME as "auserNickName" 
+			FROM t_auto_oa_menu_info A,
+				t_auto_oa_menu_role B,
+				t_auto_oa_menu_role_map C,
+				t_auto_oa_menu_role_user_map D,
+				t_auto_oa_user_info E
+		WHERE	 A.APME_GUID = C.APME_GUID
+			AND  B.APRO_GUID = C.APRO_GUID
+			AND  B.APRO_GUID = D.APRO_GUID
+			AND  D.AUSER_GUID = E.AUSER_GUID
+		 	<isNotEmpty prepend=" AND " property="aproGuid">B.APRO_GUID =  #aproGuid#</isNotEmpty>
+		 	<isNotEmpty prepend=" AND " property="aproRoleCode">B.APRO_ROLE_CODE =  #aproRoleCode#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="auserCode">E.AUSER_CODE =  #auserCode#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="auserName">E.AUSER_NAME =  #auserName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="auserNickName">A.AUSER_NICK_NAME =  #auserNickName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeGuid">A.APME_GUID =  #apmeGuid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeParentGuid">A.APME_PARENT_GUID =  #apmeParentGuid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeMenuName">A.APME_MENU_NAME =  #apmeMenuName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeMenuDesc">A.APME_MENU_DESC =  #apmeMenuDesc#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeMenuUrl">A.APME_MENU_URL =  #apmeMenuUrl#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="apmeSort">A.APME_SORT =  #apmeSort#</isNotEmpty>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<insert id="insert" parameterClass="oamenuinfo">
+		INSERT INTO t_auto_oa_menu_info ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="apmeGuid">APME_GUID </isNotNull>
+					<isNotNull prepend=", " property="apmeParentGuid">APME_PARENT_GUID </isNotNull>
+					<isNotNull prepend=", " property="apmeMenuName">APME_MENU_NAME </isNotNull>
+					<isNotNull prepend=", " property="apmeMenuDesc">APME_MENU_DESC </isNotNull>
+					<isNotNull prepend=", " property="apmeMenuUrl">APME_MENU_URL </isNotNull>
+					<isNotNull prepend=", " property="apmeSort">APME_SORT </isNotNull>
+					<isNotNull prepend=", " property="apmeDepth">APME_DEPTH </isNotNull>
+					<isNotNull prepend=", " property="apmeFullPath">APME_FULL_PATH </isNotNull>
+					<isNotNull prepend=", " property="isValidity">IS_VALIDITY </isNotNull>
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="updateUser">UPDATE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="recordVersion">RECORD_VERSION </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="apmeGuid">#apmeGuid#</isNotNull>
+        <isNotNull prepend=", " property="apmeParentGuid">#apmeParentGuid#</isNotNull>
+        <isNotNull prepend=", " property="apmeMenuName">#apmeMenuName#</isNotNull>
+        <isNotNull prepend=", " property="apmeMenuDesc">#apmeMenuDesc#</isNotNull>
+        <isNotNull prepend=", " property="apmeMenuUrl">#apmeMenuUrl#</isNotNull>
+        <isNotNull prepend=", " property="apmeSort">#apmeSort#</isNotNull>
+        <isNotNull prepend=", " property="apmeDepth">#apmeDepth#</isNotNull>
+        <isNotNull prepend=", " property="apmeFullPath">#apmeFullPath#</isNotNull>
+        <isNotNull prepend=", " property="isValidity">#isValidity#</isNotNull>
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="updateUser">#updateUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="recordVersion">#recordVersion#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_oa_menu_info
+		WHERE 		APME_GUID=#value# 	
+	</delete>
+
+	<update id="update" parameterClass="oamenuinfo">
+		UPDATE  t_auto_oa_menu_info	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="apmeGuid">APME_GUID = #apmeGuid#</isNotNull>
+		<isNotNull prepend="," property="apmeParentGuid">APME_PARENT_GUID = #apmeParentGuid#</isNotNull>
+		<isNotNull prepend="," property="apmeMenuName">APME_MENU_NAME = #apmeMenuName#</isNotNull>
+		<isNotNull prepend="," property="apmeMenuDesc">APME_MENU_DESC = #apmeMenuDesc#</isNotNull>
+		<isNotNull prepend="," property="apmeMenuUrl">APME_MENU_URL = #apmeMenuUrl#</isNotNull>
+		<isNotNull prepend="," property="apmeSort">APME_SORT = #apmeSort#</isNotNull>
+		<isNotNull prepend="," property="apmeDepth">APME_DEPTH = #apmeDepth#</isNotNull>
+		<isNotNull prepend="," property="apmeFullPath">APME_FULL_PATH = #apmeFullPath#</isNotNull>
+		<isNotNull prepend="," property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+		</dynamic>
+		WHERE 		APME_GUID=#apmeGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="oamenuinfo">
+		UPDATE t_auto_oa_menu_info	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="apmeGuid">APME_GUID = #apmeGuid#</isNotNull>
+	    <isNull prepend=", " property="apmeGuid">APME_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeParentGuid">APME_PARENT_GUID = #apmeParentGuid#</isNotNull>
+	    <isNull prepend=", " property="apmeParentGuid">APME_PARENT_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeMenuName">APME_MENU_NAME = #apmeMenuName#</isNotNull>
+	    <isNull prepend=", " property="apmeMenuName">APME_MENU_NAME = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeMenuDesc">APME_MENU_DESC = #apmeMenuDesc#</isNotNull>
+	    <isNull prepend=", " property="apmeMenuDesc">APME_MENU_DESC = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeMenuUrl">APME_MENU_URL = #apmeMenuUrl#</isNotNull>
+	    <isNull prepend=", " property="apmeMenuUrl">APME_MENU_URL = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeSort">APME_SORT = #apmeSort#</isNotNull>
+	    <isNull prepend=", " property="apmeSort">APME_SORT = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeDepth">APME_DEPTH = #apmeDepth#</isNotNull>
+	    <isNull prepend=", " property="apmeDepth">APME_DEPTH = NULL</isNull>
+	    <isNotNull prepend=", " property="apmeFullPath">APME_FULL_PATH = #apmeFullPath#</isNotNull>
+	    <isNull prepend=", " property="apmeFullPath">APME_FULL_PATH = NULL</isNull>
+	    <isNotNull prepend=", " property="isValidity">IS_VALIDITY = #isValidity#</isNotNull>
+	    <isNull prepend=", " property="isValidity">IS_VALIDITY = NULL</isNull>
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="updateUser">UPDATE_USER = #updateUser#</isNotNull>
+	    <isNull prepend=", " property="updateUser">UPDATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="recordVersion">RECORD_VERSION = #recordVersion#</isNotNull>
+	    <isNull prepend=", " property="recordVersion">RECORD_VERSION = NULL</isNull>
+		</dynamic>
+		WHERE 		APME_GUID=#apmeGuid# 			</update>
+</sqlMap>

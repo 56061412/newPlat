@@ -1,0 +1,39 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<package name="orgArea" extends="oaLogin" namespace="/orgArea">
+		<action name="queryTreeOaOrgArea" class="com.auto.oa.org.action.OaOrgAreaAction"
+			method="queryTreeOaOrgArea">
+		</action>
+		<action name="queryPageListOaOrgArea" class="com.auto.oa.org.action.OaOrgAreaAction"
+			method="queryPageListOaOrgArea">
+		</action>
+		<action name="saveOrUpdateOaOrgArea" class="com.auto.oa.org.action.OaOrgAreaAction"
+			method="saveOrUpdateOaOrgArea">
+		</action>
+		<action name="deleteOaOrgArea" class="com.auto.oa.org.action.OaOrgAreaAction"
+			method="deleteOaOrgArea">
+		</action>
+		<action name="getOaOrgArea" class="com.auto.oa.org.action.OaOrgAreaAction"
+			method="getOaOrgArea">
+		</action>
+	</package>
+	
+	<package name="orgInfo" extends="oaLogin" namespace="/orgInfo">
+		<action name="queryTreeOaOrgInfo" class="com.auto.oa.org.action.OaOrgInfoAction"
+			method="queryTreeOaOrgInfo">
+		</action>
+		<action name="saveOrUpdateOaOrgInfo" class="com.auto.oa.org.action.OaOrgInfoAction"
+			method="saveOrUpdateOaOrgInfo">
+		</action>
+		<action name="deleteOaOrgInfo" class="com.auto.oa.org.action.OaOrgInfoAction"
+			method="deleteOaOrgInfo">
+		</action>
+		<action name="getOaOrgInfo" class="com.auto.oa.org.action.OaOrgInfoAction"
+			method="getOaOrgInfo">
+		</action>
+	</package>
+	
+</struts>

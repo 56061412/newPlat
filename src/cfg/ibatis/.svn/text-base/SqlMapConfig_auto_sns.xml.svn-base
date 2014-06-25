@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+		"http://www.ibatis.com/dtd/ibatis-2-config.dtd">
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+	
+	<sqlMap resource="com/auto/sns/core/sql/SnsCoreMessage.xml" />
+	<sqlMap resource="com/auto/sns/core/sql/SnsCoreMessagePerson.xml" />
+	
+	<sqlMap resource="com/auto/sns/post/sql/PostContent.xml" />
+	<sqlMap resource="com/auto/sns/post/sql/PostInfo.xml" />
+	<sqlMap resource="com/auto/sns/post/sql/PostHuifu.xml" />
+	<sqlMap resource="com/auto/sns/post/sql/SnsPostZanLog.xml" />
+	
+	<sqlMap resource="com/auto/sns/task/sql/TaskInfo.xml" />
+	<sqlMap resource="com/auto/sns/task/sql/TaskPerson.xml" />
+	
+	<sqlMap resource="com/auto/sns/knowledge/sql/KnowledgeType.xml" />
+	<sqlMap resource="com/auto/sns/knowledge/sql/KnowledgeInfo.xml" />
+	
+	<sqlMap resource="com/auto/sns/login/sql/SnsRegRefree.xml" />
+	<sqlMap resource="com/auto/sns/login/sql/SnsRegUserLogin.xml" />
+	
+	<sqlMap resource="com/auto/sns/friend/sql/FriendGroup.xml" />
+	<sqlMap resource="com/auto/sns/friend/sql/FriendInfo.xml" />
+
+</sqlMapConfig>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.auto.sns.post.domain.PostContent">
+	<typeAlias alias="postcontent" type="com.auto.sns.post.domain.PostContent"/>
+	<select id="load" parameterClass="string" resultClass="postcontent">
+		SELECT 
+				CREATE_USER as "createUser" ,
+				MODIFY_USER as "modifyUser" ,
+				DELETE_USER as "deleteUser" ,
+				CREATE_TIME as "createTime" ,
+				UPDATE_TIME as "updateTime" ,
+				DELETE_TIME as "deleteTime" ,
+				CONTENT_GUID as "contentGuid" ,
+				TIE_CONTENT as "tieContent" ,
+				SOURCE_GUID as "sourceGuid" ,
+				SOURCE_MODEL as "sourceModel" ,
+				SOURCE_LABEL1 as "sourceLabel1" ,
+				SOURCE_LABEL2 as "sourceLabel2" ,
+				STATUS as "status" ,
+				EXTRA1 as "extra1" ,
+				EXTRA2 as "extra2" ,
+				EXTRA3 as "extra3" ,
+				EXTRA4 as "extra4" ,
+				EXTRA5 as "extra5" 
+				FROM t_auto_sns_post_content
+		WHERE
+							CONTENT_GUID=#value# 				
+	</select>
+	
+	<select id="query"  parameterClass="hashmap" resultClass="postcontent">
+		SELECT
+				CREATE_USER  as "createUser" ,		
+				MODIFY_USER  as "modifyUser" ,		
+				DELETE_USER  as "deleteUser" ,		
+				CREATE_TIME  as "createTime" ,		
+				UPDATE_TIME  as "updateTime" ,		
+				DELETE_TIME  as "deleteTime" ,		
+				CONTENT_GUID  as "contentGuid" ,		
+				TIE_CONTENT  as "tieContent" ,		
+				SOURCE_GUID  as "sourceGuid" ,		
+				SOURCE_MODEL  as "sourceModel" ,		
+				SOURCE_LABEL1  as "sourceLabel1" ,		
+				SOURCE_LABEL2  as "sourceLabel2" ,		
+				STATUS  as "status" ,		
+				EXTRA1  as "extra1" ,		
+				EXTRA2  as "extra2" ,		
+				EXTRA3  as "extra3" ,		
+				EXTRA4  as "extra4" ,		
+				EXTRA5  as "extra5" 		
+				FROM t_auto_sns_post_content
+			<dynamic prepend="WHERE">
+						<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="deleteTime">DELETE_TIME =  #deleteTime#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="contentGuid">CONTENT_GUID =  #contentGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="tieContent">TIE_CONTENT =  #tieContent#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="sourceGuid">SOURCE_GUID =  #sourceGuid#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="sourceModel">SOURCE_MODEL =  #sourceModel#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="sourceLabel1">SOURCE_LABEL1 =  #sourceLabel1#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="sourceLabel2">SOURCE_LABEL2 =  #sourceLabel2#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="status">STATUS =  #status#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra1">EXTRA1 =  #extra1#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra2">EXTRA2 =  #extra2#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra3">EXTRA3 =  #extra3#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra4">EXTRA4 =  #extra4#</isNotEmpty>
+						<isNotEmpty prepend=" AND " property="extra5">EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+		<isNotEmpty prepend=" " property="displayOrder"> ORDER BY $displayOrder$ </isNotEmpty>
+	</select>
+
+	<select id="count"  parameterClass="hashmap" resultClass="integer">
+		SELECT count(*) 
+		FROM t_auto_sns_post_content 
+		<dynamic prepend="WHERE">
+					<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="modifyUser">MODIFY_USER =  #modifyUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="createTime">CREATE_TIME =  #createTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="updateTime">UPDATE_TIME =  #updateTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="deleteTime">DELETE_TIME =  #deleteTime#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="contentGuid">CONTENT_GUID =  #contentGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="tieContent">TIE_CONTENT =  #tieContent#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="sourceGuid">SOURCE_GUID =  #sourceGuid#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="sourceModel">SOURCE_MODEL =  #sourceModel#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="sourceLabel1">SOURCE_LABEL1 =  #sourceLabel1#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="sourceLabel2">SOURCE_LABEL2 =  #sourceLabel2#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="status">STATUS =  #status#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra1">EXTRA1 =  #extra1#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra2">EXTRA2 =  #extra2#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra3">EXTRA3 =  #extra3#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra4">EXTRA4 =  #extra4#</isNotEmpty>
+					<isNotEmpty prepend=" AND " property="extra5">EXTRA5 =  #extra5#</isNotEmpty>
+				</dynamic>
+	</select>
+		
+	<insert id="insert" parameterClass="postcontent">
+		INSERT INTO t_auto_sns_post_content ( 
+		<dynamic prepend=" ">
+					<isNotNull prepend=", " property="createUser">CREATE_USER </isNotNull>
+					<isNotNull prepend=", " property="modifyUser">MODIFY_USER </isNotNull>
+					<isNotNull prepend=", " property="deleteUser">DELETE_USER </isNotNull>
+					<isNotNull prepend=", " property="createTime">CREATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="updateTime">UPDATE_TIME </isNotNull>
+					<isNotNull prepend=", " property="deleteTime">DELETE_TIME </isNotNull>
+					<isNotNull prepend=", " property="contentGuid">CONTENT_GUID </isNotNull>
+					<isNotNull prepend=", " property="tieContent">TIE_CONTENT </isNotNull>
+					<isNotNull prepend=", " property="sourceGuid">SOURCE_GUID </isNotNull>
+					<isNotNull prepend=", " property="sourceModel">SOURCE_MODEL </isNotNull>
+					<isNotNull prepend=", " property="sourceLabel1">SOURCE_LABEL1 </isNotNull>
+					<isNotNull prepend=", " property="sourceLabel2">SOURCE_LABEL2 </isNotNull>
+					<isNotNull prepend=", " property="status">STATUS </isNotNull>
+					<isNotNull prepend=", " property="extra1">EXTRA1 </isNotNull>
+					<isNotNull prepend=", " property="extra2">EXTRA2 </isNotNull>
+					<isNotNull prepend=", " property="extra3">EXTRA3 </isNotNull>
+					<isNotNull prepend=", " property="extra4">EXTRA4 </isNotNull>
+					<isNotNull prepend=", " property="extra5">EXTRA5 </isNotNull>
+				</dynamic>
+		) VALUES (
+    <dynamic prepend=" ">
+        <isNotNull prepend=", " property="createUser">#createUser#</isNotNull>
+        <isNotNull prepend=", " property="modifyUser">#modifyUser#</isNotNull>
+        <isNotNull prepend=", " property="deleteUser">#deleteUser#</isNotNull>
+        <isNotNull prepend=", " property="createTime">
+           <isNotEmpty property="createTime">#createTime#</isNotEmpty>
+           <isEmpty property="createTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="updateTime">
+           <isNotEmpty property="updateTime">#updateTime#</isNotEmpty>
+           <isEmpty property="updateTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="deleteTime">
+           <isNotEmpty property="deleteTime">#deleteTime#</isNotEmpty>
+           <isEmpty property="deleteTime">NULL</isEmpty>
+        </isNotNull>
+        <isNotNull prepend=", " property="contentGuid">#contentGuid#</isNotNull>
+        <isNotNull prepend=", " property="tieContent">#tieContent#</isNotNull>
+        <isNotNull prepend=", " property="sourceGuid">#sourceGuid#</isNotNull>
+        <isNotNull prepend=", " property="sourceModel">#sourceModel#</isNotNull>
+        <isNotNull prepend=", " property="sourceLabel1">#sourceLabel1#</isNotNull>
+        <isNotNull prepend=", " property="sourceLabel2">#sourceLabel2#</isNotNull>
+        <isNotNull prepend=", " property="status">#status#</isNotNull>
+        <isNotNull prepend=", " property="extra1">#extra1#</isNotNull>
+        <isNotNull prepend=", " property="extra2">#extra2#</isNotNull>
+        <isNotNull prepend=", " property="extra3">#extra3#</isNotNull>
+        <isNotNull prepend=", " property="extra4">#extra4#</isNotNull>
+        <isNotNull prepend=", " property="extra5">#extra5#</isNotNull>
+		</dynamic>)
+	</insert>
+
+	<delete id="delete" parameterClass="string">
+		DELETE FROM  t_auto_sns_post_content
+		WHERE 		CONTENT_GUID=#value# 	
+	</delete>
+	
+	<delete id="deleteBySourceGuid" parameterClass="string">
+		DELETE FROM  t_auto_sns_post_content
+		WHERE 		SOURCE_GUID = #value#
+	</delete>
+
+	<update id="update" parameterClass="postcontent">
+		UPDATE  t_auto_sns_post_content	
+		SET 
+		<dynamic prepend=" ">
+		<isNotNull prepend="," property="createUser">CREATE_USER = #createUser#</isNotNull>
+		<isNotNull prepend="," property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+		<isNotNull prepend="," property="deleteUser">DELETE_USER = #deleteUser#</isNotNull>
+		<isNotNull prepend="," property="createTime">CREATE_TIME = #createTime#</isNotNull>
+		<isNotNull prepend="," property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+		<isNotNull prepend="," property="deleteTime">DELETE_TIME = #deleteTime#</isNotNull>
+		<isNotNull prepend="," property="contentGuid">CONTENT_GUID = #contentGuid#</isNotNull>
+		<isNotNull prepend="," property="tieContent">TIE_CONTENT = #tieContent#</isNotNull>
+		<isNotNull prepend="," property="sourceGuid">SOURCE_GUID = #sourceGuid#</isNotNull>
+		<isNotNull prepend="," property="sourceModel">SOURCE_MODEL = #sourceModel#</isNotNull>
+		<isNotNull prepend="," property="sourceLabel1">SOURCE_LABEL1 = #sourceLabel1#</isNotNull>
+		<isNotNull prepend="," property="sourceLabel2">SOURCE_LABEL2 = #sourceLabel2#</isNotNull>
+		<isNotNull prepend="," property="status">STATUS = #status#</isNotNull>
+		<isNotNull prepend="," property="extra1">EXTRA1 = #extra1#</isNotNull>
+		<isNotNull prepend="," property="extra2">EXTRA2 = #extra2#</isNotNull>
+		<isNotNull prepend="," property="extra3">EXTRA3 = #extra3#</isNotNull>
+		<isNotNull prepend="," property="extra4">EXTRA4 = #extra4#</isNotNull>
+		<isNotNull prepend="," property="extra5">EXTRA5 = #extra5#</isNotNull>
+		</dynamic>
+		WHERE 		CONTENT_GUID=#contentGuid# 			</update>
+	
+	<update id="updatewithnull" parameterClass="postcontent">
+		UPDATE t_auto_sns_post_content	
+		SET 
+		<dynamic prepend=" ">
+	    <isNotNull prepend=", " property="createUser">CREATE_USER = #createUser#</isNotNull>
+	    <isNull prepend=", " property="createUser">CREATE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="modifyUser">MODIFY_USER = #modifyUser#</isNotNull>
+	    <isNull prepend=", " property="modifyUser">MODIFY_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="deleteUser">DELETE_USER = #deleteUser#</isNotNull>
+	    <isNull prepend=", " property="deleteUser">DELETE_USER = NULL</isNull>
+	    <isNotNull prepend=", " property="createTime">CREATE_TIME = #createTime#</isNotNull>
+	    <isNull prepend=", " property="createTime">CREATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="updateTime">UPDATE_TIME = #updateTime#</isNotNull>
+	    <isNull prepend=", " property="updateTime">UPDATE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="deleteTime">DELETE_TIME = #deleteTime#</isNotNull>
+	    <isNull prepend=", " property="deleteTime">DELETE_TIME = NULL</isNull>
+	    <isNotNull prepend=", " property="contentGuid">CONTENT_GUID = #contentGuid#</isNotNull>
+	    <isNull prepend=", " property="contentGuid">CONTENT_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="tieContent">TIE_CONTENT = #tieContent#</isNotNull>
+	    <isNull prepend=", " property="tieContent">TIE_CONTENT = NULL</isNull>
+	    <isNotNull prepend=", " property="sourceGuid">SOURCE_GUID = #sourceGuid#</isNotNull>
+	    <isNull prepend=", " property="sourceGuid">SOURCE_GUID = NULL</isNull>
+	    <isNotNull prepend=", " property="sourceModel">SOURCE_MODEL = #sourceModel#</isNotNull>
+	    <isNull prepend=", " property="sourceModel">SOURCE_MODEL = NULL</isNull>
+	    <isNotNull prepend=", " property="sourceLabel1">SOURCE_LABEL1 = #sourceLabel1#</isNotNull>
+	    <isNull prepend=", " property="sourceLabel1">SOURCE_LABEL1 = NULL</isNull>
+	    <isNotNull prepend=", " property="sourceLabel2">SOURCE_LABEL2 = #sourceLabel2#</isNotNull>
+	    <isNull prepend=", " property="sourceLabel2">SOURCE_LABEL2 = NULL</isNull>
+	    <isNotNull prepend=", " property="status">STATUS = #status#</isNotNull>
+	    <isNull prepend=", " property="status">STATUS = NULL</isNull>
+	    <isNotNull prepend=", " property="extra1">EXTRA1 = #extra1#</isNotNull>
+	    <isNull prepend=", " property="extra1">EXTRA1 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra2">EXTRA2 = #extra2#</isNotNull>
+	    <isNull prepend=", " property="extra2">EXTRA2 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra3">EXTRA3 = #extra3#</isNotNull>
+	    <isNull prepend=", " property="extra3">EXTRA3 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra4">EXTRA4 = #extra4#</isNotNull>
+	    <isNull prepend=", " property="extra4">EXTRA4 = NULL</isNull>
+	    <isNotNull prepend=", " property="extra5">EXTRA5 = #extra5#</isNotNull>
+	    <isNull prepend=", " property="extra5">EXTRA5 = NULL</isNull>
+		</dynamic>
+		WHERE 		CONTENT_GUID=#contentGuid# 			</update>
+</sqlMap>
